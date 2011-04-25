@@ -1,0 +1,9 @@
+.item-new-form {
+	background: #CCCCCC;
+	width: 330px;
+	display: none;
+}
+
+.item-edit-form {
+	display: none;
+}

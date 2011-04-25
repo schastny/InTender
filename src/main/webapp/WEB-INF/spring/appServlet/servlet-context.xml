@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- DispatcherServlet Context: определяет настройки одного сервлета; бины, 
+		которые доступны только ему -->
+
+	<!-- Разрешаем использование аннотаций Spring MVC (то есть @Controller и.т.д) -->
+	<annotation-driven />
+
+	<!-- Всю статику (изображения, css-файлы, javascript) положим в папку webapp/resources 
+		и замаппим их на урл вида /resources/** -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Отображение видов на ftl-файлы, лежащие в папке /WEB-INF/ftl -->
+	<!-- freemarker config -->
+	<beans:bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<beans:property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+		<beans:property name="freemarkerSettings">
+			<beans:props>
+				<beans:prop key="default_encoding">UTF-8</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+	<!-- View resolvers can also be configured with ResourceBundles or XML files. 
+		If you need different view resolving based on Locale, you have to use the 
+		resource bundle resolver. -->
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<beans:property name="cache" value="true" />
+		<beans:property name="prefix" value="" />
+		<beans:property name="suffix" value=".ftl" />
+		<beans:property name="contentType" value="text/html;charset=UTF-8" />
+	</beans:bean>
+
+	<!-- Файл с настройками контроллеров -->
+	<beans:import resource="controllers.xml" />
+
+	<!-- Configure the multipart resolver -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<beans:property name="maxUploadSize" value="1000000" />
+	</beans:bean>
+
+</beans:beans>

@@ -1,0 +1,48 @@
+package net.schastny.springcart.domain;
+
+import java.util.Collection;
+
+import static javax.persistence.CascadeType.REMOVE;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CATEGORIES")
+public class Category {
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue
+	private int id;
+	
+	@Column(name = "title")
+	private String title;
+	
+	@OneToMany(cascade=REMOVE, mappedBy="category")
+	private Collection<Item> items;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Collection<Item> getItems() {
+		return items;
+	}
+
+}
