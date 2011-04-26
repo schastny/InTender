@@ -6,8 +6,8 @@ import net.schastny.intender.domain.Division;
 
 public interface DivisionDAO {
 	
-	public void storeCategory(Division category);
-	public void deleteCategory(Integer id);
+	public void storeDivision(Division division);
+	public void deleteDivision(Integer id);
 	public List<Division> selectAll();
-	public Division selectCategory(Integer id);
+	public Division selectDivision(Integer id);
 }

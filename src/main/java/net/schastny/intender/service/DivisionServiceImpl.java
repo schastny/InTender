@@ -17,14 +17,14 @@ public class DivisionServiceImpl implements DivisionService {
 
     @Transactional
 	@Override
-	public void storeCategory(Division category) {
-    	divisionDAO.storeCategory(category);
+	public void storeDivision(Division division) {
+    	divisionDAO.storeDivision(division);
 	}
 
     @Transactional
 	@Override
-	public void deleteCategory(Integer id) {
-    	divisionDAO.deleteCategory(id);
+	public void deleteDivision(Integer id) {
+    	divisionDAO.deleteDivision(id);
 	}
 
     @Transactional
@@ -34,8 +34,8 @@ public class DivisionServiceImpl implements DivisionService {
 	}
     
     @Transactional
-	public Division showCategory(Integer id) {
-		return divisionDAO.selectCategory(id);
+	public Division showDivision(Integer id) {
+		return divisionDAO.selectDivision(id);
 	}
 
 }

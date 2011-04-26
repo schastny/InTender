@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import net.schastny.intender.service.ItemService;
+import net.schastny.intender.service.TenderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,13 +22,13 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class ImageController {
 
 	@Autowired
-	private ItemService itemService;
+	private TenderService tenderService;
 
 	@RequestMapping(value = "/image/{itemId}", method = RequestMethod.GET)
 	public void viewImage(@PathVariable("itemId") Integer itemId,
 			HttpServletResponse response) {
 		
-		CommonsMultipartFile image = itemService.showItem(itemId).getImage();
+		CommonsMultipartFile image = tenderService.showTender(itemId).getImage();
 		response.setContentType(image.getContentType());
 		
 		response.setStatus(HttpServletResponse.SC_OK);

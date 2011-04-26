@@ -11,11 +11,11 @@
 			<tr>
 				<td>${item.id}</td>
 				<td>
-					<a href=" <@spring.url '/shop/${item.category.id}/${item.id}'/> ">
+					<a href=" <@spring.url '/shop/${item.division.id}/${item.id}'/> ">
 						${item.title}
 					</a>
 				</td>
-				<td>${item.category.title}</td>
+				<td>${item.division.title}</td>
 				<td>${item.price}</td>
 				<td><img src="<@spring.url '/image/${item.id}'/>" width="100px"/></td>
 			</tr>

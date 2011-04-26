@@ -7,7 +7,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 	<http access-denied-page="/error403.ftl">
 		<intercept-url pattern="/admin/item/delete/*" access="ROLE_ADMIN" />
-		<intercept-url pattern="/admin/category*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/admin/division*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/admin*" access="ROLE_USER" />
 		<intercept-url pattern="/*" access="ROLE_USER,ROLE_ANONYMOUS" />
 

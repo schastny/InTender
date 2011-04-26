@@ -15,15 +15,15 @@ public class DivisionDAOImpl implements DivisionDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void storeCategory(Division category) {
-		sessionFactory.getCurrentSession().saveOrUpdate(category);
+	public void storeDivision(Division division) {
+		sessionFactory.getCurrentSession().saveOrUpdate(division);
 	}
 
 	@Override
-	public void deleteCategory(Integer id) {
-		Division category = selectCategory(id);
-		if (null != category) {
-			sessionFactory.getCurrentSession().delete(category);
+	public void deleteDivision(Integer id) {
+		Division division = selectDivision(id);
+		if (null != division) {
+			sessionFactory.getCurrentSession().delete(division);
 		}
 	}
 
@@ -34,7 +34,7 @@ public class DivisionDAOImpl implements DivisionDAO {
 	}
 
 	@Override
-	public Division selectCategory(Integer id) {
+	public Division selectDivision(Integer id) {
 		return (Division) sessionFactory.getCurrentSession().get(Division.class, id);
 	}
 

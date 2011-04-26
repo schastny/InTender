@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Entity
-@Table(name = "ITEMS")
-public class Item {
+@Table(name = "TENDERS")
+public class Tender {
 
 	@Id
 	@Column(name = "id")
@@ -28,8 +28,8 @@ public class Item {
 	private String title;
 
 	@ManyToOne
-	@JoinColumn(name="category")
-	private Division category;
+	@JoinColumn(name="division")
+	private Division division;
 
 	@Column(name = "price")
 	@Digits(fraction = 0, integer = 10)
@@ -65,12 +65,12 @@ public class Item {
 		this.price = price;
 	}
 	
-	public Division getCategory() {
-		return category;
+	public Division getDivision() {
+		return division;
 	}
 
-	public void setCategory(Division category) {
-		this.category = category;
+	public void setDivision(Division category) {
+		this.division = category;
 	}
 
 	public CommonsMultipartFile getImage() {

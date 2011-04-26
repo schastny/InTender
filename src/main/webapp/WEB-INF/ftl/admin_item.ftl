@@ -19,7 +19,7 @@
 <h2>SpringCart - Товар</h2>
 
 <h3>Товар детально</h3>
-<a href="<@spring.url '/admin/shop/${item.category.id}' />">
+<a href="<@spring.url '/admin/shop/${item.division.id}' />">
 	Товары в категории
 </a>
 
@@ -32,7 +32,7 @@
 			<td>${item.title}</td>
 		</tr>
 		<tr><td>Категория</td>
-			<td>${item.category.title}</td>
+			<td>${item.division.title}</td>
 		</tr>		
 		<tr><td>Цена</td>
 			<td>${item.price}</td>
@@ -61,7 +61,7 @@
 				</tr>
 				<tr>
 					<td>Категория</td>
-					<td><@spring.formSingleSelect "item.category.id", categoryMap/></td>
+					<td><@spring.formSingleSelect "item.division.id", categoryMap/></td>
 				</tr>
 				<tr>
 					<td>Цена</td>

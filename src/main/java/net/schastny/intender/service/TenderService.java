@@ -2,23 +2,23 @@ package net.schastny.intender.service;
 
 import java.util.List;
 
-import net.schastny.intender.domain.Item;
+import net.schastny.intender.domain.Tender;
 
-public interface ItemService {
+public interface TenderService {
 //	админ: добавить товар
 //	админ: редактировать товар
-	public void storeItem(Item item);
+	public void storeTender(Tender tender);
 	
 //	админ: удалить товар
-	public void deleteItem(Integer id);
+	public void deleteTender(Integer id);
 
 //	все:   список товаров
-	public List<Item> showAll();
+	public List<Tender> showAll();
 
 //	все:   список товаров в категории
-	public List<Item> showAllInCategory(Integer catId);
+	public List<Tender> showAllInDivision(Integer divId);
 	
 //	все:	товар детально
-	public Item showItem(Integer id);
+	public Tender showTender(Integer id);
 
 }

@@ -6,7 +6,7 @@
 		</tr>
 		<tr>
 			<td>Категория</td>
-			<td><@spring.formSingleSelect "item.category.id", categoryMap/></td>
+			<td><@spring.formSingleSelect "item.division.id", categoryMap/></td>
 		</tr>
 		<tr>
 			<td>Цена</td>

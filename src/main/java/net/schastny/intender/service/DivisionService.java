@@ -8,15 +8,15 @@ public interface DivisionService {
 	
 	// админ: добавить категорию
 	// админ: редактировать категорию
-	public void storeCategory(Division category);
+	public void storeDivision(Division division);
 
 	// админ: удалить категорию
-	public void deleteCategory(Integer id);
+	public void deleteDivision(Integer id);
 
 	// все: список категорий
 	public List<Division> showAll();
 	
 	//все:	категория детально
-	public Division showCategory(Integer id);
+	public Division showDivision(Integer id);
 
 }

@@ -2,9 +2,9 @@ package net.schastny.intender.web;
 
 import java.util.Map;
 
-import net.schastny.intender.domain.Item;
+import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
-import net.schastny.intender.service.ItemService;
+import net.schastny.intender.service.TenderService;
 import net.schastny.intender.web.utils.CategoryMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
 	@Autowired
-	private ItemService itemService;
+	private TenderService tenderService;
 
 	@Autowired
 	private DivisionService divisionService;
@@ -25,8 +25,8 @@ public class MainController {
 	// Просмотр всех товаров
 	@RequestMapping(value = { "/", "/index", "/shop" })
 	public String listItemsAll(Map<String, Object> map) {
-		map.put("item", new Item());
-		map.put("itemList", itemService.showAll());
+		map.put("item", new Tender());
+		map.put("itemList", tenderService.showAll());
 		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		return "main_home";
 	}
@@ -36,10 +36,10 @@ public class MainController {
 	public String listItemsInCategory(Map<String, Object> map, @PathVariable("catId") Integer catId) {
 
 		map.put("category", catId);
-		Item item = new Item();
-		item.setCategory(divisionService.showCategory(catId));
-		map.put("item", item);
-		map.put("itemList", itemService.showAllInCategory(catId));
+		Tender tender = new Tender();
+		tender.setDivision(divisionService.showDivision(catId));
+		map.put("item", tender);
+		map.put("itemList", tenderService.showAllInDivision(catId));
 		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		return "main_category";
 	}
@@ -47,8 +47,8 @@ public class MainController {
 	// Просмотр товара
 	@RequestMapping(value = "/shop/{catId}/{itemId}", method = RequestMethod.GET)
 	public String listItem(Map<String, Object> map, @PathVariable("itemId") Integer itemId) {
-		Item item = itemService.showItem(itemId);
-		map.put("item", item);
+		Tender tender = tenderService.showTender(itemId);
+		map.put("item", tender);
 		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		return "main_item";
 	}

@@ -22,8 +22,8 @@ public class Division {
 	@Column(name = "title")
 	private String title;
 	
-	@OneToMany(cascade=REMOVE, mappedBy="category")
-	private Collection<Item> items;
+	@OneToMany(cascade=REMOVE, mappedBy="division")
+	private Collection<Tender> tenders;
 
 	public int getId() {
 		return id;
@@ -41,8 +41,8 @@ public class Division {
 		this.title = title;
 	}
 
-	public Collection<Item> getItems() {
-		return items;
+	public Collection<Tender> getTenders() {
+		return tenders;
 	}
 
 }

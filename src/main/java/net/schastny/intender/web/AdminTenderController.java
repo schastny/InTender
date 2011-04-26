@@ -6,9 +6,9 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import net.schastny.intender.domain.Item;
+import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
-import net.schastny.intender.service.ItemService;
+import net.schastny.intender.service.TenderService;
 import net.schastny.intender.web.utils.CategoryMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +23,17 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Controller
 @RequestMapping("/admin/item*")
-public class AdminItemController {
+public class AdminTenderController {
 
 	@Autowired
-	private ItemService itemService;
+	private TenderService tenderService;
 	
 	@Autowired
 	private DivisionService divisionService;
 
 	// Сохранить/обновить товар
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
-	public String storeItem(@Valid Item item, 
+	public String storeItem(@Valid Tender tender, 
 			BindingResult result,
 			Map<String, Object> map,
 			@RequestParam("image") CommonsMultipartFile image) {
@@ -49,7 +49,7 @@ public class AdminItemController {
 
 		String viewResult = "redirect:/admin";
 		if (!result.hasErrors()) {
-			itemService.storeItem(item);
+			tenderService.storeTender(tender);
 		} else {
 			viewResult = "admin_storeError";
 			map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
@@ -66,7 +66,7 @@ public class AdminItemController {
 	// Удалить товар
 	@RequestMapping("/delete/{itemId}")
 	public String deleteItem(@PathVariable("itemId") Integer itemId) {
-		itemService.deleteItem(itemId);
+		tenderService.deleteTender(itemId);
 		return "redirect:/admin";
 	}
 

@@ -23,8 +23,8 @@ public class AdminDivisionsController {
 	// Просмотр всех категорий
 	@RequestMapping
 	public String listCategoriesAll(Map<String, Object> map) {
-		map.put("category", new Division());
-		map.put("categoryList", divisionService.showAll());
+		map.put("division", new Division());
+		map.put("divisionList", divisionService.showAll());
 		return "admin_divisions_configurer";
 	}
 
@@ -33,15 +33,15 @@ public class AdminDivisionsController {
 	public @ResponseBody Division storeCategory(@RequestBody Division category) {
 		// TODO Нельзя сохранить большие названия в поле Title
 		// TODO Редирект оставить на странице просмотра деталей категории
-		divisionService.storeCategory(category);
+		divisionService.storeDivision(category);
 		return category;
 	}
 
 	// Удалить категорию
-	@RequestMapping("/delete/{catId}")
-	public String deleteCategory(@PathVariable("catId") Integer catId) {
-		divisionService.deleteCategory(catId);
-		return "redirect:/admin/category";
+	@RequestMapping("/delete/{divId}")
+	public String deleteCategory(@PathVariable("divId") Integer divId) {
+		divisionService.deleteDivision(divId);
+		return "redirect:/admin/divisions";
 	}
 
 }

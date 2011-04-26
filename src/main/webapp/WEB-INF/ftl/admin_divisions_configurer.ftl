@@ -37,7 +37,7 @@
 <div class="division-new-form">
 	<form id="newDivision" method="POST" action="[@spring.url '/#' /]" >
 			Division name
-			[@spring.formInput "category.title"/]
+			[@spring.formInput "division.title"/]
 			<input type="submit" value="Create" />
 	</form>
 </div>
