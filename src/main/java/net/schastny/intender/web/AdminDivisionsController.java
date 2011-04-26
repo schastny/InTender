@@ -25,7 +25,7 @@ public class AdminDivisionsController {
 	public String listCategoriesAll(Map<String, Object> map) {
 		map.put("category", new Category());
 		map.put("categoryList", categoryService.showAll());
-		return "admin_cat_configurer";
+		return "admin_divisions_configurer";
 	}
 
 	// Сохранить/обновить категорию
