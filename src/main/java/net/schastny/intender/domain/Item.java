@@ -29,7 +29,7 @@ public class Item {
 
 	@ManyToOne
 	@JoinColumn(name="category")
-	private Category category;
+	private Division category;
 
 	@Column(name = "price")
 	@Digits(fraction = 0, integer = 10)
@@ -65,11 +65,11 @@ public class Item {
 		this.price = price;
 	}
 	
-	public Category getCategory() {
+	public Division getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(Division category) {
 		this.category = category;
 	}
 

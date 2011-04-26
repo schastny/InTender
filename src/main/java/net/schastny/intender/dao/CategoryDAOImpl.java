@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import net.schastny.intender.domain.Category;
+import net.schastny.intender.domain.Division;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO {
@@ -15,13 +15,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void storeCategory(Category category) {
+	public void storeCategory(Division category) {
 		sessionFactory.getCurrentSession().saveOrUpdate(category);
 	}
 
 	@Override
 	public void deleteCategory(Integer id) {
-		Category category = selectCategory(id);
+		Division category = selectCategory(id);
 		if (null != category) {
 			sessionFactory.getCurrentSession().delete(category);
 		}
@@ -29,13 +29,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Category> selectAll() {
+	public List<Division> selectAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Category").list();
 	}
 
 	@Override
-	public Category selectCategory(Integer id) {
-		return (Category) sessionFactory.getCurrentSession().get(Category.class, id);
+	public Division selectCategory(Integer id) {
+		return (Division) sessionFactory.getCurrentSession().get(Division.class, id);
 	}
 
 }

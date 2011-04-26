@@ -11,8 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CATEGORIES")
-public class Category {
+@Table(name = "DIVISION")
+public class Division {
 
 	@Id
 	@Column(name = "id")

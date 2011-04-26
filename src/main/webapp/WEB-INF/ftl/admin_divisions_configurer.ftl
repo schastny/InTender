@@ -15,10 +15,10 @@
 <script type='text/javascript'>	
 	$(document).ready(function() {
 	   
-		$('#newCategory').submit(function() {
-			var newCategory = $(this).serializeObject();
-			$.postJSON("[@spring.url '/admin/category/store' /]", newCategory, function(data) {
-				$('#catList > tbody:last').append('<tr><td>'+data.id+'</td><td><a href="#">'+data.title+'</a></td><td><a href=" [@spring.url '/admin/category/delete/'/]'+data.id+' ">Удалить</a></td></tr>');
+		$('#newDivision').submit(function() {
+			var newDivision = $(this).serializeObject();
+			$.postJSON("[@spring.url '/admin/divisions/store' /]", newDivision, function(data) {
+				$('#divList > tbody:last').append('<tr><td>'+data.id+'</td><td><a href="#">'+data.title+'</a></td><td><a href=" [@spring.url '/admin/divisions/delete/'/]'+data.id+' ">Удалить</a></td></tr>');
 			});
 			return false;				
 		});
@@ -33,9 +33,9 @@
 
 <h2>[@spring.message "label.title"/]</h2>
 
-<a href="#" class="item-new">New division</a>
-<div class="item-new-form">
-	<form id="newCategory" method="POST" action="[@spring.url '/#' /]" >
+<a href="#" class="division-new">New division</a>
+<div class="division-new-form">
+	<form id="newDivision" method="POST" action="[@spring.url '/#' /]" >
 			Division name
 			[@spring.formInput "category.title"/]
 			<input type="submit" value="Create" />
@@ -43,23 +43,23 @@
 </div>
 
 <h3>Divisions</h3>
-	[#if categoryList??]
-		<table id="catList">
+	[#if divisionList??]
+		<table id="divList">
 			<tr>
 				<th>ID</th>
 				<th>Division name</th>
 				<th>&nbsp;</th>
 			</tr>
-			[#list categoryList as category]
+			[#list divisionList as division]
 				<tr>
-					<td>${category.id}</td>
+					<td>${division.id}</td>
 					<td>
 						<a href="#">
-							${category.title}
+							${division.title}
 						</a>
 					</td>
 					<td>
-						<a id="catDelete" href=" [@spring.url '/admin/category/delete/${category.id}'/] ">
+						<a id="divDelete" href=" [@spring.url '/admin/divisions/delete/${division.id}'/] ">
 							Удалить
 						</a>
 					</td>

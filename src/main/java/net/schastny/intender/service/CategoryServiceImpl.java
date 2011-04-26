@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.schastny.intender.dao.CategoryDAO;
-import net.schastny.intender.domain.Category;
+import net.schastny.intender.domain.Division;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -17,7 +17,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
 	@Override
-	public void storeCategory(Category category) {
+	public void storeCategory(Division category) {
     	categoryDAO.storeCategory(category);
 	}
 
@@ -29,12 +29,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
 	@Override
-	public List<Category> showAll() {
+	public List<Division> showAll() {
     	return categoryDAO.selectAll();
 	}
     
     @Transactional
-	public Category showCategory(Integer id) {
+	public Division showCategory(Integer id) {
 		return categoryDAO.selectCategory(id);
 	}
 

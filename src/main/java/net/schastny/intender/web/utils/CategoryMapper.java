@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.schastny.intender.domain.Category;
+import net.schastny.intender.domain.Division;
 import net.schastny.intender.service.CategoryService;
 
 public class CategoryMapper {
@@ -16,9 +16,9 @@ public class CategoryMapper {
 	 * макрос @spring.formSingleSelect не понимает.
 	 */
 	public static Map<String, String> getCategoryMap(CategoryService categoryService) {
-		List<Category> categoryList = categoryService.showAll();
+		List<Division> categoryList = categoryService.showAll();
 		LinkedHashMap<String, String> categoryMap = new LinkedHashMap<String, String>();
-		for (Category category : categoryList) {
+		for (Division category : categoryList) {
 			categoryMap.put(Integer.toString(category.getId()),
 					category.getTitle());
 		}

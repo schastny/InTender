@@ -14,7 +14,7 @@
 
 <a href="<@spring.url '/logout'/>">Выйти из приложения</a>
 
-<h2>Intender</h2>
+<h2>InTender</h2>
 
 <h3>Recent tenders</h3>
 <#include "/tiles/itemsTable.ftl">

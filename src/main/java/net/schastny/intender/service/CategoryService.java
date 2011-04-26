@@ -2,21 +2,21 @@ package net.schastny.intender.service;
 
 import java.util.List;
 
-import net.schastny.intender.domain.Category;
+import net.schastny.intender.domain.Division;
 
 public interface CategoryService {
 	
 	// админ: добавить категорию
 	// админ: редактировать категорию
-	public void storeCategory(Category category);
+	public void storeCategory(Division category);
 
 	// админ: удалить категорию
 	public void deleteCategory(Integer id);
 
 	// все: список категорий
-	public List<Category> showAll();
+	public List<Division> showAll();
 	
 	//все:	категория детально
-	public Category showCategory(Integer id);
+	public Division showCategory(Integer id);
 
 }

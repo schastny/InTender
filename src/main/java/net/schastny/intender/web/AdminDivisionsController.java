@@ -2,7 +2,7 @@ package net.schastny.intender.web;
 
 import java.util.Map;
 
-import net.schastny.intender.domain.Category;
+import net.schastny.intender.domain.Division;
 import net.schastny.intender.service.CategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +23,14 @@ public class AdminDivisionsController {
 	// Просмотр всех категорий
 	@RequestMapping
 	public String listCategoriesAll(Map<String, Object> map) {
-		map.put("category", new Category());
+		map.put("category", new Division());
 		map.put("categoryList", categoryService.showAll());
 		return "admin_divisions_configurer";
 	}
 
 	// Сохранить/обновить категорию
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
-	public @ResponseBody Category storeCategory(@RequestBody Category category) {
+	public @ResponseBody Division storeCategory(@RequestBody Division category) {
 		// TODO Нельзя сохранить большие названия в поле Title
 		// TODO Редирект оставить на странице просмотра деталей категории
 		categoryService.storeCategory(category);

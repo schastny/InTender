@@ -7,3 +7,13 @@
 .item-edit-form {
 	display: none;
 }
+
+.division-new-form {
+	background: #CCCCCC;
+	width: 330px;
+	display: none;
+}
+
+.division-edit-form {
+	display: none;
+}

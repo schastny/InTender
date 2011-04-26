@@ -1,11 +1,19 @@
 $(document).ready(function(){
 
-    $(".item-new").toggle(function(){
-    	$('.item-new-form').show();
+    $(".division-new").toggle(function(){
+    	$('.division-new-form').show();
         return false;
     }, function(){
-    	$('.item-new-form').hide();
+    	$('.division-new-form').hide();
         return false;
+    });
+    
+    $(".item-new").toggle(function(){
+    	$('.item-new-form').show();
+    	return false;
+    }, function(){
+    	$('.item-new-form').hide();
+    	return false;
     }); 
 	
     $(".item-edit-1").click(function(){

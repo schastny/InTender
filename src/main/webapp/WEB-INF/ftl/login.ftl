@@ -1,8 +1,13 @@
 [#ftl]
 [#import "spring.ftl" as spring]
-<div align="left">
-	[@spring.message "label.title"/]
-</div>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>[@spring.message "label.title"/]</title>
+</head>
+<body>
+
+<h2>[@spring.message "label.title"/]</h2>
 
 <a href=" [@spring.url '/index' /] ">
 	Main page
@@ -37,3 +42,6 @@
 		</div>
 	</form>
 </div>
+
+</body>
+</html>

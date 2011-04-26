@@ -6,6 +6,6 @@
 <hibernate-configuration>
 	<session-factory>
 		<mapping class="net.schastny.intender.domain.Item" />
-		<mapping class="net.schastny.intender.domain.Category" />
+		<mapping class="net.schastny.intender.domain.Division" />
 	</session-factory>
 </hibernate-configuration>
