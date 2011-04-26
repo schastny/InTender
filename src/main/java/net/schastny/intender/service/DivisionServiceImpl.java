@@ -6,36 +6,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.schastny.intender.dao.CategoryDAO;
+import net.schastny.intender.dao.DivisionDAO;
 import net.schastny.intender.domain.Division;
 
 @Service
-public class CategoryServiceImpl implements CategoryService {
+public class DivisionServiceImpl implements DivisionService {
 	
     @Autowired
-    private CategoryDAO categoryDAO;
+    private DivisionDAO divisionDAO;
 
     @Transactional
 	@Override
 	public void storeCategory(Division category) {
-    	categoryDAO.storeCategory(category);
+    	divisionDAO.storeCategory(category);
 	}
 
     @Transactional
 	@Override
 	public void deleteCategory(Integer id) {
-    	categoryDAO.deleteCategory(id);
+    	divisionDAO.deleteCategory(id);
 	}
 
     @Transactional
 	@Override
 	public List<Division> showAll() {
-    	return categoryDAO.selectAll();
+    	return divisionDAO.selectAll();
 	}
     
     @Transactional
 	public Division showCategory(Integer id) {
-		return categoryDAO.selectCategory(id);
+		return divisionDAO.selectCategory(id);
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.schastny.intender.domain.Division;
 
-public interface CategoryService {
+public interface DivisionService {
 	
 	// админ: добавить категорию
 	// админ: редактировать категорию

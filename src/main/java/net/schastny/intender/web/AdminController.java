@@ -3,7 +3,7 @@ package net.schastny.intender.web;
 import java.util.Map;
 
 import net.schastny.intender.domain.Item;
-import net.schastny.intender.service.CategoryService;
+import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.ItemService;
 import net.schastny.intender.web.utils.CategoryMapper;
 
@@ -21,14 +21,14 @@ public class AdminController {
 	private ItemService itemService;
 
 	@Autowired
-	private CategoryService categoryService;
+	private DivisionService divisionService;
 	
 	// Просмотр всех товаров
 	@RequestMapping
 	public String listItemsAll(Map<String, Object> map) {
 		map.put("item", new Item());
 		map.put("itemList", itemService.showAll());
-		map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
+		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		return "admin_home";
 	}
 
@@ -38,10 +38,10 @@ public class AdminController {
 
 		map.put("category", catId);
 		Item item = new Item();
-		item.setCategory(categoryService.showCategory(catId));
+		item.setCategory(divisionService.showCategory(catId));
 		map.put("item", item);
 		map.put("itemList", itemService.showAllInCategory(catId));
-		map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
+		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		return "admin_category";
 	}
 	
@@ -50,7 +50,7 @@ public class AdminController {
 	public String listItem(Map<String, Object> map, @PathVariable("itemId") Integer itemId) {
 		Item item = itemService.showItem(itemId);
 		map.put("item", item);
-		map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
+		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		return "admin_item";
 	}
 	

@@ -3,7 +3,7 @@ package net.schastny.intender.web;
 import java.util.Map;
 
 import net.schastny.intender.domain.Division;
-import net.schastny.intender.service.CategoryService;
+import net.schastny.intender.service.DivisionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AdminDivisionsController {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private DivisionService divisionService;
 	
 	// Просмотр всех категорий
 	@RequestMapping
 	public String listCategoriesAll(Map<String, Object> map) {
 		map.put("category", new Division());
-		map.put("categoryList", categoryService.showAll());
+		map.put("categoryList", divisionService.showAll());
 		return "admin_divisions_configurer";
 	}
 
@@ -33,14 +33,14 @@ public class AdminDivisionsController {
 	public @ResponseBody Division storeCategory(@RequestBody Division category) {
 		// TODO Нельзя сохранить большие названия в поле Title
 		// TODO Редирект оставить на странице просмотра деталей категории
-		categoryService.storeCategory(category);
+		divisionService.storeCategory(category);
 		return category;
 	}
 
 	// Удалить категорию
 	@RequestMapping("/delete/{catId}")
 	public String deleteCategory(@PathVariable("catId") Integer catId) {
-		categoryService.deleteCategory(catId);
+		divisionService.deleteCategory(catId);
 		return "redirect:/admin/category";
 	}
 

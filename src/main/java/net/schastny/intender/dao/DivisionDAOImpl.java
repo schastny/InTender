@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import net.schastny.intender.domain.Division;
 
 @Repository
-public class CategoryDAOImpl implements CategoryDAO {
+public class DivisionDAOImpl implements DivisionDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -30,7 +30,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Division> selectAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Category").list();
+		return sessionFactory.getCurrentSession().createQuery("from Division").list();
 	}
 
 	@Override

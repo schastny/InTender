@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.schastny.intender.domain.Division;
-import net.schastny.intender.service.CategoryService;
+import net.schastny.intender.service.DivisionService;
 
 public class CategoryMapper {
 	
@@ -15,8 +15,8 @@ public class CategoryMapper {
 	 * значения массива будут строками. Так как численные типы в качестве ключа
 	 * макрос @spring.formSingleSelect не понимает.
 	 */
-	public static Map<String, String> getCategoryMap(CategoryService categoryService) {
-		List<Division> categoryList = categoryService.showAll();
+	public static Map<String, String> getCategoryMap(DivisionService divisionService) {
+		List<Division> categoryList = divisionService.showAll();
 		LinkedHashMap<String, String> categoryMap = new LinkedHashMap<String, String>();
 		for (Division category : categoryList) {
 			categoryMap.put(Integer.toString(category.getId()),

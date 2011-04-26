@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import net.schastny.intender.domain.Item;
-import net.schastny.intender.service.CategoryService;
+import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.ItemService;
 import net.schastny.intender.web.utils.CategoryMapper;
 
@@ -29,7 +29,7 @@ public class AdminItemController {
 	private ItemService itemService;
 	
 	@Autowired
-	private CategoryService categoryService;
+	private DivisionService divisionService;
 
 	// Сохранить/обновить товар
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
@@ -52,7 +52,7 @@ public class AdminItemController {
 			itemService.storeItem(item);
 		} else {
 			viewResult = "admin_storeError";
-			map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
+			map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
 		}
 		return viewResult;
 	}
