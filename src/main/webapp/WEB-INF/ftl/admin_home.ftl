@@ -1,9 +1,9 @@
+[#ftl]
+[#import "spring.ftl" as spring]
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>SpringCart</title>
-
-<#import "/spring.ftl" as spring />
+<title>[@spring.message "label.title"/]</title>
 
 <script type='text/javascript' src="<@spring.url '/resources/js/jquery.min.js'/>" ></script>
 <script type='text/javascript' src="<@spring.url '/resources/js/slider.js'/>" ></script>
@@ -12,19 +12,19 @@
 </head>
 <body>
 
-<a href="<@spring.url '/logout'/>">Выйти из приложения</a>
+<a href="[@spring.url '/logout'/]">[@spring.message "label.logout"/]</a>
 
-<h2>SpringCart :: Admin panel</h2>
+<h2>[@spring.message "label.title"/] :: Admin panel</h2>
 
 <a href="#" class="item-new">Добавить товар</a>
 <div class="item-new-form">
-	<#include "/tiles/adminNewItemForm.ftl">
+	[#include "/tiles/adminNewItemForm.ftl"]
 </div>
 
-<h3>Товары</h3>
-<#include "/tiles/adminItemsTable.ftl">
+<h3>[@spring.message "label.tenders"/]</h3>
+[#include "/tiles/adminItemsTable.ftl"]
 
-<a href="<@spring.url '/admin/category'/>">Управление категориями</a>
+<a href="[@spring.url '/admin/divisions'/]">Manage divisions</a>
 
 </body>
 </html>

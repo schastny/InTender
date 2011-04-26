@@ -5,7 +5,7 @@
 </div>
 
 <a href=" [@spring.url '/index' /] ">
-	На главную
+	Main page
 </a>
 
 <div>
