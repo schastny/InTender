@@ -1,4 +1,4 @@
-package net.schastny.springcart.domain;
+package net.schastny.intender.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

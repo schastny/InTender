@@ -1,11 +1,11 @@
-package net.schastny.springcart.web;
+package net.schastny.intender.web;
 
 import java.util.Map;
 
-import net.schastny.springcart.domain.Item;
-import net.schastny.springcart.service.CategoryService;
-import net.schastny.springcart.service.ItemService;
-import net.schastny.springcart.web.utils.CategoryMapper;
+import net.schastny.intender.domain.Item;
+import net.schastny.intender.service.CategoryService;
+import net.schastny.intender.service.ItemService;
+import net.schastny.intender.web.utils.CategoryMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,22 +14,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin*")
-public class AdminController {
-	
+public class MainController {
+
 	@Autowired
 	private ItemService itemService;
 
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	// Просмотр всех товаров
-	@RequestMapping
+	@RequestMapping(value = { "/", "/index", "/shop" })
 	public String listItemsAll(Map<String, Object> map) {
 		map.put("item", new Item());
 		map.put("itemList", itemService.showAll());
 		map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
-		return "admin_home";
+		return "main_home";
 	}
 
 	// Просмотр товаров в категории
@@ -42,7 +41,7 @@ public class AdminController {
 		map.put("item", item);
 		map.put("itemList", itemService.showAllInCategory(catId));
 		map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
-		return "admin_category";
+		return "main_category";
 	}
 	
 	// Просмотр товара
@@ -51,12 +50,11 @@ public class AdminController {
 		Item item = itemService.showItem(itemId);
 		map.put("item", item);
 		map.put("categoryMap", CategoryMapper.getCategoryMap(categoryService));
-		return "admin_item";
+		return "main_item";
 	}
 	
 	// TODO Редирект после сохранения оставить на странице просмотра деталей товара
 	// TODO Загрузку изображений
 	// TODO Сделать красивый вывод товаров на главной с помощью jQuery
 	// TODO Сделать ссылки на удаление и редактирование категорий доступными только админу.
-
 }

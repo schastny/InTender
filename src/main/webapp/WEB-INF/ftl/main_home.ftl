@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>SpringCart</title>
+<title>Intender - tenders for products and services for the business</title>
 
 <#import "/spring.ftl" as spring />
 
@@ -14,12 +14,12 @@
 
 <a href="<@spring.url '/logout'/>">Выйти из приложения</a>
 
-<h2>SpringCart</h2>
+<h2>Intender</h2>
 
-<h3>Товары</h3>
+<h3>Recent tenders</h3>
 <#include "/tiles/itemsTable.ftl">
 
-<a href="<@spring.url '/admin'/>">Админ раздел</a>
+<a href="<@spring.url '/admin'/>">Admin section</a>
 
 </body>
 </html>

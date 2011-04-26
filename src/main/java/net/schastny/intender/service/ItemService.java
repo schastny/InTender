@@ -1,8 +1,8 @@
-package net.schastny.springcart.service;
+package net.schastny.intender.service;
 
 import java.util.List;
 
-import net.schastny.springcart.domain.Item;
+import net.schastny.intender.domain.Item;
 
 public interface ItemService {
 //	админ: добавить товар

@@ -1,4 +1,4 @@
-package net.schastny.springcart.dao;
+package net.schastny.intender.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import net.schastny.springcart.domain.Category;
+import net.schastny.intender.domain.Category;
 
 @Repository
 public class CategoryDAOImpl implements CategoryDAO {

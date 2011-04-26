@@ -1,4 +1,4 @@
-package net.schastny.springcart.domain;
+package net.schastny.intender.domain;
 
 import java.util.Collection;
 

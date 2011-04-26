@@ -1,11 +1,11 @@
-package net.schastny.springcart.web.utils;
+package net.schastny.intender.web.utils;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.schastny.springcart.domain.Category;
-import net.schastny.springcart.service.CategoryService;
+import net.schastny.intender.domain.Category;
+import net.schastny.intender.service.CategoryService;
 
 public class CategoryMapper {
 	

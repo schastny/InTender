@@ -1,11 +1,11 @@
-package net.schastny.springcart.web;
+package net.schastny.intender.web;
 
 import java.io.IOException;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import net.schastny.springcart.service.ItemService;
+import net.schastny.intender.service.ItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

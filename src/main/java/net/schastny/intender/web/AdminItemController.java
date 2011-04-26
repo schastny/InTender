@@ -1,4 +1,4 @@
-package net.schastny.springcart.web;
+package net.schastny.intender.web;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import net.schastny.springcart.domain.Item;
-import net.schastny.springcart.service.CategoryService;
-import net.schastny.springcart.service.ItemService;
-import net.schastny.springcart.web.utils.CategoryMapper;
+import net.schastny.intender.domain.Item;
+import net.schastny.intender.service.CategoryService;
+import net.schastny.intender.service.ItemService;
+import net.schastny.intender.web.utils.CategoryMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package net.schastny.springcart.web;
+package net.schastny.intender.web;
 
 import java.io.IOException;
 

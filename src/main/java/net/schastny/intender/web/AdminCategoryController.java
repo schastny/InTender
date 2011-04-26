@@ -1,9 +1,9 @@
-package net.schastny.springcart.web;
+package net.schastny.intender.web;
 
 import java.util.Map;
 
-import net.schastny.springcart.domain.Category;
-import net.schastny.springcart.service.CategoryService;
+import net.schastny.intender.domain.Category;
+import net.schastny.intender.service.CategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

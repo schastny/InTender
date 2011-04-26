@@ -1,8 +1,8 @@
-package net.schastny.springcart.service;
+package net.schastny.intender.service;
 
 import java.util.List;
 
-import net.schastny.springcart.domain.Category;
+import net.schastny.intender.domain.Category;
 
 public interface CategoryService {
 	

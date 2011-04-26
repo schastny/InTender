@@ -1,4 +1,4 @@
-package net.schastny.springcart.service;
+package net.schastny.intender.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.schastny.springcart.dao.CategoryDAO;
-import net.schastny.springcart.domain.Category;
+import net.schastny.intender.dao.CategoryDAO;
+import net.schastny.intender.domain.Category;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
