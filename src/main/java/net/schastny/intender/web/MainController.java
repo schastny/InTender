@@ -24,33 +24,33 @@ public class MainController {
 
 	// Просмотр всех товаров
 	@RequestMapping(value = { "/", "/index", "/shop" })
-	public String listItemsAll(Map<String, Object> map) {
-		map.put("item", new Tender());
-		map.put("itemList", tenderService.showAll());
-		map.put("categoryMap", DivisionMapper.getDivisionMap(divisionService));
+	public String listTendersAll(Map<String, Object> map) {
+		map.put("tender", new Tender());
+		map.put("tenderList", tenderService.showAll());
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
 		return "main_home";
 	}
 
 	// Просмотр товаров в категории
-	@RequestMapping(value = "/shop/{catId}", method = RequestMethod.GET)
-	public String listItemsInCategory(Map<String, Object> map, @PathVariable("catId") Integer catId) {
+	@RequestMapping(value = "/shop/{divId}", method = RequestMethod.GET)
+	public String listTendersInDivision(Map<String, Object> map, @PathVariable("divId") Integer divId) {
 
-		map.put("category", catId);
+		map.put("division", divId);
 		Tender tender = new Tender();
-		tender.setDivision(divisionService.showDivision(catId));
-		map.put("item", tender);
-		map.put("itemList", tenderService.showAllInDivision(catId));
-		map.put("categoryMap", DivisionMapper.getDivisionMap(divisionService));
+		tender.setDivision(divisionService.showDivision(divId));
+		map.put("tender", tender);
+		map.put("tenderList", tenderService.showAllInDivision(divId));
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
 		return "main_category";
 	}
 	
 	// Просмотр товара
-	@RequestMapping(value = "/shop/{catId}/{itemId}", method = RequestMethod.GET)
-	public String listItem(Map<String, Object> map, @PathVariable("itemId") Integer itemId) {
-		Tender tender = tenderService.showTender(itemId);
-		map.put("item", tender);
-		map.put("categoryMap", DivisionMapper.getDivisionMap(divisionService));
-		return "main_item";
+	@RequestMapping(value = "/shop/{divId}/{tenderId}", method = RequestMethod.GET)
+	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
+		Tender tender = tenderService.showTender(tenderId);
+		map.put("tender", tender);
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		return "main_tender";
 	}
 	
 	// TODO Редирект после сохранения оставить на странице просмотра деталей товара
