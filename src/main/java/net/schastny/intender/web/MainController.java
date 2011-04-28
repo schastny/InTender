@@ -23,7 +23,7 @@ public class MainController {
 	private DivisionService divisionService;
 
 	// Просмотр всех товаров
-	@RequestMapping(value = { "/", "/index", "/shop" })
+	@RequestMapping(value = { "/", "/index", "/tenders" })
 	public String listTendersAll(Map<String, Object> map) {
 		map.put("tender", new Tender());
 		map.put("tenderList", tenderService.showAll());
@@ -32,7 +32,7 @@ public class MainController {
 	}
 
 	// Просмотр товаров в категории
-	@RequestMapping(value = "/shop/{divId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/tenders/{divId}", method = RequestMethod.GET)
 	public String listTendersInDivision(Map<String, Object> map, @PathVariable("divId") Integer divId) {
 
 		map.put("division", divId);
@@ -45,7 +45,7 @@ public class MainController {
 	}
 	
 	// Просмотр товара
-	@RequestMapping(value = "/shop/{divId}/{tenderId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/tenders/{divId}/{tenderId}", method = RequestMethod.GET)
 	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
 		Tender tender = tenderService.showTender(tenderId);
 		map.put("tender", tender);

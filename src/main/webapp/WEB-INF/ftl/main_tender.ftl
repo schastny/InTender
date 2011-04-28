@@ -36,7 +36,7 @@
 	</table>
 </div>
 
-<a href="[@spring.url '/shop/${tender.division.id}' /]">
+<a href="[@spring.url '/tenders/${tender.division.id}' /]">
 	More tenders of this Division
 </a>
 

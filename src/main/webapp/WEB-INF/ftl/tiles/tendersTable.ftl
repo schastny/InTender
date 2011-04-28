@@ -12,7 +12,7 @@
 			<tr>
 				<td>${tender.id}</td>
 				<td>
-					<a href=" [@spring.url '/shop/${tender.division.id}/${tender.id}'/] ">
+					<a href=" [@spring.url '/tenders/${tender.division.id}/${tender.id}'/] ">
 						${tender.title}
 					</a>
 				</td>
