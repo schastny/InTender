@@ -21,6 +21,9 @@ public class Division {
 	
 	@Column(name = "title")
 	private String title;
+
+	@Column(name = "description")
+	private String description;
 	
 	@OneToMany(cascade=REMOVE, mappedBy="division")
 	private Collection<Tender> tenders;
@@ -39,6 +42,14 @@ public class Division {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Collection<Tender> getTenders() {

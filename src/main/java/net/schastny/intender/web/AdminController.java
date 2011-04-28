@@ -33,7 +33,7 @@ public class AdminController {
 	}
 
 	// Просмотр тендеров для филиала
-	@RequestMapping(value = "/shop/{divId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{divId}", method = RequestMethod.GET)
 	public String listTendersInDivision(Map<String, Object> map, @PathVariable("divId") Integer divId) {
 
 		map.put("division", divId);
@@ -46,7 +46,7 @@ public class AdminController {
 	}
 	
 	// Просмотр одного теднера
-	@RequestMapping(value = "/shop/{divId}/{tenderId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{divId}/{tenderId}", method = RequestMethod.GET)
 	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
 		Tender tender = tenderService.showTender(tenderId);
 		map.put("tender", tender);

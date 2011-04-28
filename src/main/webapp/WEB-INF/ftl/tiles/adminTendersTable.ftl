@@ -2,18 +2,18 @@
 [#if tenderList??]
 	<table>
 		<tr>
-			<th>Артикул</th>
-			<th>Наименование</th>
-			<th>Категория</th>
-			<th>Цена</th>
-			<th>Изображение</th>
+			<th>[@spring.message "label.tenderId"/]</th>
+			<th>[@spring.message "label.tenderTitle"/]</th>
+			<th>[@spring.message "label.tenderDivision"/]</th>
+			<th>[@spring.message "label.tenderDate"/]</th>
+			<th>[@spring.message "label.tenderDocs"/]</th>
 			<th>&nbsp;</th>
 		</tr>
 		[#list tenderList as tender]
 			<tr>
 				<td>${tender.id}</td>
 				<td>
-					<a href=" [@spring.url '/admin/shop/${tender.division.id}/${tender.id}'/] ">
+					<a href=" [@spring.url '/admin/${tender.division.id}/${tender.id}'/] ">
 						${tender.title}
 					</a>
 				</td>

@@ -16,7 +16,7 @@
 	На главную админ панели
 </a>
 
-<h2>SpringCart - ошибка сохранения товара</h2>
+<h2>Ошибка сохранения товара</h2>
 
 <form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
 	<table>

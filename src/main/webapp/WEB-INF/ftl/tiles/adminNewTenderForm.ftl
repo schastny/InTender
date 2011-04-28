@@ -2,19 +2,19 @@
 <form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
 	<table>
 		<tr>
-			<td>Наименование</td>
+			<td>[@spring.message "label.tenderTitle"/]</td>
 			<td>[@spring.formInput "tender.title"/]</td>
 		</tr>
 		<tr>
-			<td>Категория</td>
+			<td>[@spring.message "label.tenderDivision"/]</td>
 			<td>[@spring.formSingleSelect "tender.division.id", divisionMap/]</td>
 		</tr>
 		<tr>
-			<td>Цена</td>
+			<td>[@spring.message "label.tenderDate"/]</td>
 			<td>[@spring.formInput "tender.price"/]</td>
 		</tr>
 		<tr>
-			<td>Изображение (jpg, png, gif)</td>
+			<td>[@spring.message "label.tenderDocs"/] (jpg, png, gif)</td>
 			<td>[@spring.formInput "tender.image", "", "file"/]</td>
 		</tr>
 		<tr>

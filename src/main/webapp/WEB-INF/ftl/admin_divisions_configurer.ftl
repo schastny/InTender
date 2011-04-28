@@ -16,7 +16,7 @@
 		$('#newDivision').submit(function() {
 			var newDivision = $(this).serializeObject();
 			$.postJSON("[@spring.url '/admin/divisions/store' /]", newDivision, function(data) {
-				$('#divList > tbody:last').append('<tr><td>'+data.id+'</td><td><a href="#">'+data.title+'</a></td><td><a href=" [@spring.url '/admin/divisions/delete/'/]'+data.id+' ">Удалить</a></td></tr>');
+				$('#divList').append('<li><a href="#">'+data.title+'</a></li>');
 			});
 			return false;				
 		});
@@ -27,46 +27,41 @@
 </head>
 <body>
 
-<a href="[@spring.url '/logout'/]">[@spring.message "label.logout"/]</a>
+<a href="[@spring.url '/admin'/]">[@spring.message "label.homeAdmin"/]</a>
 
-<h2>[@spring.message "label.title"/]</h2>
+<h2>[@spring.message "label.title"/] :: Manage divisions</h2>
 
 <a href="#" class="division-new">New division</a>
 <div class="division-new-form">
 	<form id="newDivision" method="POST" action="[@spring.url '/#' /]" >
-			Division name
-			[@spring.formInput "division.title"/]
-			<input type="submit" value="Create" />
+		<table>
+			<tr>
+				<td>Division name</td>
+				<td>[@spring.formInput "division.title"/]</td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td>[@spring.formInput "division.description"/]</td>
+			</tr>
+			<tr>
+				<td/>
+				<td><input type="submit" value="Create" /></td>
+			</tr>
+		</table>
 	</form>
 </div>
 
-<h3>Divisions</h3>
-	[#if divisionList??]
-		<table id="divList">
-			<tr>
-				<th>ID</th>
-				<th>Division name</th>
-				<th>&nbsp;</th>
-			</tr>
-			[#list divisionList as division]
-				<tr>
-					<td>${division.id}</td>
-					<td>
-						<a href="#">
-							${division.title}
-						</a>
-					</td>
-					<td>
-						<a id="divDelete" href=" [@spring.url '/admin/divisions/delete/${division.id}'/] ">
-							Удалить
-						</a>
-					</td>
-				</tr>
-			[/#list]
-		</table>
-	[/#if]
+[#if divisionList??]
+	<ul id="divList">
+	[#list divisionList as division]
+		<li>
+			<a href="#">
+				${division.title}
+			</a>
+		</li>
+	[/#list]
+	</ul>
+[/#if]
 	
-<a href="[@spring.url '/admin'/]">На главную админку</a>	
-
 </body>
 </html>
