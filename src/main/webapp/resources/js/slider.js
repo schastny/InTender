@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	
+    $(".tender-new").toggle(function(){
+    	$('.tender-new-form').show();
+    	return false;
+    }, function(){
+    	$('.tender-new-form').hide();
+    	return false;
+    }); 
 
     $(".division-new").toggle(function(){
     	$('.division-new-form').show();
@@ -8,23 +16,15 @@ $(document).ready(function(){
         return false;
     });
     
-    $(".item-new").toggle(function(){
-    	$('.item-new-form').show();
-    	return false;
-    }, function(){
-    	$('.item-new-form').hide();
-    	return false;
-    }); 
-	
-    $(".item-edit-1").click(function(){
-    	$('.item-edit-form').show();
-    	$('.item-edit-table').hide();
+    $(".tender-edit-1").click(function(){
+    	$('.tender-edit-form').show();
+    	$('.tender-edit-table').hide();
         return false;
     }); 
     
-    $(".item-edit-2").click(function(){
-    	$('.item-edit-form').hide();
-    	$('.item-edit-table').show();
+    $(".tender-edit-2").click(function(){
+    	$('.tender-edit-form').hide();
+    	$('.tender-edit-table').show();
         return false;
      }); 
     

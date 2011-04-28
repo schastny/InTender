@@ -5,8 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>[@spring.message "label.title"/] - Divisions manager</title>
 
-[#import "/spring.ftl" as spring /]
-
 <script type='text/javascript' src="[@spring.url '/resources/js/jquery.min.js'/]" ></script>
 <script type='text/javascript' src="[@spring.url '/resources/js/json.min.js'/]" ></script>
 <script type='text/javascript' src="[@spring.url '/resources/js/slider.js'/]" ></script>

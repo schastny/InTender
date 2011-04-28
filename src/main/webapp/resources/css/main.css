@@ -1,10 +1,10 @@
-.item-new-form {
+.tender-new-form {
 	background: #CCCCCC;
 	width: 330px;
 	display: none;
 }
 
-.item-edit-form {
+.tender-edit-form {
 	display: none;
 }
 

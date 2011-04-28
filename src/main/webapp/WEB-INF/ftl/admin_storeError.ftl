@@ -1,44 +1,44 @@
+[#ftl]
+[#import "spring.ftl" as spring]
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>SpringCart</title>
+<title>[@spring.message "label.title"/] - Save error</title>
 
-<#import "/spring.ftl" as spring />
-
-<script type='text/javascript' src="<@spring.url '/resources/js/jquery.min.js'/>" ></script>
-<script type='text/javascript' src="<@spring.url '/resources/js/slider.js'/>" ></script>
-<link rel="stylesheet" href="<@spring.url '/resources/css/main.css'/>" type="text/css" media="all" />
+<script type='text/javascript' src="[@spring.url '/resources/js/jquery.min.js'/]" ></script>
+<script type='text/javascript' src="[@spring.url '/resources/js/slider.js'/]" ></script>
+<link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
 
 </head>
 <body>
 
-<a href=" <@spring.url '/admin' /> ">
+<a href=" [@spring.url '/admin' /] ">
 	На главную админ панели
 </a>
 
 <h2>SpringCart - ошибка сохранения товара</h2>
 
-<form method="POST" action="<@spring.url '/admin/item/store' />" enctype="multipart/form-data">
+<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>Наименование</td>
-			<td><@spring.formInput "item.title"/>
-			<@spring.showErrors "<br/>"/></td>
+			<td>[@spring.formInput "tender.title"/]
+			[@spring.showErrors "<br/>"/]</td>
 		</tr>
 		<tr>
 			<td>Категория</td>
-			<td><@spring.formSingleSelect "item.division.id", categoryMap/>
-			<@spring.showErrors "<br/>"/></td>
+			<td>[@spring.formSingleSelect "tender.division.id", divisionMap/]
+			[@spring.showErrors "<br/>"/]</td>
 		</tr>
 		<tr>
 			<td>Цена</td>
-			<td><@spring.formInput "item.price"/>
-			<@spring.showErrors "<br/>"/></td>
+			<td>[@spring.formInput "tender.price"/]
+			[@spring.showErrors "<br/>"/]</td>
 		</tr>
 		<tr>
 			<td>Изображение (jpg, png)</td>
-			<td><@spring.formInput "item.image", "", "file"/></td>
-			<@spring.showErrors "<br/>"/></td>
+			<td>[@spring.formInput "tender.image", "", "file"/]</td>
+			[@spring.showErrors "<br/>"/]</td>
 		</tr>		
 		<tr>
 			<td/>

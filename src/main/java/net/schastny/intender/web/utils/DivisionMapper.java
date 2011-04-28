@@ -7,7 +7,7 @@ import java.util.Map;
 import net.schastny.intender.domain.Division;
 import net.schastny.intender.service.DivisionService;
 
-public class CategoryMapper {
+public class DivisionMapper {
 	
 	/*
 	 * Преобразовывает список всех категорий в ассоциативный массив для передачи
@@ -15,14 +15,14 @@ public class CategoryMapper {
 	 * значения массива будут строками. Так как численные типы в качестве ключа
 	 * макрос @spring.formSingleSelect не понимает.
 	 */
-	public static Map<String, String> getCategoryMap(DivisionService divisionService) {
-		List<Division> categoryList = divisionService.showAll();
-		LinkedHashMap<String, String> categoryMap = new LinkedHashMap<String, String>();
-		for (Division category : categoryList) {
-			categoryMap.put(Integer.toString(category.getId()),
+	public static Map<String, String> getDivisionMap(DivisionService divisionService) {
+		List<Division> divisionList = divisionService.showAll();
+		LinkedHashMap<String, String> divisionMap = new LinkedHashMap<String, String>();
+		for (Division category : divisionList) {
+			divisionMap.put(Integer.toString(category.getId()),
 					category.getTitle());
 		}
-		return categoryMap;
+		return divisionMap;
 	}
 
 }

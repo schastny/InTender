@@ -5,7 +5,7 @@ import java.util.Map;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
-import net.schastny.intender.web.utils.CategoryMapper;
+import net.schastny.intender.web.utils.DivisionMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,40 +23,40 @@ public class AdminController {
 	@Autowired
 	private DivisionService divisionService;
 	
-	// Просмотр всех товаров
+	// Просмотр всех тендеров
 	@RequestMapping
-	public String listItemsAll(Map<String, Object> map) {
-		map.put("item", new Tender());
-		map.put("itemList", tenderService.showAll());
-		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
+	public String listTendersAll(Map<String, Object> map) {
+		map.put("tender", new Tender());
+		map.put("tenderList", tenderService.showAll());
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
 		return "admin_home";
 	}
 
-	// Просмотр товаров в категории
-	@RequestMapping(value = "/shop/{catId}", method = RequestMethod.GET)
-	public String listItemsInCategory(Map<String, Object> map, @PathVariable("catId") Integer catId) {
+	// Просмотр тендеров для филиала
+	@RequestMapping(value = "/shop/{divId}", method = RequestMethod.GET)
+	public String listTendersInDivision(Map<String, Object> map, @PathVariable("divId") Integer divId) {
 
-		map.put("category", catId);
+		map.put("division", divId);
 		Tender tender = new Tender();
-		tender.setDivision(divisionService.showDivision(catId));
-		map.put("item", tender);
-		map.put("itemList", tenderService.showAllInDivision(catId));
-		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
-		return "admin_category";
+		tender.setDivision(divisionService.showDivision(divId));
+		map.put("tender", tender);
+		map.put("tenderList", tenderService.showAllInDivision(divId));
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		return "admin_division";
 	}
 	
-	// Просмотр товара
-	@RequestMapping(value = "/shop/{catId}/{itemId}", method = RequestMethod.GET)
-	public String listItem(Map<String, Object> map, @PathVariable("itemId") Integer itemId) {
-		Tender tender = tenderService.showTender(itemId);
-		map.put("item", tender);
-		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
-		return "admin_item";
+	// Просмотр одного теднера
+	@RequestMapping(value = "/shop/{divId}/{tenderId}", method = RequestMethod.GET)
+	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
+		Tender tender = tenderService.showTender(tenderId);
+		map.put("tender", tender);
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		return "admin_tender";
 	}
 	
-	// TODO Редирект после сохранения оставить на странице просмотра деталей товара
+	// TODO Редирект после сохранения оставить на странице просмотра деталей тендера
 	// TODO Загрузку изображений
-	// TODO Сделать красивый вывод товаров на главной с помощью jQuery
-	// TODO Сделать ссылки на удаление и редактирование категорий доступными только админу.
+	// TODO Сделать красивый вывод тендеров на главной с помощью jQuery
+	// TODO Сделать ссылки на удаление и редактирование филиалов доступными только админу.
 
 }

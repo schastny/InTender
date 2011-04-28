@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>[@spring.message "label.title"/]</title>
+<title>[@spring.message "label.title"/] - Divisions</title>
 
 <script type='text/javascript' src="[@spring.url '/resources/js/jquery.min.js'/]" ></script>
 <script type='text/javascript' src="[@spring.url '/resources/js/slider.js'/]" ></script>
@@ -12,19 +12,19 @@
 </head>
 <body>
 
-<a href="[@spring.url '/logout'/]">[@spring.message "label.logout"/]</a>
+<a href=" [@spring.url '/admin' /] ">
+	На главную админки
+</a>
 
-<h2>[@spring.message "label.title"/] :: Admin panel</h2>
+<h2>SpringCart - категория</h2>
 
-<a href="#" class="tender-new">Add tender</a>
+<a href="#" class="tender-new">Добавить товар в категорию</a>
 <div class="tender-new-form">
 	[#include "/tiles/adminNewTenderForm.ftl"]
 </div>
 
-<h3>[@spring.message "label.tenders"/]</h3>
+<h3>Товары</h3>
 [#include "/tiles/adminTendersTable.ftl"]
-
-<a href="[@spring.url '/admin/divisions'/]">Manage divisions</a>
 
 </body>
 </html>

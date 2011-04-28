@@ -5,7 +5,7 @@ import java.util.Map;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
-import net.schastny.intender.web.utils.CategoryMapper;
+import net.schastny.intender.web.utils.DivisionMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class MainController {
 	public String listItemsAll(Map<String, Object> map) {
 		map.put("item", new Tender());
 		map.put("itemList", tenderService.showAll());
-		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
+		map.put("categoryMap", DivisionMapper.getDivisionMap(divisionService));
 		return "main_home";
 	}
 
@@ -40,7 +40,7 @@ public class MainController {
 		tender.setDivision(divisionService.showDivision(catId));
 		map.put("item", tender);
 		map.put("itemList", tenderService.showAllInDivision(catId));
-		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
+		map.put("categoryMap", DivisionMapper.getDivisionMap(divisionService));
 		return "main_category";
 	}
 	
@@ -49,7 +49,7 @@ public class MainController {
 	public String listItem(Map<String, Object> map, @PathVariable("itemId") Integer itemId) {
 		Tender tender = tenderService.showTender(itemId);
 		map.put("item", tender);
-		map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
+		map.put("categoryMap", DivisionMapper.getDivisionMap(divisionService));
 		return "main_item";
 	}
 	

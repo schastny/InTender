@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
-import net.schastny.intender.web.utils.CategoryMapper;
+import net.schastny.intender.web.utils.DivisionMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Controller
-@RequestMapping("/admin/item*")
+@RequestMapping("/admin/tender*")
 public class AdminTenderController {
 
 	@Autowired
@@ -33,7 +33,7 @@ public class AdminTenderController {
 
 	// Сохранить/обновить товар
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
-	public String storeItem(@Valid Tender tender, 
+	public String storeTender(@Valid Tender tender, 
 			BindingResult result,
 			Map<String, Object> map,
 			@RequestParam("image") CommonsMultipartFile image) {
@@ -42,7 +42,7 @@ public class AdminTenderController {
 		List<String> allowedContentTypes = Arrays.asList(types);
 		String contentType = image.getContentType();
 		if (!allowedContentTypes.contains(contentType) && image.getSize() != 0) {
-			FieldError imgError = new FieldError("item", "image",
+			FieldError imgError = new FieldError("tender", "image",
 					"Wrong image file");
 			result.addError(imgError);
 		}
@@ -52,21 +52,21 @@ public class AdminTenderController {
 			tenderService.storeTender(tender);
 		} else {
 			viewResult = "admin_storeError";
-			map.put("categoryMap", CategoryMapper.getCategoryMap(divisionService));
+			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
 		}
 		return viewResult;
 	}
 
 	// url store для get-запроса
 	@RequestMapping(value = "/store", method = RequestMethod.GET)
-	public String storeItemGet() {
+	public String storeTenderGet() {
 		return "redirect:/admin";
 	}
 
 	// Удалить товар
-	@RequestMapping("/delete/{itemId}")
-	public String deleteItem(@PathVariable("itemId") Integer itemId) {
-		tenderService.deleteTender(itemId);
+	@RequestMapping("/delete/{tenderId}")
+	public String deleteTender(@PathVariable("tenderId") Integer tenderId) {
+		tenderService.deleteTender(tenderId);
 		return "redirect:/admin";
 	}
 
