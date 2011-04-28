@@ -1,4 +1,5 @@
-[#if itemList??]
+[#ftl]
+[#if tenderList??]
 	<table>
 		<tr>
 			<th>Артикул</th>
@@ -8,7 +9,7 @@
 			<th>Изображение</th>
 			<th>&nbsp;</th>
 		</tr>
-		[#list itemList as item]
+		[#list tenderList as tender]
 			<tr>
 				<td>${tender.id}</td>
 				<td>

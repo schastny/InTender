@@ -1,3 +1,4 @@
+[#ftl]
 <form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
 	<table>
 		<tr>
@@ -14,7 +15,7 @@
 		</tr>
 		<tr>
 			<td>Изображение (jpg, png, gif)</td>
-			<td>[@spring.formInput "tender.image", "", "file"/]></td>
+			<td>[@spring.formInput "tender.image", "", "file"/]</td>
 		</tr>
 		<tr>
 			<td/>
