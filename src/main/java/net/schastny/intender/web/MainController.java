@@ -1,11 +1,14 @@
 package net.schastny.intender.web;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
+import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
-import net.schastny.intender.web.utils.DivisionMapper;
+import net.schastny.intender.web.utils.TendersByDivisionHolder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,35 +25,48 @@ public class MainController {
 	@Autowired
 	private DivisionService divisionService;
 
-	// Просмотр всех товаров
+	// Просмотр всех тендеров
 	@RequestMapping(value = { "/", "/index", "/tenders" })
 	public String listTendersAll(Map<String, Object> map) {
-		map.put("tender", new Tender());
-		map.put("tenderList", tenderService.showAll());
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		List<Division> divisions = divisionService.showAll();
+		List<TendersByDivisionHolder> tendersByDivision = new LinkedList<TendersByDivisionHolder>();
+		for(Division div : divisions){
+			List<Tender> tenders = tenderService.showAllInDivision(div.getId());
+			TendersByDivisionHolder holder = new TendersByDivisionHolder(div, tenders);
+			tendersByDivision.add(holder);
+		}
+		map.put("divisionList", divisions);
+		map.put("tendersByDivision", tendersByDivision);
 		return "main_home";
 	}
 
-	// Просмотр товаров в категории
+	// Просмотр тендеров в категории
 	@RequestMapping(value = "/tenders/{divId}", method = RequestMethod.GET)
 	public String listTendersInDivision(Map<String, Object> map, @PathVariable("divId") Integer divId) {
-
-		map.put("division", divId);
-		Tender tender = new Tender();
-		tender.setDivision(divisionService.showDivision(divId));
-		map.put("tender", tender);
-		map.put("tenderList", tenderService.showAllInDivision(divId));
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
-		return "main_category";
+		Division division = divisionService.showDivision(divId);
+		String resultView = "main_division";
+		if (division != null){
+			map.put("division", division);
+			map.put("tenderList", tenderService.showAllInDivision(divId));
+			map.put("divisionList", divisionService.showAll());
+		}else{
+			resultView = "redirect:/index";
+		}
+		return resultView;
 	}
 	
-	// Просмотр товара
+	// Просмотр одного тендера
 	@RequestMapping(value = "/tenders/{divId}/{tenderId}", method = RequestMethod.GET)
-	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
+	public String listTender(Map<String, Object> map, @PathVariable("divId") Integer divId, @PathVariable("tenderId") Integer tenderId) {
 		Tender tender = tenderService.showTender(tenderId);
-		map.put("tender", tender);
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
-		return "main_tender";
+		String resultView = "main_tender";
+		if (tender != null && tender.getDivision().getId() == divId){
+			map.put("tender", tender);
+			map.put("divisionList", divisionService.showAll());
+		}else{
+			resultView = "redirect:/index";
+		}
+		return resultView;
 	}
 	
 	// TODO Редирект после сохранения оставить на странице просмотра деталей товара

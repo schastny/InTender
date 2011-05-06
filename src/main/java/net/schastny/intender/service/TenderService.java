@@ -12,9 +12,10 @@ public interface TenderService {
 //	админ: удалить товар
 	public void deleteTender(Integer id);
 
-//	все:   список товаров
+//	все:   список товаров 
+//	ToDo Подготовить к удалению!! 
 	public List<Tender> showAll();
-
+	
 //	все:   список товаров в категории
 	public List<Tender> showAllInDivision(Integer divId);
 	

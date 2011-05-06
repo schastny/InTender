@@ -18,9 +18,9 @@ public class DivisionMapper {
 	public static Map<String, String> getDivisionMap(DivisionService divisionService) {
 		List<Division> divisionList = divisionService.showAll();
 		LinkedHashMap<String, String> divisionMap = new LinkedHashMap<String, String>();
-		for (Division category : divisionList) {
-			divisionMap.put(Integer.toString(category.getId()),
-					category.getTitle());
+		for (Division division : divisionList) {
+			divisionMap.put(Integer.toString(division.getId()),
+					division.getTitle());
 		}
 		return divisionMap;
 	}

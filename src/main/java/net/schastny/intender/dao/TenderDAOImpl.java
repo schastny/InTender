@@ -21,7 +21,7 @@ public class TenderDAOImpl implements TenderDAO {
 
 	@Override
 	public void deleteTender(Integer id) {
-		Tender tender = selectDivision(id);
+		Tender tender = selectTender(id);
 		if (null != tender) {
 			sessionFactory.getCurrentSession().delete(tender);
 		}
@@ -40,12 +40,9 @@ public class TenderDAOImpl implements TenderDAO {
 	}
 	
 	@Override
-	public Tender selectDivision(Integer id) {
+	public Tender selectTender(Integer id) {
 //		return (Tender) sessionFactory.getCurrentSession().createQuery("from Tender where id="+id).uniqueResult();
 		return (Tender) sessionFactory.getCurrentSession().get(Tender.class, id);
 	}
-
-	
-	
 
 }

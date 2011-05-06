@@ -10,5 +10,5 @@ public interface TenderDAO {
 	public void deleteTender(Integer id);
 	public List<Tender> selectAll();
 	public List<Tender> selectAllInDivision(Integer divId);
-	public Tender selectDivision(Integer id);
+	public Tender selectTender(Integer id);
 }

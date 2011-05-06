@@ -37,7 +37,6 @@ public class TenderServiceImpl implements TenderService {
 
     @Transactional
 	public Tender showTender(Integer id) {
-		return tenderDAO.selectDivision(id);
+		return tenderDAO.selectTender(id);
 	}
-    
 }

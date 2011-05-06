@@ -14,7 +14,7 @@
 <div id="wrap">
   <div id="masthead">
     <h1 class="left"><a href="[@spring.url '/index'/]"><span>InTender Logo</span></a></h1>
-    [#include "/tiles/login_form.ftl"]
+    [#include "/tiles/main_login_form.ftl"]
   </div>
   <div id="mastmenu">
     <div class="inner">
@@ -26,65 +26,39 @@
     </div>
   </div>
   <div id="mastcontent" class="twocols">
-    <div class="left sidebar">
-      <div class="secmenu">
-        <ul id="prod_nav">
-          <li class="first-of-type"><span>Divisions</span></li>
-          <li class="top"><a href="listing.html">Городская больница №1</a></li>
-          <li class="top"><a href="listing.html">Городская больница №7</a></li>
-          <li class="top"><a href="listing.html">Центр охраны здоровья матери и ребёнка (город Севастополь)</a></li>
-          <li class="top"><a href="listing.html">Управление здравоохранения</a></li>
-        </ul>
-      </div>
-    </div>
+	<div class="left sidebar">
+		[#include "/tiles/main_division_menu.ftl"]
+	</div>
     <div class="right content">
       <div class="twocols">
           <h3>Recent Tenders</h3>
           <ul class="products">
-            <li>
-              <div class="right">
-              	<div class="division"><h4><a href="item.html">Центр охраны здоровья матери и ребёнка (город Севастополь)</a></h4></div>
-              	<ul>
-                  <li><a href="#">Закупка топлива</a></li>
-                  <li><a href="#">Ремонт лифта</a></li>
-                  <li><a href="#">Капитальный ремонт поликлиники</a></li>
-                  <li><a href="#">Капитальный ремонт хирургии</a></li>
-                </ul>
-              </div>
-            </li>            
-            <li>
-              <div class="right">
-                <div class="division"><h4><a href="item.html">Городская больница №7</a></h4></div>
-              	<ul>
-                  <li><a href="#">Закупка топлива</a></li>
-                  <li><a href="#">Ремонт лифта</a></li>
-                  <li><a href="#">Капитальный ремонт поликлиники</a></li>
-                  <li><a href="#">Капитальный ремонт хирургии</a></li>
-                </ul>
-              </div>
-            </li> 
-            <li>
-              <div class="right">
-                <div class="division"><h4><a href="item.html">Городская больница №1</a></h4></div>
-              	<ul>
-                  <li><a href="#">Закупка топлива</a></li>
-                  <li><a href="#">Ремонт лифта</a></li>
-                  <li><a href="#">Капитальный ремонт поликлиники</a></li>
-                  <li><a href="#">Капитальный ремонт хирургии</a></li>
-                </ul>
-              </div>
-            </li> 
-            <li>
-              <div class="right">
-                <div class="division"><h4><a href="item.html">Управление здравоохранения города Севастополя</a></h4></div>
-              	<ul>
-                  <li><a href="#">Закупка топлива</a></li>
-                  <li><a href="#">Ремонт лифта</a></li>
-                  <li><a href="#">Капитальный ремонт поликлиники</a></li>
-                  <li><a href="#">Капитальный ремонт хирургии</a></li>
-                </ul>
-              </div>
-            </li> 
+          [#if tendersByDivision??]
+			[#list tendersByDivision as aDivision]
+				<li>
+					<div class="right">
+		              	<div class="division">
+		              		<h4>
+		              			<a href="[@spring.url '/tenders/${aDivision.division.id}'/]">
+		              				${aDivision.division.title}
+		              			</a>
+		              		</h4>
+		              	</div>
+			            [#if aDivision.tenders??]
+				            <ul>
+							  [#list aDivision.tenders as tender]
+				                  <li>							
+						            <a href=" [@spring.url '/tenders/${tender.division.id}/${tender.id}'/] ">
+										${tender.title}
+									</a>  
+								  </li>
+							  [/#list]	
+							</ul>
+						[/#if]	              	
+					</div>
+				</li>
+			[/#list]
+          [/#if]
           </ul>
           	[#if tenderList??]
 				<ul>
