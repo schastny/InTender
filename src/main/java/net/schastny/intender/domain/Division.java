@@ -21,8 +21,17 @@ public class Division {
 	
 	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "fullTitle")
+	private String fullTitle;
+	
+	@Column(name = "address")
+	private String address;
+	
+	@Column(name = "contacts")
+	private String contacts;
 
-	@Column(name = "description")
+	@Column(name = "description", columnDefinition="TEXT")
 	private String description;
 	
 	@OneToMany(cascade=REMOVE, mappedBy="division")
@@ -42,6 +51,30 @@ public class Division {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getFullTitle() {
+		return fullTitle;
+	}
+
+	public void setFullTitle(String fullTitle) {
+		this.fullTitle = fullTitle;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(String contacts) {
+		this.contacts = contacts;
 	}
 
 	public String getDescription() {
