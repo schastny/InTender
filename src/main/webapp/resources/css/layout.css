@@ -341,6 +341,9 @@ div.products{
 		background:#FF6633;
 		color:#FFF;
 	}
+	#prod_nav a.selected{
+		color:#FF6633;
+	}
 
 .left{
 	float:left;

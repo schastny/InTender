@@ -31,7 +31,7 @@ public class MainController {
 		List<Division> divisions = divisionService.showAll();
 		List<TendersByDivisionHolder> tendersByDivision = new LinkedList<TendersByDivisionHolder>();
 		for(Division div : divisions){
-			List<Tender> tenders = tenderService.showAllInDivision(div.getId());
+			List<Tender> tenders = tenderService.showInDivision(div.getId(), 4);
 			TendersByDivisionHolder holder = new TendersByDivisionHolder(div, tenders);
 			tendersByDivision.add(holder);
 		}
@@ -69,6 +69,7 @@ public class MainController {
 		return resultView;
 	}
 	
+	// TODO Подредактировать плавающую вёрстку на главной странице.
 	// TODO Редирект после сохранения оставить на странице просмотра деталей товара
 	// TODO Загрузку изображений
 	// TODO Сделать красивый вывод товаров на главной с помощью jQuery

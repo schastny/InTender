@@ -2,7 +2,10 @@ package net.schastny.intender.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,8 +38,21 @@ public class TenderDAOImpl implements TenderDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<Tender> selectInDivision(Integer divId, int numTenders) {
+		Criteria criteria = sessionFactory.getCurrentSession()
+			.createCriteria(Tender.class)
+			.add(Restrictions.like("division.id", divId) )
+			.addOrder(Order.desc("id"));
+		criteria.setMaxResults(numTenders);
+//		Query query = sessionFactory.getCurrentSession().createQuery("from Tender where division="+divId);
+//		query.setMaxResults(numTenders);
+		return criteria.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<Tender> selectAllInDivision(Integer divId) {
-		return sessionFactory.getCurrentSession().createQuery("from Tender where division="+divId).list();
+		return sessionFactory.getCurrentSession().createQuery("from Tender where division="+divId+" order by id desc").list();
 	}
 	
 	@Override

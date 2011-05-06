@@ -31,6 +31,11 @@ public class TenderServiceImpl implements TenderService {
 	}
     
     @Transactional
+    public List<Tender> showInDivision(Integer divId, int numTenders) {
+    	return tenderDAO.selectInDivision(divId, numTenders);
+    }
+
+    @Transactional
     public List<Tender> showAllInDivision(Integer divId) {
     	return tenderDAO.selectAllInDivision(divId);
     }
