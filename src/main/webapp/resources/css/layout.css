@@ -66,6 +66,15 @@ h4{
 				position:absolute;
 				left:-9998989px;
 			}
+		#masthead h1.admin a,
+		#masthead h1.admin a:hover{
+			width:219px;
+			height:48px;
+			display:block;
+			text-decoration:none;
+			overflow:hidden;
+			background:url(../img/logo_admin.png) no-repeat left top;
+		}			
 	#masthead .loginbox{
 		text-align:right;
 		width:246px;

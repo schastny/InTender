@@ -1,11 +1,15 @@
 package net.schastny.intender.web;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
+import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
 import net.schastny.intender.web.utils.DivisionMapper;
+import net.schastny.intender.web.utils.TendersByDivisionHolder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,9 +30,15 @@ public class AdminController {
 	// Просмотр всех тендеров
 	@RequestMapping
 	public String listTendersAll(Map<String, Object> map) {
-		map.put("tender", new Tender());
-		map.put("tenderList", tenderService.showAll());
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		List<Division> divisions = divisionService.showAll();
+		List<TendersByDivisionHolder> tendersByDivision = new LinkedList<TendersByDivisionHolder>();
+		for(Division div : divisions){
+			List<Tender> tenders = tenderService.showInDivision(div.getId(), 4);
+			TendersByDivisionHolder holder = new TendersByDivisionHolder(div, tenders);
+			tendersByDivision.add(holder);
+		}
+		map.put("divisionList", divisions);
+		map.put("tendersByDivision", tendersByDivision);
 		return "admin_home";
 	}
 
