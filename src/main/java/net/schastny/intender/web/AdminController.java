@@ -59,8 +59,10 @@ public class AdminController {
 	@RequestMapping(value = "/{divId}/{tenderId}", method = RequestMethod.GET)
 	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
 		Tender tender = tenderService.showTender(tenderId);
+		List<Division> divisions = divisionService.showAll();
 		map.put("tender", tender);
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		map.put("divisionList", divisions);
+		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));		
 		return "admin_tender";
 	}
 	

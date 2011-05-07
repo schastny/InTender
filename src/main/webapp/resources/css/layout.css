@@ -250,7 +250,13 @@ div.products{
 			padding-bottom:5px;
 			padding-left:30px;
 		}		
+		.products .right table td.first{
+			text-align:right;
+			vertical-align:top;
+			padding-bottom:15px;
+		}		
 		.products .right table td{
+			text-align:left;
 			vertical-align:top;
 			padding-bottom:15px;
 		}		

@@ -38,15 +38,15 @@
                 <h4>${tender.title}</h4>
                 <table>
 					<tr>
-						<td><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
 						<td>${tender.id}</td>
 					</tr>
 					<tr>
-						<td><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
 						<td>${tender.price}</td>
 					</tr>
 					<tr>
-						<td><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
 						<td>
 		                  	<a href="[@spring.url '/image/${tender.id}.doc'/]"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
 		                  	<a href="[@spring.url '/image/${tender.id}.pdf'/]"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
