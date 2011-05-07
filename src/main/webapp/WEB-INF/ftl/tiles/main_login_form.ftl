@@ -1,15 +1,28 @@
 [#ftl]
 	<div class="loginbox right">
-      <form method="post" action="#">
+      <form method="POST" action="[@spring.url '/j_spring_security_check' /]" id="login.form">
         <div class="first-of-type">
-          <label for="username">User Name:</label>
-          <input type="text" name="username" id="username" value="" />
+				[#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content]
+					<span>
+					[@spring.message "label.loginerror" /]:
+					${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
+					</span>
+				[/#if]       
         </div>
         <div>
-          <label for="password">Password:</label>
-          <input type="password" name="password" id="password	" value="" />
-          <input type="image" class="submit" src="[@spring.url '/resources/img/btn_login_top.gif'/]" />
+			<label for="username">[@spring.message "label.login" /]</label>
+			<input type="text" name="j_username"">          
         </div>
+        <div>
+			<label for="password">[@spring.message "label.password"/]</label>
+			<input type="password" name="j_password">
+        </div>        
+        <div>
+			<label>[@spring.message "label.remember"/]</label>
+			<input class="check" type="checkbox" name="_spring_security_remember_me">
+			<input type="image" class="submit" src="[@spring.url '/resources/img/btn_login_top.gif'/]" />
+        </div>        
+
       </form>
       <p>
       	<a href="#">Forgot your password?</a> 
