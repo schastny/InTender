@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>InTender - 404</title>
+<title>InTender - 403</title>
 <link rel="stylesheet" href="resources/css/reset.css" type="text/css" media="all" />
 <link rel="stylesheet" href="resources/css/layout.css" type="text/css" media="all" />
 </head>
