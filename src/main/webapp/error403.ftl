@@ -12,10 +12,8 @@
 	<div id="masthead">  
 		<h1 class="left"><a href="index"><span>InTender Logo</span></a></h1>
 	</div>
-	<div id="mastmenu">
-		<div class="inner">
-			<h1>HTTP Status 403 - Access is denied.</h1>
-		</div>
+	<div id="error">
+		<h3>HTTP Status 403 - Access is denied.</h3>
 	</div>	
 </div>
 </body>
