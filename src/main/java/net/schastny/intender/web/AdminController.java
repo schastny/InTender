@@ -57,15 +57,20 @@ public class AdminController {
 	
 	// Просмотр одного теднера
 	@RequestMapping(value = "/{divId}/{tenderId}", method = RequestMethod.GET)
-	public String listTender(Map<String, Object> map, @PathVariable("tenderId") Integer tenderId) {
+	public String listTender(Map<String, Object> map, @PathVariable("divId") Integer divId, @PathVariable("tenderId") Integer tenderId) {
 		Tender tender = tenderService.showTender(tenderId);
-		List<Division> divisions = divisionService.showAll();
-		map.put("tender", tender);
-		map.put("divisionList", divisions);
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));		
-		return "admin_tender";
+		String resultView = "admin_tender";
+		if (tender != null && tender.getDivision().getId() == divId){
+			map.put("tender", tender);
+			map.put("divisionList", divisionService.showAll());
+			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));		
+		}else{
+			resultView = "redirect:/admin";
+		}
+		return resultView;
 	}
 	
+	// TODO Валидация!
 	// TODO Редирект после сохранения оставить на странице просмотра деталей тендера
 	// TODO Загрузку изображений
 	// TODO Сделать красивый вывод тендеров на главной с помощью jQuery
