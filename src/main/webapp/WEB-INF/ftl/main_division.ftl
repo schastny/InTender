@@ -34,8 +34,8 @@
           <h3>[#if division??]${division.title}[/#if]</h3>
           <div class="products">
               <div class="right">
+              	[#if tenderList?size > 0]
               	<h4>Tenders</h4>
-              	[#if tenderList??]
 	              	<ul>
 	                	[#list tenderList as tender]
 							<li>
@@ -54,19 +54,19 @@
                 <h4>General information</h4>
 				<table>
 					<tr>
-						<td><span class="bold">Full name:</span></td>
+						<td class="first"><span class="bold">Full name:</span></td>
 						<td>${division.fullTitle}</td>
 					</tr>
 					<tr>
-						<td><span class="bold">Address:</span></td>
+						<td class="first"><span class="bold">Address:</span></td>
 						<td>${division.address}</td>
 					</tr>
 					<tr>
-						<td><span class="bold">Contacts:</span></td>
+						<td class="first"><span class="bold">Contacts:</span></td>
 						<td>${division.contacts}</td>
 					</tr>					
 					<tr>
-						<td><span class="bold">Description:</span></td>
+						<td class="first"><span class="bold">Description:</span></td>
 						<td>${division.description}</td>
 					</tr>
 				</table> 
