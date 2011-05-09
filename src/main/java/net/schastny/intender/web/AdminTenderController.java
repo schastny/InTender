@@ -7,9 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import net.schastny.intender.domain.Tender;
-import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
-import net.schastny.intender.web.utils.DivisionMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,9 +26,6 @@ public class AdminTenderController {
 	@Autowired
 	private TenderService tenderService;
 	
-	@Autowired
-	private DivisionService divisionService;
-
 	// Сохранить/обновить товар
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
 	public String storeTender(@Valid Tender tender, 
@@ -52,7 +47,6 @@ public class AdminTenderController {
 			tenderService.storeTender(tender);
 		} else {
 			viewResult = "admin_storeError";
-			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
 		}
 		return viewResult;
 	}

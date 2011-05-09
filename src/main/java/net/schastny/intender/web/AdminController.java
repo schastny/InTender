@@ -8,7 +8,6 @@ import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
-import net.schastny.intender.web.utils.DivisionMapper;
 import net.schastny.intender.web.utils.TendersByDivisionHolder;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +68,6 @@ public class AdminController {
 		if (tender != null && tender.getDivision().getId() == divId){
 			map.put("tender", tender);
 			map.put("divisionList", divisionService.showAll());
-			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));		
 		}else{
 			resultView = "redirect:/admin";
 		}

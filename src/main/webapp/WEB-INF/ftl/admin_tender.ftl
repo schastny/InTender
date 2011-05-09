@@ -69,7 +69,7 @@
 				<div class="tender-edit-form">
 						<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
                 			<h4>[@spring.formInput "tender.title"/]</h4>	
-                			<div style="display:none;">[@spring.formSingleSelect "tender.division.id", divisionMap/]</div>						
+                			<div style="display:none;">[@spring.formInput "tender.division.id"/]</div>						
                 			<div style="display:none;">[@spring.formInput "tender.id"/]</div>						
 							<table>
 								<tr>

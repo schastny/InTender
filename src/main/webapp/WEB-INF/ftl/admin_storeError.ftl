@@ -27,7 +27,7 @@
 		</tr>
 		<tr>
 			<td>Категория</td>
-			<td>[@spring.formSingleSelect "tender.division.id", divisionMap/]
+			<td>[@spring.formInput "tender.division.id"/]
 			[@spring.showErrors "<br/>"/]</td>
 		</tr>
 		<tr>
