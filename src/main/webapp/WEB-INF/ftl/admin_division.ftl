@@ -13,6 +13,23 @@
 <script type='text/javascript' src="[@spring.url '/resources/js/jquery.min.js'/]" ></script>
 <script type='text/javascript' src="[@spring.url '/resources/js/slider.js'/]" ></script>
 
+<!-- jquery.wysiwyg.js -->
+	<link rel="stylesheet" href="[@spring.url '/resources/css/jquery.wysiwyg.css'/]" type="text/css" media="all" />
+	
+	<script type="text/javascript" src="[@spring.url '/resources/js/jquery.wysiwyg.js'/]"></script>
+	<script type="text/javascript" src="[@spring.url '/resources/js/controls/wysiwyg.image.js'/]"></script>
+	<script type="text/javascript" src="[@spring.url '/resources/js/controls/wysiwyg.link.js'/]"></script>
+	<script type="text/javascript" src="[@spring.url '/resources/js/controls/wysiwyg.table.js'/]"></script>
+
+	<script type="text/javascript">
+	(function($) {
+		$(document).ready(function() {
+			$('#description').wysiwyg();
+		});
+	})(jQuery);
+	</script>
+<!-- jquery.wysiwyg.js -->
+
 </head>
 <body>
 <div id="wrap">
@@ -111,7 +128,9 @@
 								</tr>					
 								<tr>
 									<td class="first"><span class="bold">Description:</span></td>
-									<td>[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]</td>
+									<td>
+										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
+									</td>
 								</tr>								
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
