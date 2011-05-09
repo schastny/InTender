@@ -258,19 +258,16 @@ div.products{
 			float:left;
 			padding-left:30px;
 		}		
-		.products .right table.form{
-			padding:0;
-			padding:0;
+		.products .right table td{
+			text-align:left;
+			vertical-align:top;
+			padding-bottom:15px;
 		}		
 		.products .right table td.first{
 			text-align:right;
 			vertical-align:top;
 			padding-bottom:15px;
-		}		
-		.products .right table td{
-			text-align:left;
-			vertical-align:top;
-			padding-bottom:15px;
+			width:150px;
 		}		
 		.products .right li{
 			width:100%;
