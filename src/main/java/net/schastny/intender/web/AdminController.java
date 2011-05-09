@@ -45,14 +45,22 @@ public class AdminController {
 	// Просмотр тендеров для филиала
 	@RequestMapping(value = "/{divId}", method = RequestMethod.GET)
 	public String listTendersInDivision(Map<String, Object> map, @PathVariable("divId") Integer divId) {
-
-		map.put("division", divId);
 		Tender tender = new Tender();
+		Division division = divisionService.showDivision(divId);
 		tender.setDivision(divisionService.showDivision(divId));
-		map.put("tender", tender);
-		map.put("tenderList", tenderService.showAllInDivision(divId));
-		map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
-		return "admin_division";
+
+		String resultView = "admin_division";
+		if (division != null){
+			map.put("tender", tender);
+			map.put("division", divId);
+			map.put("division", division);
+			map.put("tenderList", tenderService.showAllInDivision(divId));
+			map.put("divisionList", divisionService.showAll());
+			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+		}else{
+			resultView = "redirect:/admin";
+		}
+		return resultView;
 	}
 	
 	// Просмотр одного теднера

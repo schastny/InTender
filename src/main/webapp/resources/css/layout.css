@@ -259,6 +259,10 @@ div.products{
 			padding-bottom:5px;
 			padding-left:30px;
 		}		
+		.products .right table.form{
+			padding:0;
+			padding:0;
+		}		
 		.products .right table td.first{
 			text-align:right;
 			vertical-align:top;

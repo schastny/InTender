@@ -27,7 +27,7 @@
   </div>
   <div id="mastcontent" class="twocols">
 	<div class="left sidebar">
-		[#include "/tiles/admin_main_division_menu.ftl"]
+		[#include "/tiles/admin_division_menu.ftl"]
 	</div>
     <div class="right content">
       <div class="twocols">
