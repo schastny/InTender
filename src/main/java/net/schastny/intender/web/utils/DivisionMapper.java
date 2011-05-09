@@ -26,3 +26,5 @@ public class DivisionMapper {
 	}
 
 }
+
+// TODO Избавиться от этого класса 

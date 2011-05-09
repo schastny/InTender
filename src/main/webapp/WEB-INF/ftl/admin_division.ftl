@@ -79,7 +79,7 @@
                 <h4><a href="#" class="tender-new">New tender for this Division</a></h4>
 				<div class="tender-new-form">
 					<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
-					<div style="display:none;">[@spring.formSingleSelect "tender.division.id", divisionMap/]</div>						
+					<div style="display:none;">[@spring.formInput "tender.division.id"/]</div>						
 						<table class="form">
 							<tr>
 								<td class="first"><span class="bold">[@spring.message "label.tenderTitle"/]:</span></td>

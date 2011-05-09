@@ -55,7 +55,6 @@ public class AdminController {
 			map.put("division", division);
 			map.put("tenderList", tenderService.showAllInDivision(divId));
 			map.put("divisionList", divisionService.showAll());
-			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService)); // TODO Убрать, вместо этого использовать division.id
 		}else{
 			resultView = "redirect:/admin";
 		}
