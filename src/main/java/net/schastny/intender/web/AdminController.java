@@ -52,11 +52,10 @@ public class AdminController {
 		String resultView = "admin_division";
 		if (division != null){
 			map.put("tender", tender);
-			map.put("division", divId);
 			map.put("division", division);
 			map.put("tenderList", tenderService.showAllInDivision(divId));
 			map.put("divisionList", divisionService.showAll());
-			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService));
+			map.put("divisionMap", DivisionMapper.getDivisionMap(divisionService)); // TODO Убрать, вместо этого использовать division.id
 		}else{
 			resultView = "redirect:/admin";
 		}
