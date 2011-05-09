@@ -216,14 +216,15 @@ div.products{
 		margin-bottom:5px;
 		font-size:18px;
 		color:#f63d00;
+		font:18px Tahoma,sans-serif;
 	}
 	.products input{
 		margin:0;
 		padding:0;
 		border:none;
 		background:#e0e0e0;
-		display:block;
 		color:#7E7E7E;
+		font:14px Tahoma,sans-serif;
 	}
 	.products a.button{
 		border:none;
@@ -231,8 +232,8 @@ div.products{
 		color:#7E7E7E;
 	}
 	.products h4 input{
-		font-size:18px;
 		color:#f63d00;
+		font:18px Tahoma,sans-serif;
 	}
 		.products h4 a,
 		.products h4 a:hover{
@@ -242,6 +243,7 @@ div.products{
 	.products .right{
 			margin-bottom:30px;
 			float:left;
+			width:500px;
 	}	
 		.products .right .division{
 			display:table-cell;
@@ -262,6 +264,7 @@ div.products{
 			text-align:left;
 			vertical-align:top;
 			padding-bottom:15px;
+			font:14px Tahoma,sans-serif;
 		}		
 		.products .right table td.first{
 			text-align:right;

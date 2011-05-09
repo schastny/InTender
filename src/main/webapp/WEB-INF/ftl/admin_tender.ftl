@@ -41,7 +41,12 @@
           <div class="products">
               <div class="right">
                 <div class="tender-edit-table">
-                <h4>${tender.title}</h4>
+                <h4>
+                	${tender.title}
+					<a class="tender-edit-1" href="#" title="Edit tender">
+						<img src="[@spring.url '/resources/img/btn-edit.png'/]" alt="Edit tender">
+					</a>                
+                </h4>
                 <table>
 					<tr>
 						<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
@@ -51,15 +56,12 @@
 						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
 						<td>${tender.price}</td>
 					</tr>
-					<tr height="80px">
+					<tr height="60px">
 						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
 						<td>
 		                  	<a href="[@spring.url '/image/${tender.id}.doc'/]"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
 		                  	<a href="[@spring.url '/image/${tender.id}.pdf'/]"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
 						</td>
-					</tr>
-					<tr><td/>
-						<td><a href="#" class="tender-edit-1 button" />[@spring.message "label.edit"/]</a></td>
 					</tr>
 					<tr><td/>
 						<td><a class="button" href="[@spring.url '/admin/tender/delete/${tender.id}' /]">[@spring.message "label.delete"/]</a></td>
@@ -68,7 +70,11 @@
 				</div> <!-- tender-edit-table -->
 				<div class="tender-edit-form">
 						<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
-                			<h4>[@spring.formInput "tender.title"/]</h4>	
+                			<h4>[@spring.formInput "tender.title"/]
+                				<a class="tender-edit-2" href="#" title="Cancel editing">
+									<img src="[@spring.url '/resources/img/btn-edit-cancel.png'/]" alt="Cancel editing">
+								</a>                			
+                			</h4>	
                 			<div style="display:none;">[@spring.formInput "tender.division.id"/]</div>						
                 			<div style="display:none;">[@spring.formInput "tender.id"/]</div>						
 							<table>
@@ -83,9 +89,6 @@
 								<tr height="80px">
 									<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
 									<td>[@spring.formInput "tender.image", "", "file"/]</td>
-								</tr>
-								<tr><td/>
-									<td><a href="#" class="tender-edit-2 button" />Отмена</a></td>
 								</tr>
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>

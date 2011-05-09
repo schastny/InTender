@@ -55,8 +55,17 @@
                 [/#if]
               </div>
               <div class="right">
-                <h4>General information</h4>
+              	<div class="tender-edit-table"> <!-- edit-division-table -->
+                <h4>General information
+				<a class="tender-edit-1" href="#" title="Edit division">
+					<img src="[@spring.url '/resources/img/btn-edit.png'/]" alt="Edit division">
+				</a> 
+				</h4>
 				<table>
+					<tr>
+						<td class="first"><span class="bold">Name:</span></td>
+						<td>${division.title}</td>
+					</tr>
 					<tr>
 						<td class="first"><span class="bold">Full name:</span></td>
 						<td>${division.fullTitle}</td>
@@ -74,7 +83,43 @@
 						<td>${division.description}</td>
 					</tr>
 				</table> 
-              </div>
+				</div> <!-- edit-division-table -->
+				<div class="tender-edit-form"> <!-- edit-division-form -->
+	                <h4>General information
+					<a class="tender-edit-2" href="#" title="Cancel editing">
+						<img src="[@spring.url '/resources/img/btn-edit-cancel.png'/]" alt="Cancel editing">
+					</a> 
+					</h4>
+						<form method="POST" action="[@spring.url '/admin/divisions/store' /]">
+                			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
+							<table>
+								<tr>
+									<td class="first"><span class="bold">Name:</span></td>
+									<td>[@spring.formInput "division.title", "style='width:500px'"/]</td>
+								</tr>
+								<tr>
+									<td class="first"><span class="bold">Full name:</span></td>
+									<td>[@spring.formInput "division.fullTitle", "style='width:500px'"/]</td>
+								</tr>
+								<tr>
+									<td class="first"><span class="bold">Address:</span></td>
+									<td>[@spring.formInput "division.address", "style='width:500px'"/]</td>
+								</tr>
+								<tr>
+									<td class="first"><span class="bold">Contacts:</span></td>
+									<td>[@spring.formInput "division.contacts", "style='width:500px'"/]</td>
+								</tr>					
+								<tr>
+									<td class="first"><span class="bold">Description:</span></td>
+									<td>[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]</td>
+								</tr>								
+								<tr><td/>
+									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
+								</tr>
+							</table>
+						</form>
+				</div> <!-- edit-division-form -->
+              </div> <!-- right -->
               <div class="right">
                 <h4><a href="#" class="tender-new">New tender for this Division</a></h4>
 				<div class="tender-new-form">
