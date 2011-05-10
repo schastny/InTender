@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>[@spring.message "label.title"/] - Save error</title>
+<link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <script type='text/javascript' src="[@spring.url '/resources/js/jquery.min.js'/]" ></script>
 <script type='text/javascript' src="[@spring.url '/resources/js/slider.js'/]" ></script>
