@@ -1,5 +1,6 @@
 package net.schastny.intender.web;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,7 @@ public class AdminController {
 		Tender tender = new Tender();
 		Division division = divisionService.showDivision(divId);
 		tender.setDivision(divisionService.showDivision(divId));
+		tender.setPublishDate(new Date());
 
 		String resultView = "admin_division";
 		if (division != null){

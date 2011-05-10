@@ -115,7 +115,7 @@
 						<td>${division.managerEmail}</td>
 					</tr>
 					<tr><td/>
-						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]" onclick="return confirm('Are you sure you want to delete this Division?')">
+						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]" onclick="return confirm('Are you sure you want to delete this Division (and all its Tenders)?')">
 							[@spring.message "label.delete"/]</a>
 						</td>
 					</tr>					
@@ -175,7 +175,12 @@
 							</tr>
 							<tr>
 								<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-								<td>[@spring.formInput "tender.publishDate"/]</td>
+								<td>
+									<input 
+										value="${tender.publishDate?string("dd.MM.yyyy")}" 
+										name="publishDate" 
+										id="publishDate" />									
+								</td>
 							</tr>
 							<tr>
 								<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
