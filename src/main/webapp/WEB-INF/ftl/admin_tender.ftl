@@ -64,7 +64,7 @@
 						</td>
 					</tr>
 					<tr><td/>
-						<td><a class="button" href="[@spring.url '/admin/tender/delete/${tender.id}' /]">[@spring.message "label.delete"/]</a></td>
+						<td><a class="button" href="[@spring.url '/admin/tender/delete/${tender.id}' /]" onclick="return confirm('Are you sure you want to delete this Tender?')">[@spring.message "label.delete"/]</a></td>
 					</tr>
 				</table>
 				</div> <!-- tender-edit-table -->

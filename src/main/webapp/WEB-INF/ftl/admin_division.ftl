@@ -104,7 +104,9 @@
 						<td>${division.managerEmail}</td>
 					</tr>
 					<tr><td/>
-						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]">[@spring.message "label.delete"/]</a></td>
+						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]" onclick="return confirm('Are you sure you want to delete this Division?')">
+							[@spring.message "label.delete"/]</a>
+						</td>
 					</tr>					
 				</table> 
 				</div> <!-- edit-division-table -->
