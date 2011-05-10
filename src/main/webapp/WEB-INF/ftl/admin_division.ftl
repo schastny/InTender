@@ -149,7 +149,7 @@
 								<tr>
 									<td class="first"><span class="bold">Description:</span></td>
 									<td>
-										[@spring.formTextarea "division.description", 'rows="5" cols="66"'/]
+										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
 									</td>
 								</tr>								
 								<tr>
