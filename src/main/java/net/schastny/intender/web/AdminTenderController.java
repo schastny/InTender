@@ -2,7 +2,7 @@ package net.schastny.intender.web;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.util.Date;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -33,7 +33,7 @@ public class AdminTenderController {
     public void initBinder(WebDataBinder binder) {
 		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 		CustomDateEditor dateEditor = new CustomDateEditor(df, true);
-        binder.registerCustomEditor(Tender.class, "publishDate", dateEditor);
+        binder.registerCustomEditor(Date.class, "publishDate", dateEditor);
     }
 	
 	// Сохранить/обновить товар
@@ -51,6 +51,8 @@ public class AdminTenderController {
 //					"Wrong image file");
 //			result.addError(imgError);
 //		}
+		
+		System.out.println(tender.getPublishDate());
 
 		String viewResult = "redirect:/admin";
 		if (!result.hasErrors()) {

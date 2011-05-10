@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="[@spring.url '/resources/css/jquery-ui.custom.css'/]" type="text/css" media="all" />
 <script>
 	$(function() {
-		$( "#publishDate" ).datepicker();
+		$( "#publishDate" ).datepicker({ dateFormat: 'dd.mm.yy' });
 	});
 </script>
 <!-- Datepicker -->
