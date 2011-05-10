@@ -1,7 +1,8 @@
 package net.schastny.intender.web;
 
-import java.util.Arrays;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -10,9 +11,11 @@ import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.TenderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +29,13 @@ public class AdminTenderController {
 	@Autowired
 	private TenderService tenderService;
 	
+	@InitBinder
+    public void initBinder(WebDataBinder binder) {
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+		CustomDateEditor dateEditor = new CustomDateEditor(df, true);
+        binder.registerCustomEditor(Tender.class, "publishDate", dateEditor);
+    }
+	
 	// Сохранить/обновить товар
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
 	public String storeTender(@Valid Tender tender, 
@@ -33,14 +43,14 @@ public class AdminTenderController {
 			Map<String, Object> map,
 			@RequestParam("image") CommonsMultipartFile image) {
 
-		String[] types = { "image/gif", "image/jpeg", "image/png" };
-		List<String> allowedContentTypes = Arrays.asList(types);
-		String contentType = image.getContentType();
-		if (!allowedContentTypes.contains(contentType) && image.getSize() != 0) {
-			FieldError imgError = new FieldError("tender", "image",
-					"Wrong image file");
-			result.addError(imgError);
-		}
+//		String[] types = { "image/gif", "image/jpeg", "image/png" };
+//		List<String> allowedContentTypes = Arrays.asList(types);
+//		String contentType = image.getContentType();
+//		if (!allowedContentTypes.contains(contentType) && image.getSize() != 0) {
+//			FieldError imgError = new FieldError("tender", "image",
+//					"Wrong image file");
+//			result.addError(imgError);
+//		}
 
 		String viewResult = "redirect:/admin";
 		if (!result.hasErrors()) {

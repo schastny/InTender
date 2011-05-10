@@ -1,5 +1,7 @@
 package net.schastny.intender.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -32,8 +33,7 @@ public class Tender {
 	private Division division;
 
 	@Column(name = "publishDate")
-	@Digits(fraction = 0, integer = 10)
-	private int publishDate;
+	private Date publishDate;
 
 	@Column(name = "image", columnDefinition="longblob")
 	// Также можно использовать @Column(length=500000)
@@ -57,11 +57,11 @@ public class Tender {
 		this.title = title;
 	}
 
-	public int getPublishDate() {
+	public Date getPublishDate() {
 		return publishDate;
 	}
 
-	public void setPublishDate(int publishDate) {
+	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
 	

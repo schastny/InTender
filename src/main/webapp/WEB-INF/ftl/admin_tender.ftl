@@ -13,6 +13,17 @@
 <script type='text/javascript' src="[@spring.url '/resources/js/jquery.min.js'/]" ></script>
 <script type='text/javascript' src="[@spring.url '/resources/js/slider.js'/]" ></script>
 
+<!-- Datepicker -->
+<script type='text/javascript' src="[@spring.url '/resources/js/jquery.ui.datepicker.min.js'/]" ></script>
+<script type='text/javascript' src="[@spring.url '/resources/js/jquery.ui.core.min.js'/]" ></script>
+<link rel="stylesheet" href="[@spring.url '/resources/css/jquery-ui.custom.css'/]" type="text/css" media="all" />
+<script>
+	$(function() {
+		$( "#publishDate" ).datepicker();
+	});
+</script>
+<!-- Datepicker -->
+
 </head>
 <body>
 <div id="wrap">
@@ -54,7 +65,7 @@
 					</tr>
 					<tr>
 						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-						<td>${tender.publishDate}</td>
+						<td>${tender.publishDate?string("dd.MM.yyyy")}</td>
 					</tr>
 					<tr height="60px">
 						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
@@ -84,7 +95,7 @@
 								</tr>
 								<tr>
 									<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-									<td>[@spring.formInput "tender.publishDate"/]</td>
+									<td>[@spring.formInput "tender.publishDate", "", "date"/]</td>
 								</tr>
 								<tr height="80px">
 									<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>

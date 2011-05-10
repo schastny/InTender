@@ -30,6 +30,17 @@
 	</script>
 <!-- jquery.wysiwyg.js -->
 
+<!-- Datepicker -->
+<script type='text/javascript' src="[@spring.url '/resources/js/jquery.ui.datepicker.min.js'/]" ></script>
+<script type='text/javascript' src="[@spring.url '/resources/js/jquery.ui.core.min.js'/]" ></script>
+<link rel="stylesheet" href="[@spring.url '/resources/css/jquery-ui.custom.css'/]" type="text/css" media="all" />
+<script>
+	$(function() {
+		$( "#publishDate" ).datepicker();
+	});
+</script>
+<!-- Datepicker -->
+
 </head>
 <body>
 <div id="wrap">
@@ -61,7 +72,7 @@
 	                	[#list tenderList as tender]
 							<li>
 								<span class="bold">
-									${tender.publishDate} 
+									${tender.publishDate?string("dd.MM.yyyy")} 
 								</span>
 								<a href=" [@spring.url '/admin/${tender.division.id}/${tender.id}'/] ">
 									${tender.title}
