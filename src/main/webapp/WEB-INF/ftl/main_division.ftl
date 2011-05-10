@@ -40,7 +40,7 @@
 	                	[#list tenderList as tender]
 							<li>
 								<span class="bold">
-									${tender.publishDate} 
+									${tender.publishDate?string("dd.MM.yyyy")} 
 								</span>
 								<a href=" [@spring.url '/tenders/${tender.division.id}/${tender.id}'/] ">
 									${tender.title}

@@ -43,7 +43,7 @@
 					</tr>
 					<tr>
 						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-						<td>${tender.publishDate}</td>
+						<td>${tender.publishDate?string("dd.MM.yyyy")}</td>
 					</tr>
 					<tr>
 						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
