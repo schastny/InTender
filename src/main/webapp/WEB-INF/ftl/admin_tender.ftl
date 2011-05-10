@@ -95,7 +95,12 @@
 								</tr>
 								<tr>
 									<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-									<td>[@spring.formInput "tender.publishDate", "", "date"/]</td>
+									<td>
+										<input 
+											value="${tender.publishDate?string("dd.MM.yyyy")}" 
+											name="publishDate" 
+											id="publishDate" />
+									</td>
 								</tr>
 								<tr height="80px">
 									<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
