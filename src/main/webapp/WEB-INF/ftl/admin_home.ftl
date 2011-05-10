@@ -20,7 +20,7 @@
     <div class="inner">
       <ul>
         <li><a href="listing.html">Users</a></li>
-        <li><a href="[@spring.url '/admin/divisions'/]">Manage Divisions</a></li>
+        <li><a href="[@spring.url '/admin/division'/]">Manage Divisions</a></li>
         <li><a href="listing.html">Tenders</a></li>
       </ul>
     </div>

@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - Edit Tender</title>
+<title>[@spring.message "label.title"/] - [#if division??]${division.title}[/#if]</title>
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
 <link rel="stylesheet" href="[@spring.url '/resources/css/reset.css'/]" type="text/css" media="all" />
 <link rel="stylesheet" href="[@spring.url '/resources/css/layout.css'/]" type="text/css" media="all" />
@@ -41,7 +41,7 @@
     <div class="inner">
       <ul>
         <li><a href="listing.html">Users</a></li>
-        <li><a href="[@spring.url '/admin/divisions'/]">Manage Divisions</a></li>
+        <li><a href="[@spring.url '/admin/division'/]">Manage Divisions</a></li>
         <li><a href="listing.html">Tenders</a></li>
       </ul>
     </div>
@@ -61,7 +61,7 @@
 	                	[#list tenderList as tender]
 							<li>
 								<span class="bold">
-									${tender.price} 
+									${tender.publishDate} 
 								</span>
 								<a href=" [@spring.url '/admin/${tender.division.id}/${tender.id}'/] ">
 									${tender.title}
@@ -99,6 +99,13 @@
 						<td class="first"><span class="bold">Description:</span></td>
 						<td>${division.description}</td>
 					</tr>
+					<tr>
+						<td class="first"><span class="bold">Manager email:</span></td>
+						<td>${division.managerEmail}</td>
+					</tr>
+					<tr><td/>
+						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]">[@spring.message "label.delete"/]</a></td>
+					</tr>					
 				</table> 
 				</div> <!-- edit-division-table -->
 				<div class="tender-edit-form"> <!-- edit-division-form -->
@@ -107,7 +114,7 @@
 						<img src="[@spring.url '/resources/img/btn-edit-cancel.png'/]" alt="Cancel editing">
 					</a> 
 					</h4>
-						<form method="POST" action="[@spring.url '/admin/divisions/store' /]">
+						<form method="POST" action="[@spring.url '/admin/division/store' /]">
                 			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
 							<table>
 								<tr>
@@ -132,6 +139,10 @@
 										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
 									</td>
 								</tr>								
+								<tr>
+									<td class="first"><span class="bold">Manager email:</span></td>
+									<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]</td>
+								</tr>									
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
 								</tr>
@@ -151,7 +162,7 @@
 							</tr>
 							<tr>
 								<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-								<td>[@spring.formInput "tender.price"/]</td>
+								<td>[@spring.formInput "tender.publishDate"/]</td>
 							</tr>
 							<tr>
 								<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>

@@ -490,7 +490,7 @@
 			formHeight: 270,
 			formWidth: 440,
 			iFrameClass: null,
-			initialContent: "<p>Initial content</p>",
+			initialContent: "",
 			maxHeight: 10000,			// see autoGrow
 			maxLength: 0,
 			messages: {

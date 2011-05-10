@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td>Цена</td>
-			<td>[@spring.formInput "tender.price"/]
+			<td>[@spring.formInput "tender.publishDate"/]
 			[@spring.showErrors "<br/>"/]</td>
 		</tr>
 		<tr>

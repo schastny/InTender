@@ -1,5 +1,6 @@
 package net.schastny.intender.web;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin/divisions*")
-public class AdminDivisionsController {
+@RequestMapping("/admin/division*")
+public class AdminDivisionController {
 	
 	@Autowired
 	private DivisionService divisionService;
@@ -24,8 +25,11 @@ public class AdminDivisionsController {
 	// Просмотр всех категорий
 	@RequestMapping
 	public String listDivisionsAll(Map<String, Object> map) {
+		List<Division> divisions = divisionService.showAll();
+
 		map.put("division", new Division());
-		map.put("divisionList", divisionService.showAll());
+		map.put("divisionList", divisions);
+		
 		return "admin_divisions_configurer";
 	}
 
@@ -47,7 +51,7 @@ public class AdminDivisionsController {
 	@RequestMapping("/delete/{divId}")
 	public String deleteDivision(@PathVariable("divId") Integer divId) {
 		divisionService.deleteDivision(divId);
-		return "redirect:/admin/divisions";
+		return "redirect:/admin/division";
 	}
 
 }

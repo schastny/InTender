@@ -34,6 +34,9 @@ public class Division {
 	@Column(name = "description", columnDefinition="TEXT")
 	private String description;
 	
+	@Column(name = "managerEmail")
+	private String managerEmail;
+	
 	@OneToMany(cascade=REMOVE, mappedBy="division")
 	private Collection<Tender> tenders;
 
@@ -83,6 +86,14 @@ public class Division {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getManagerEmail() {
+		return managerEmail;
+	}
+
+	public void setManagerEmail(String managerEmail) {
+		this.managerEmail = managerEmail;
 	}
 
 	public Collection<Tender> getTenders() {

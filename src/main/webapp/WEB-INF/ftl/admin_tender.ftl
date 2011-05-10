@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - Edit Tender</title>
+<title>[@spring.message "label.title"/] -  ${tender.division.title} - ${tender.title}</title>
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
 <link rel="stylesheet" href="[@spring.url '/resources/css/reset.css'/]" type="text/css" media="all" />
 <link rel="stylesheet" href="[@spring.url '/resources/css/layout.css'/]" type="text/css" media="all" />
@@ -24,7 +24,7 @@
     <div class="inner">
       <ul>
         <li><a href="listing.html">Users</a></li>
-        <li><a href="[@spring.url '/admin/divisions'/]">Manage Divisions</a></li>
+        <li><a href="[@spring.url '/admin/division'/]">Manage Divisions</a></li>
         <li><a href="listing.html">Tenders</a></li>
       </ul>
     </div>
@@ -54,7 +54,7 @@
 					</tr>
 					<tr>
 						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-						<td>${tender.price}</td>
+						<td>${tender.publishDate}</td>
 					</tr>
 					<tr height="60px">
 						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
@@ -84,7 +84,7 @@
 								</tr>
 								<tr>
 									<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-									<td>[@spring.formInput "tender.price"/]</td>
+									<td>[@spring.formInput "tender.publishDate"/]</td>
 								</tr>
 								<tr height="80px">
 									<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>

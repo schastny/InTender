@@ -31,9 +31,9 @@ public class Tender {
 	@JoinColumn(name="division")
 	private Division division;
 
-	@Column(name = "price")
+	@Column(name = "publishDate")
 	@Digits(fraction = 0, integer = 10)
-	private int price;
+	private int publishDate;
 
 	@Column(name = "image", columnDefinition="longblob")
 	// Также можно использовать @Column(length=500000)
@@ -57,12 +57,12 @@ public class Tender {
 		this.title = title;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getPublishDate() {
+		return publishDate;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setPublishDate(int publishDate) {
+		this.publishDate = publishDate;
 	}
 	
 	public Division getDivision() {
