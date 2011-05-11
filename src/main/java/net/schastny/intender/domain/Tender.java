@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -35,7 +36,8 @@ public class Tender {
 	@Column(name = "publishDate")
 	private Date publishDate;
 
-	@Column(name = "image", columnDefinition="longblob")
+	@Transient
+//	@Column(name = "image", columnDefinition="longblob")
 	// Также можно использовать @Column(length=500000)
 	// Картинку решил хранить в БД - так как она будет до 1 Мб (ограничение поставил в servlet-context.xml)
 	// Подробности - http://research.microsoft.com/apps/pubs/default.aspx?id=64525

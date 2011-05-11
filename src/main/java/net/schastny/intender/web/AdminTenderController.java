@@ -2,7 +2,9 @@ package net.schastny.intender.web;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,24 +41,24 @@ public class AdminTenderController {
 	
 	// Сохранить/обновить товар
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
-	public String storeTender(@Valid Tender tender, 
-			BindingResult result,
+	public String storeTender(@Valid Tender tender, BindingResult result,
 			Map<String, Object> map,
 			@RequestParam("image") CommonsMultipartFile image) {
 
-//		String[] types = { "image/gif", "image/jpeg", "image/png" };
-//		List<String> allowedContentTypes = Arrays.asList(types);
-//		String contentType = image.getContentType();
-//		if (!allowedContentTypes.contains(contentType) && image.getSize() != 0) {
-//			FieldError imgError = new FieldError("tender", "image",
-//					"Wrong image file");
-//			result.addError(imgError);
-//		}
-		
-		System.out.println(tender.getPublishDate());
-
 		String viewResult = "redirect:/admin";
+
+		String[] types = { "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
+		List<String> allowedContentTypes = Arrays.asList(types);
+		String contentType = image.getContentType();
+		if (!allowedContentTypes.contains(contentType) && !image.isEmpty()) {
+			FieldError imgError = new FieldError("tender", "image", "Wrong image file");
+			result.addError(imgError);
+		}
+
 		if (!result.hasErrors()) {
+			byte[] bytes = image.getBytes();
+			// store the bytes somewhere
+			
 			tenderService.storeTender(tender);
 		} else {
 			viewResult = "admin_storeError";
