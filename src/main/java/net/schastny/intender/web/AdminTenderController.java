@@ -63,17 +63,20 @@ public class AdminTenderController {
 
 		if (!result.hasErrors()) {
 			// store the bytes somewhere
+			String fileName = "1";
+			
 			try {
-				String uploadDir = servletContext.getRealPath("/")+"/uploads/";
-				File dir = new File(uploadDir);
-				dir.mkdir();
-				File destinationFile = new File(uploadDir+"1.doc");
+				File uploadDir = new File(servletContext.getRealPath("/")+"/uploads/");
+				uploadDir.mkdir();
+				
+				File destinationFile = new File(uploadDir, fileName+".doc");
 				attachedDoc.transferTo(destinationFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			// !store the bytes somewhere
 			
+			tender.setAttachedDocName(fileName);
 			tenderService.storeTender(tender);
 		} else {
 			viewResult = "admin_storeError";

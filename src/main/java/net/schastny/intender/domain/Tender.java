@@ -36,6 +36,9 @@ public class Tender {
 	@Column(name = "publishDate")
 	private Date publishDate;
 
+	@Column(name = "attachedDocName")
+	private String attachedDocName;
+	
 	@Transient
 	private CommonsMultipartFile attachedDoc;
 	
@@ -69,6 +72,14 @@ public class Tender {
 
 	public void setDivision(Division category) {
 		this.division = category;
+	}
+	
+	public String getAttachedDocName() {
+		return attachedDocName;
+	}
+
+	public void setAttachedDocName(String attachedDocName) {
+		this.attachedDocName = attachedDocName;
 	}
 
 	public CommonsMultipartFile getAttachedDoc() {
