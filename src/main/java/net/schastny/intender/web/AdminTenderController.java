@@ -1,5 +1,6 @@
 package net.schastny.intender.web;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -7,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import net.schastny.intender.domain.Tender;
@@ -32,6 +34,16 @@ public class AdminTenderController {
 	@Autowired
 	private TenderService tenderService;
 	
+	@Autowired
+	private ServletContext servletContext;
+	
+//	private String uploadDir = servletContext.getRealPath("/")+"/uploads/";
+//	{
+//		// Creating directory to save uploaded documents.
+//		File dir = new File(uploadDir);
+//		dir.mkdir();
+//	}
+	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
 		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
@@ -43,21 +55,28 @@ public class AdminTenderController {
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
 	public String storeTender(@Valid Tender tender, BindingResult result,
 			Map<String, Object> map,
-			@RequestParam("image") CommonsMultipartFile image) {
+			@RequestParam("attachedDoc") CommonsMultipartFile attachedDoc) {
 
 		String viewResult = "redirect:/admin";
 
-		String[] types = { "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
+		// TODO Сделать возможность загружать .docx
+		String[] types = { "application/msword", "application/vnd.ms-word", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"};
 		List<String> allowedContentTypes = Arrays.asList(types);
-		String contentType = image.getContentType();
-		if (!allowedContentTypes.contains(contentType) && !image.isEmpty()) {
-			FieldError imgError = new FieldError("tender", "image", "Wrong image file");
-			result.addError(imgError);
+		String contentType = attachedDoc.getContentType();
+		if (!attachedDoc.isEmpty() && !allowedContentTypes.contains(contentType)) {
+			FieldError docError = new FieldError("tender", "attachedDoc", "Wrong document file");
+			result.addError(docError);
 		}
 
 		if (!result.hasErrors()) {
-			byte[] bytes = image.getBytes();
 			// store the bytes somewhere
+			try {
+//				File destinationFile = new File(uploadDir+"1.doc");
+//				attachedDoc.transferTo(destinationFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// !store the bytes somewhere
 			
 			tenderService.storeTender(tender);
 		} else {

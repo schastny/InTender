@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 			<td>Изображение (jpg, png)</td>
-			<td>[@spring.formInput "tender.image", "", "file"/]</td>
+			<td>[@spring.formInput "tender.attachedDoc", "", "file"/]</td>
 			[@spring.showErrors "<br/>"/]</td>
 		</tr>		
 		<tr>

@@ -106,7 +106,7 @@
 								</tr>
 								<tr height="80px">
 									<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
-									<td>[@spring.formInput "tender.image", "", "file"/]</td>
+									<td>[@spring.formInput "tender.attachedDoc", "", "file"/]</td>
 								</tr>
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>

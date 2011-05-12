@@ -28,7 +28,7 @@ public class ImageController {
 	public void viewImage(@PathVariable("itemId") Integer itemId,
 			HttpServletResponse response) {
 		
-		CommonsMultipartFile image = tenderService.showTender(itemId).getImage();
+		CommonsMultipartFile image = tenderService.showTender(itemId).getAttachedDoc();
 		response.setContentType(image.getContentType());
 		
 		response.setStatus(HttpServletResponse.SC_OK);

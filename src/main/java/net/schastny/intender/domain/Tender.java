@@ -37,11 +37,7 @@ public class Tender {
 	private Date publishDate;
 
 	@Transient
-//	@Column(name = "image", columnDefinition="longblob")
-	// Также можно использовать @Column(length=500000)
-	// Картинку решил хранить в БД - так как она будет до 1 Мб (ограничение поставил в servlet-context.xml)
-	// Подробности - http://research.microsoft.com/apps/pubs/default.aspx?id=64525
-	private CommonsMultipartFile image;
+	private CommonsMultipartFile attachedDoc;
 	
 	public int getId() {
 		return id;
@@ -75,12 +71,12 @@ public class Tender {
 		this.division = category;
 	}
 
-	public CommonsMultipartFile getImage() {
-		return image;
+	public CommonsMultipartFile getAttachedDoc() {
+		return attachedDoc;
 	}
 
-	public void setImage(CommonsMultipartFile image) {
-		this.image = image;
+	public void setAttachedDoc(CommonsMultipartFile attachedDoc) {
+		this.attachedDoc = attachedDoc;
 	}
 	
 }
