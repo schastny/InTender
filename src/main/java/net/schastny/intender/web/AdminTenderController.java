@@ -63,10 +63,14 @@ public class AdminTenderController {
 
 		if (!result.hasErrors()) {
 			// store the bytes somewhere
-			String fileName = "1";
+			String fileName = Long.toString(System.nanoTime());
 			
 			try {
-				File uploadDir = new File(servletContext.getRealPath("/")+"/uploads/");
+				// To store docs in <web-app-home>/uploads
+//				File uploadDir = new File(servletContext.getRealPath("/")+"/uploads/");
+				
+				// To store outside <web-app-home>
+				File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");
 				uploadDir.mkdir();
 				
 				File destinationFile = new File(uploadDir, fileName+".doc");
