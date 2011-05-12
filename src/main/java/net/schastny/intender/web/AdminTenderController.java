@@ -37,13 +37,6 @@ public class AdminTenderController {
 	@Autowired
 	private ServletContext servletContext;
 	
-//	private String uploadDir = servletContext.getRealPath("/")+"/uploads/";
-//	{
-//		// Creating directory to save uploaded documents.
-//		File dir = new File(uploadDir);
-//		dir.mkdir();
-//	}
-	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
 		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
@@ -71,8 +64,11 @@ public class AdminTenderController {
 		if (!result.hasErrors()) {
 			// store the bytes somewhere
 			try {
-//				File destinationFile = new File(uploadDir+"1.doc");
-//				attachedDoc.transferTo(destinationFile);
+				String uploadDir = servletContext.getRealPath("/")+"/uploads/";
+				File dir = new File(uploadDir);
+				dir.mkdir();
+				File destinationFile = new File(uploadDir+"1.doc");
+				attachedDoc.transferTo(destinationFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
