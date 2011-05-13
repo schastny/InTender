@@ -50,7 +50,7 @@ public class AdminTenderController {
 			BindingResult result,
 			Map<String, Object> map) {
 
-		String viewResult = "redirect:/admin";
+		String viewResult = "redirect:/admin/"+tender.getDivision().getId();
 		CommonsMultipartFile attachedDoc = tender.getAttachedDoc();
 		
 		// Проверить, подходящее ли расширение у загруженного файла.
@@ -120,7 +120,7 @@ public class AdminTenderController {
 		// Delete an uploaded file
 		
 		tenderService.deleteTender(tenderId);
-		return "redirect:/admin";
+		return "redirect:/admin/"+tender.getDivision().getId();
 	}
 	
 }

@@ -51,7 +51,7 @@ public class AdminDivisionController {
 	@RequestMapping("/delete/{divId}")
 	public String deleteDivision(@PathVariable("divId") Integer divId) {
 		divisionService.deleteDivision(divId);
-		return "redirect:/admin/division";
+		return "redirect:/admin";
 	}
 
 }
