@@ -34,7 +34,7 @@
 	</div>
 	
 	<div id="error">
-		<h3>Ошибка сохранения</h3>
+		<h3>Ошибка сохранения тендера</h3>
 		<div class="products">
 			<div class="right">
 						<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">

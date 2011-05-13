@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "DIVISION")
@@ -19,9 +21,13 @@ public class Division {
 	@GeneratedValue
 	private int id;
 	
+	@NotNull
+	@Size(min = 2, max = 40)
 	@Column(name = "title")
 	private String title;
 	
+	@NotNull
+	@Size(min = 2, max = 150)
 	@Column(name = "fullTitle")
 	private String fullTitle;
 	
@@ -34,6 +40,8 @@ public class Division {
 	@Column(name = "description", columnDefinition="TEXT")
 	private String description;
 	
+	//TODO Хочу сделать это поле Required, но @NotNull не помогает.
+	@NotNull
 	@Column(name = "managerEmail")
 	private String managerEmail;
 	
@@ -99,5 +107,4 @@ public class Division {
 	public Collection<Tender> getTenders() {
 		return tenders;
 	}
-
 }

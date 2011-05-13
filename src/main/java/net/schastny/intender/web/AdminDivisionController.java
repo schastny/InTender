@@ -40,7 +40,7 @@ public class AdminDivisionController {
 		if (!result.hasErrors()) {
 			divisionService.storeDivision(division);
 		} else {
-			viewResult = "admin_storeError_division";
+			viewResult = "admin_division_storeError";
 		}
 		// TODO Нельзя сохранить большие названия в поле Title
 		// TODO Редирект оставить на странице просмотра деталей категории

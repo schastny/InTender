@@ -20,13 +20,13 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class Tender {
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue
+	@Column(name = "id")
 	private int id;
 
-	@Column(name = "title")
 	@NotNull
-	@Size(min = 2, max = 20)
+	@Size(min = 2, max = 40)
+	@Column(name = "title")
 	private String title;
 
 	@ManyToOne
