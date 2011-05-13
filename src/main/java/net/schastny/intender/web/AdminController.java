@@ -49,6 +49,7 @@ public class AdminController {
 		Division division = divisionService.showDivision(divId);
 		tender.setDivision(divisionService.showDivision(divId));
 		tender.setPublishDate(new Date());
+		tender.setAttachedDocName("-1");
 
 		String resultView = "admin_division";
 		if (division != null){

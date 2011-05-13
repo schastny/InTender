@@ -88,8 +88,9 @@
 									<img src="[@spring.url '/resources/img/btn-edit-cancel.png'/]" alt="Cancel editing">
 								</a>                			
                 			</h4>	
-                			<div style="display:none;">[@spring.formInput "tender.division.id"/]</div>						
                 			<div style="display:none;">[@spring.formInput "tender.id"/]</div>						
+                			<div style="display:none;">[@spring.formInput "tender.division.id"/]</div>						
+                			<div style="display:none;">[@spring.formInput "tender.attachedDocName"/]</div>						
 							<table>
 								<tr>
 									<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>

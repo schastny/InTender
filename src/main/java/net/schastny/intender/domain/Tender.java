@@ -36,6 +36,7 @@ public class Tender {
 	@Column(name = "publishDate")
 	private Date publishDate;
 
+	@NotNull
 	@Column(name = "attachedDocName")
 	private String attachedDocName;
 	
