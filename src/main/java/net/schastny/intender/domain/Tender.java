@@ -33,6 +33,8 @@ public class Tender {
 	@JoinColumn(name="division")
 	private Division division;
 
+	// TODO Сделать настраиваемое сообщение об ошибке.
+	@NotNull
 	@Column(name = "publishDate")
 	private Date publishDate;
 
