@@ -97,7 +97,7 @@ public class AdminTenderController {
 			}
 			tenderService.storeTender(tender);
 		} else {
-			viewResult = "admin_storeError";
+			viewResult = "admin_tender_storeError";
 		}
 		return viewResult;
 	}

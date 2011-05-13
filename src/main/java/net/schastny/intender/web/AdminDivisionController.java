@@ -30,7 +30,7 @@ public class AdminDivisionController {
 		map.put("division", new Division());
 		map.put("divisionList", divisions);
 		
-		return "admin_divisions_configurer";
+		return "admin_division_new";
 	}
 
 	// Сохранить/обновить категорию
