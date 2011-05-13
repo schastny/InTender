@@ -116,11 +116,13 @@
 						<td class="first"><span class="bold">Manager email:</span></td>
 						<td>${division.managerEmail}</td>
 					</tr>
+					[@security.authorize ifAnyGranted="ROLE_ADMIN"]
 					<tr><td/>
 						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]" onclick="return confirm('Are you sure you want to delete this Division (and all its Tenders)?')">
 							[@spring.message "label.delete"/]</a>
 						</td>
-					</tr>					
+					</tr>
+					[/@security.authorize]					
 				</table> 
 				</div> <!-- edit-division-table -->
 				<div class="tender-edit-form"> <!-- edit-division-form -->

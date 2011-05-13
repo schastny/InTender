@@ -76,9 +76,11 @@
 		                  	<a href="/uploads/${tender.attachedDocName}.pdf"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
 						</td>
 					</tr>
+					[@security.authorize ifAnyGranted="ROLE_ADMIN"]
 					<tr><td/>
 						<td><a class="button" href="[@spring.url '/admin/tender/delete/${tender.id}' /]" onclick="return confirm('Are you sure you want to delete this Tender?')">[@spring.message "label.delete"/]</a></td>
 					</tr>
+					[/@security.authorize]					
 				</table>
 				</div> <!-- tender-edit-table -->
 				<div class="tender-edit-form">
