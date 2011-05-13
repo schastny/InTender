@@ -56,6 +56,7 @@ public class AdminTenderController {
 		// Проверить, подходящее ли расширение у загруженного файла.
 		// Если нет - добавить ошибку.
 		// TODO Сделать возможность загружать .docx
+		// TODO Сделать конвертацию doc > pdf
 		String[] types = { "application/msword", "application/vnd.ms-word", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
 		List<String> allowedContentTypes = Arrays.asList(types);
 		String contentType = attachedDoc.getContentType();
