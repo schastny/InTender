@@ -244,7 +244,7 @@ div.products{
 	.products .right{
 			margin-bottom:30px;
 			float:left;
-			width:700px;
+			width:100%;
 	}	
 		.products .right .division{
 			display:table-cell;

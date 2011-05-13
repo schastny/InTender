@@ -36,14 +36,17 @@ public class AdminDivisionController {
 	// Сохранить/обновить категорию
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
 	public String storeDivision(@Valid Division division, BindingResult result) {
+		
 		String viewResult = "redirect:/admin";
+		if (division.getId() != 0){
+			viewResult += "/"+division.getId();
+		}
+		
 		if (!result.hasErrors()) {
 			divisionService.storeDivision(division);
 		} else {
 			viewResult = "admin_division_storeError";
 		}
-		// TODO Нельзя сохранить большие названия в поле Title
-		// TODO Редирект оставить на странице просмотра деталей категории
 		return viewResult;
 	}
 
