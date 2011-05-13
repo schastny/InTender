@@ -72,8 +72,8 @@
 					<tr height="60px">
 						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
 						<td>
-		                  	<a href="[@spring.url '/image/${tender.id}.doc'/]"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
-		                  	<a href="[@spring.url '/image/${tender.id}.pdf'/]"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
+		                  	<a href="/uploads/${tender.attachedDocName}.doc"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
+		                  	<a href="/uploads/${tender.attachedDocName}.pdf"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
 						</td>
 					</tr>
 					<tr><td/>
