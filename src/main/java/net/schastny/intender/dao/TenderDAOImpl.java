@@ -32,20 +32,12 @@ public class TenderDAOImpl implements TenderDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tender> selectAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Tender").list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Tender> selectInDivision(Integer divId, int numTenders) {
 		Criteria criteria = sessionFactory.getCurrentSession()
 			.createCriteria(Tender.class)
 			.add(Restrictions.like("division.id", divId) )
 			.addOrder(Order.desc("id"));
 		criteria.setMaxResults(numTenders);
-//		Query query = sessionFactory.getCurrentSession().createQuery("from Tender where division="+divId);
-//		query.setMaxResults(numTenders);
 		return criteria.list();
 	}
 	
