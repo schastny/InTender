@@ -19,7 +19,6 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void storeUser(TenderUser user) {
-		sessionFactory.getCurrentSession().saveOrUpdate(user.getRole());
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import net.schastny.intender.dao.UserDAO;
+import net.schastny.intender.dao.UserRoleDAO;
 import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.TenderUser;
-import net.schastny.intender.domain.TenderUserRole;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -23,6 +23,9 @@ public class UserManagerServiceImpl implements UserManagerService {
 	
 	@Autowired
 	private UserDAO userDao;
+
+	@Autowired
+	private UserRoleDAO userRoleDao;
 
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String login)
@@ -54,11 +57,7 @@ public class UserManagerServiceImpl implements UserManagerService {
 		// TODO Переделать название пользователя!
 		user.setUsername("manager"+division.getManagerEmail());
 		user.setPassword("1111");
-
-		TenderUserRole managerRole = new TenderUserRole();
-		managerRole.setRoleName("ROLE_USER");
-		user.addRole(managerRole);
-		
+		user.addRole(userRoleDao.getUserRole("ROLE_USER"));
 		userDao.storeUser(user);
 	}
 }
