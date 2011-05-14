@@ -13,13 +13,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("userDetailsService") 
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserManagerServiceImpl implements UserManagerService {
 	
 	@Autowired
 	private UserDAO userDao;
@@ -47,7 +46,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	    User springSecurityUser = new User(userName, password, enabled,
 	      accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		
-		
 		return springSecurityUser;
 	}
+	
+	@Transactional
+	public void createUser(String divisionId){
+		TenderUser user = new TenderUser();
+		user.setUsername("manager"+divisionId);
+		user.setPassword("1111");
+		TenderUserRole roleManager = new TenderUserRole();
+		
+		userDao.storeUser(user);
+	}
+	
 }

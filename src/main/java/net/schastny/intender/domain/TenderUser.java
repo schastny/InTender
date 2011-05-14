@@ -46,4 +46,8 @@ public class TenderUser {
 	public Collection<TenderUserRole> getRoles() {
 		return roles;
 	}
+	
+	public void addRole(TenderUserRole role){
+		roles.add(role);
+	}
 }
