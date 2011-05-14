@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,11 +15,6 @@ import javax.validation.constraints.Size;
 public class TenderUser {
 
 	@Id
-	@Column(name = "id")
-	@GeneratedValue
-	private int id;
-	
-	@NotNull
 	@Size(min = 2, max = 40)
 	@Column(name = "username")
 	private String username;
@@ -32,14 +26,6 @@ public class TenderUser {
 	
 	@OneToMany(mappedBy="user")
 	private Collection<TenderUserRole> roles;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;

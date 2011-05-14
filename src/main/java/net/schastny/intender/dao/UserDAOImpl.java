@@ -4,7 +4,6 @@ import net.schastny.intender.domain.TenderUser;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,7 +14,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public TenderUser getUser(String username) {
-		return (TenderUser) sessionFactory.getCurrentSession().get(UserDetails.class, username);
+		return (TenderUser) sessionFactory.getCurrentSession().get(TenderUser.class, username);
 	}
 
 	@Override
