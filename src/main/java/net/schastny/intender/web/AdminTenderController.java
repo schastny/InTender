@@ -112,6 +112,7 @@ public class AdminTenderController {
 	// Удалить товар
 	@RequestMapping("/delete/{tenderId}")
 	public String deleteTender(@PathVariable("tenderId") Integer tenderId) {
+		// TODO При удалении всей категории тендеры удаляются, а про файлы я забыл (они не удаляются)
 		// Delete an uploaded file
 		Tender tender = tenderService.showTender(tenderId);
 		File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");

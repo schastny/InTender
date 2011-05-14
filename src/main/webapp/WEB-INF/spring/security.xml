@@ -18,7 +18,28 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
 		<remember-me />
 	</http>
+	
+	<beans:bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="userDetailsService" />
+	</beans:bean>
 
+	<beans:bean id="authenticationManager"
+		class="org.springframework.security.authentication.ProviderManager">
+		<beans:property name="providers">
+			<beans:list>
+				<beans:ref local="daoAuthenticationProvider" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+			<!-- <password-encoder hash="md5" />  -->
+		</authentication-provider>
+	</authentication-manager>
+	
+	<!--  
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
@@ -27,6 +48,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 				<user name="user2" password="2222" disabled="true" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager> 
+	-->
 
 </beans:beans>

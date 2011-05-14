@@ -7,5 +7,7 @@
 	<session-factory>
 		<mapping class="net.schastny.intender.domain.Tender" />
 		<mapping class="net.schastny.intender.domain.Division" />
+		<mapping class="net.schastny.intender.domain.TenderUser" />
+		<mapping class="net.schastny.intender.domain.TenderUserRole" />
 	</session-factory>
 </hibernate-configuration>
