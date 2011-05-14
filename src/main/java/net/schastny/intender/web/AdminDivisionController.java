@@ -10,7 +10,6 @@ import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.UserManagerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,8 +47,7 @@ public class AdminDivisionController {
 		}
 		
 		if (!result.hasErrors()) {
-			// TODO Переделать создание пользователя!
-			userService.createUser(division.getManagerEmail());
+			userService.createUserForDivision(division);
 			divisionService.storeDivision(division);
 		} else {
 			viewResult = "admin_division_storeError";

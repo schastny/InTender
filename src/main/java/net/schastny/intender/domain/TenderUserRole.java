@@ -1,11 +1,12 @@
 package net.schastny.intender.domain;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,12 +22,11 @@ public class TenderUserRole {
 
 	@NotNull
 	@Size(min = 2, max = 40)
-	@Column(name = "role")
-	private String role;
-
-	@ManyToOne
-	@JoinColumn(name="user")
-	private TenderUser user;
+	@Column(name = "roleName")
+	private String roleName;
+	
+	@OneToMany(mappedBy="role")
+	private Collection<TenderUser> users;
 
 	public int getId() {
 		return id;
@@ -36,19 +36,11 @@ public class TenderUserRole {
 		this.id = id;
 	}
 
-	public String getRole() {
-		return role;
+	public String getRoleName() {
+		return roleName;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public TenderUser getUser() {
-		return user;
-	}
-
-	public void setUser(TenderUser user) {
-		this.user = user;
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 }

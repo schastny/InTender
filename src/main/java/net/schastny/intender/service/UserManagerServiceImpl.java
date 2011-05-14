@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import net.schastny.intender.dao.UserDAO;
+import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.TenderUser;
 import net.schastny.intender.domain.TenderUserRole;
 
@@ -39,9 +40,7 @@ public class UserManagerServiceImpl implements UserManagerService {
 	    boolean credentialsNonExpired 	= true;
 	    boolean accountNonLocked 		= true;
 	    Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-	    for (TenderUserRole role : userEntity.getRoles()) {
-	      authorities.add(new GrantedAuthorityImpl(role.getRole()));
-	    }
+	    authorities.add(new GrantedAuthorityImpl(userEntity.getRole().getRoleName()));
 
 	    User springSecurityUser = new User(userName, password, enabled,
 	      accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
@@ -50,13 +49,16 @@ public class UserManagerServiceImpl implements UserManagerService {
 	}
 	
 	@Transactional
-	public void createUser(String divisionId){
+	public void createUserForDivision(Division division){
 		TenderUser user = new TenderUser();
-		user.setUsername("manager"+divisionId);
+		// TODO Переделать название пользователя!
+		user.setUsername("manager"+division.getManagerEmail());
 		user.setPassword("1111");
-		TenderUserRole roleManager = new TenderUserRole();
+
+		TenderUserRole managerRole = new TenderUserRole();
+		managerRole.setRoleName("ROLE_USER");
+		user.addRole(managerRole);
 		
 		userDao.storeUser(user);
 	}
-	
 }

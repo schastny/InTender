@@ -56,7 +56,7 @@
 				    create: 		creates the schema, destroying previous data.
 				    create-drop: 	drop the schema at the end of the session.
 				 -->
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
