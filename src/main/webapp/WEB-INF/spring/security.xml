@@ -5,15 +5,14 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
-	<http access-denied-page="/error403.ftl">
+	<http 	access-denied-page="/error403.ftl" 
+			access-decision-manager-ref="accessDecisionManager">
 		<intercept-url pattern="/admin/tender/delete/*" 	access="ROLE_ADMIN" />
-		
-		<intercept-url pattern="/admin/division/store" 		access="ROLE_ADMIN, ROLE_USER" />
-		<intercept-url pattern="/admin/division/**" 		access="ROLE_ADMIN" />
-		<intercept-url pattern="/admin/division**" 			access="ROLE_ADMIN" />
+		<intercept-url pattern="/admin/division/store" 		access="ROLE_ADMIN, ROLE_MANAGER" />
 	
-		<intercept-url pattern="/admin/**" 					access="ROLE_ADMIN, ROLE_USER" />
-		<intercept-url pattern="/admin**" 					access="ROLE_ADMIN, ROLE_USER" />
+		<intercept-url pattern="/admin/**" 					access="ROLE_ADMIN, ROLE_MANAGER" />
+		<intercept-url pattern="/admin/*" 					access="ROLE_ADMIN, ROLE_MANAGER" />
+		<intercept-url pattern="/admin**" 					access="ROLE_ADMIN, ROLE_MANAGER" />
 		<intercept-url pattern="/*" 						access="ROLE_ADMIN, ROLE_USER, ROLE_ANONYMOUS" />
 
 		<form-login login-page="/login" default-target-url="/index"
@@ -23,12 +22,20 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
 		<remember-me />
 	</http>
-	
-	<beans:bean id="daoAuthenticationProvider"
-		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-		<beans:property name="userDetailsService" ref="userDetailsService" />
-	</beans:bean>
 
+	<!-- Bean to make Access Control Decisions -->
+	<beans:bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				<beans:bean class="org.springframework.security.access.vote.RoleVoter" />
+				<beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
+				<beans:bean class="net.schastny.intender.security.DivManagerVoter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Beans to store users with Hibernate -->
 	<beans:bean id="authenticationManager"
 		class="org.springframework.security.authentication.ProviderManager">
 		<beans:property name="providers">
@@ -37,6 +44,13 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+	
+	<!--  My custom implementation of UserDetailsService - 
+		net.schastny.intender.service.UserManagerServiceImpl -->
+	<beans:bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService" ref="userDetailsService" />
+	</beans:bean>	
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
