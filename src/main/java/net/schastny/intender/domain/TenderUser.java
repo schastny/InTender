@@ -23,9 +23,8 @@ public class TenderUser {
 	@Column(name = "password")
 	private String password;
 	
-	@ManyToOne
-	@JoinColumn(name="role")
-	private TenderUserRole role;
+	@Column(name="role")
+	private String role;
 
 	public String getUsername() {
 		return username;
@@ -43,11 +42,11 @@ public class TenderUser {
 		this.password = password;
 	}
 
-	public TenderUserRole getRole() {
+	public String getRole() {
 		return role;
 	}
 	
-	public void addRole(TenderUserRole role){
+	public void addRole(String role){
 		this.role = role;
 	}
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import net.schastny.intender.dao.UserDAO;
-import net.schastny.intender.dao.UserRoleDAO;
 import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.TenderUser;
 
@@ -24,9 +23,6 @@ public class UserManagerServiceImpl implements UserManagerService {
 	@Autowired
 	private UserDAO userDao;
 
-	@Autowired
-	private UserRoleDAO userRoleDao;
-
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String login)
 			throws UsernameNotFoundException, DataAccessException {
@@ -43,7 +39,7 @@ public class UserManagerServiceImpl implements UserManagerService {
 	    boolean credentialsNonExpired 	= true;
 	    boolean accountNonLocked 		= true;
 	    Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-	    authorities.add(new GrantedAuthorityImpl(userEntity.getRole().getRoleName()));
+	    authorities.add(new GrantedAuthorityImpl(userEntity.getRole()));
 
 	    User springSecurityUser = new User(userName, password, enabled,
 	      accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
@@ -55,9 +51,9 @@ public class UserManagerServiceImpl implements UserManagerService {
 	public void createUserForDivision(Division division){
 		TenderUser user = new TenderUser();
 		// TODO Переделать название пользователя!
-		user.setUsername("manager"+division.getManagerEmail());
+		user.setUsername(division.getManagerEmail());
 		user.setPassword("1111");
-		user.addRole(userRoleDao.getUserRole("ROLE_USER"));
+		user.addRole("ROLE_USER");
 		userDao.storeUser(user);
 	}
 }
