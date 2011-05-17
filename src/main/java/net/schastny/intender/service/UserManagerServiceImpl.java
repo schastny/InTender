@@ -52,7 +52,7 @@ public class UserManagerServiceImpl implements UserManagerService {
 		TenderUser user = new TenderUser();
 		// TODO Переделать название пользователя!
 		user.setUsername(division.getManagerEmail());
-		user.setPassword("1111");
+		user.setPassword("b59c67bf196a4758191e42f76670ceba"); // md5 hash for 1111
 		user.addRole("ROLE_USER");
 		userDao.storeUser(user);
 	}

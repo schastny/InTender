@@ -13,10 +13,10 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 		<intercept-url pattern="/admin/tender/store" 		access="ROLE_ADMIN, ROLE_MANAGER" />
 		<intercept-url pattern="/admin/division/store" 		access="ROLE_ADMIN, ROLE_MANAGER" />
 	
-		<intercept-url pattern="/admin/**" 					access="ROLE_ADMIN, ROLE_MANAGER" />
-		<intercept-url pattern="/admin/*" 					access="ROLE_ADMIN, ROLE_MANAGER" />
-		<intercept-url pattern="/admin**" 					access="ROLE_ADMIN, ROLE_MANAGER" />
-		<intercept-url pattern="/*" 						access="ROLE_ADMIN, ROLE_USER, ROLE_ANONYMOUS" />
+		<intercept-url pattern="/admin/**" 					access="ROLE_ADMIN, ROLE_MANAGER" requires-channel="https"/>
+		<intercept-url pattern="/admin/*" 					access="ROLE_ADMIN, ROLE_MANAGER" requires-channel="https"/>
+		<intercept-url pattern="/admin**" 					access="ROLE_ADMIN, ROLE_MANAGER" requires-channel="https"/>
+		<intercept-url pattern="/*" 						access="ROLE_ADMIN, ROLE_USER, ROLE_ANONYMOUS" requires-channel="http"/>
 
 		<form-login login-page="/login" default-target-url="/index"
 			authentication-failure-url="/login?error=true" />
@@ -57,7 +57,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
-			<!-- <password-encoder hash="md5" />  -->
+			<password-encoder hash="md5" />
 		</authentication-provider>
 	</authentication-manager>
 	
