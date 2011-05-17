@@ -50,7 +50,7 @@ public class UserManagerServiceImpl implements UserManagerService {
 	@Transactional
 	public void createUserForDivision(Division division){
 		TenderUser user = new TenderUser();
-		// TODO Переделать название пользователя!
+		// TODO Придумать, как назначать пароли
 		user.setUsername(division.getManagerEmail());
 		user.setPassword("b59c67bf196a4758191e42f76670ceba"); // md5 hash for 1111
 		user.addRole("ROLE_USER");

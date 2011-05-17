@@ -62,10 +62,20 @@
 	              <div class="right">
 						<form method="POST" action="[@spring.url '/admin/article/store' /]">
 							<table>
-								<tr>
-									<td class="first"><span class="bold">Url:</span></td>
-									<td>[@spring.formInput "article.id", "style='width:500px'"/]</td>
-								</tr>
+								[#if article.id??]
+									<tr><td class="first"><span class="bold">Url:</span></td>
+										<td>${article.id}
+											<a class="button" href="[@spring.url '/admin/article/delete/${article.id}' /]" onclick="return confirm('Are you sure you want to delete this article?')">
+												[@spring.message "label.delete"/]
+											</a>
+										</td>
+									</tr>
+								[#else]
+									<tr>
+										<td class="first"><span class="bold">Url:</span></td>
+										<td>[@spring.formInput "article.id", "style='width:500px'"/]</td>
+									</tr>
+								[/#if]							
 								<tr>
 									<td class="first"><span class="bold">Title:</span></td>
 									<td>[@spring.formInput "article.title", "style='width:500px'"/]</td>
@@ -79,13 +89,6 @@
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
 								</tr>
-								[#if article.id??]
-								<tr><td/>
-									<td><a class="button" href="[@spring.url '/admin/article/delete/${article.id}' /]" onclick="return confirm('Are you sure you want to delete this article?')">
-										[@spring.message "label.delete"/]</a>
-									</td>
-								</tr>
-								[/#if]
 							</table>
 						</form>	              
 	              </div> <!-- right -->

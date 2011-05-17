@@ -72,7 +72,6 @@ public class DivManagerVoter implements AccessDecisionVoter {
 			}
 		}
 		
-		// TODO Check if manager is allowed to save tenders for this division
 		// TODO Если изменить скрытые поля, то можно сохранить свой тендер в другую категорию (это нужно исправить)
 		// Only admin is allowed to create new divisions
 //		if ( webFilter.getRequestUrl().equals("/admin/tender/store") ){

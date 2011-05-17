@@ -26,7 +26,7 @@
 	<script type="text/javascript">
 	(function($) {
 		$(document).ready(function() {
-			$('#description').wysiwyg();
+			$('#body').wysiwyg();
 		});
 	})(jQuery);
 	</script>
@@ -40,48 +40,30 @@
 	</div>
 	
 	<div id="error">
-		<h3>Ошибка сохранения категории</h3>
+		<h3>Ошибка сохранения статьи</h3>
 		<div class="products">
 			<div class="right">
-				<form method="POST" action="[@spring.url '/admin/division/store' /]">
-        			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
+				<form method="POST" action="[@spring.url '/admin/article/store' /]">
+        			<div style="display:none;">[@spring.formInput "article.id"/]</div>						
 					<table>
 						<tr>
-							<td class="first"><span class="bold">Name:</span></td>
-							<td>[@spring.formInput "division.title", "style='width:500px'"/]
+							<td class="first"><span class="bold">Url:</span></td>
+							<td>[@spring.formInput "article.id", "style='width:500px'"/]
 								[@spring.showErrors "<br/>"/]
 							</td>
 						</tr>
 						<tr>
-							<td class="first"><span class="bold">Full name:</span></td>
-							<td>[@spring.formInput "division.fullTitle", "style='width:500px'"/]
+							<td class="first"><span class="bold">Title:</span></td>
+							<td>[@spring.formInput "article.title", "style='width:500px'"/]
 								[@spring.showErrors "<br/>"/]
 							</td>
 						</tr>
 						<tr>
-							<td class="first"><span class="bold">Address:</span></td>
-							<td>[@spring.formInput "division.address", "style='width:500px'"/]
-								[@spring.showErrors "<br/>"/]
-							</td>
-						</tr>
-						<tr>
-							<td class="first"><span class="bold">Contacts:</span></td>
-							<td>[@spring.formInput "division.contacts", "style='width:500px'"/]
-								[@spring.showErrors "<br/>"/]
-							</td>
-						</tr>					
-						<tr>
-							<td class="first"><span class="bold">Description:</span></td>
+							<td class="first"><span class="bold">Text:</span></td>
 							<td>
-								[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
+								[@spring.formTextarea "article.body", 'rows="5" cols="60"'/]
 							</td>
 						</tr>								
-						<tr>
-							<td class="first"><span class="bold">Manager email:</span></td>
-							<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]
-								[@spring.showErrors "<br/>"/]
-							</td>
-						</tr>									
 						<tr><td/>
 							<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
 						</tr>

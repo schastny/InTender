@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
 public class Article {
 
 	@Id
+	@NotNull
+	@Size(min = 2, max = 15)
 	@Column(name = "id")
 	private String id;
 	
