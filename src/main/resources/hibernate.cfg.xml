@@ -5,6 +5,7 @@
 
 <hibernate-configuration>
 	<session-factory>
+		<mapping class="net.schastny.intender.domain.Article" />
 		<mapping class="net.schastny.intender.domain.Tender" />
 		<mapping class="net.schastny.intender.domain.Division" />
 		<mapping class="net.schastny.intender.domain.TenderUser" />

@@ -50,15 +50,7 @@
     <h1 class="left admin"><a href="[@spring.url '/admin'/]"><span>InTender Logo</span></a></h1>
     [#include "/tiles/main_login_form.ftl"]
   </div>
-  <div id="mastmenu">
-    <div class="inner">
-      <ul>
-        <li><a href="listing.html">Users</a></li>
-        <li><a href="[@spring.url '/admin/division'/]">Manage Divisions</a></li>
-        <li><a href="listing.html">Tenders</a></li>
-      </ul>
-    </div>
-  </div>
+  [#include "/tiles/admin_top_menu.ftl"]
   <div id="mastcontent" class="twocols">
     <div class="left sidebar">
 		[#include "/tiles/admin_division_menu.ftl"]

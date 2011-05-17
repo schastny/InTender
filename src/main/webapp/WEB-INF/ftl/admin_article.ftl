@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - Create New Division</title>
+<title>[@spring.message "label.title"/] - Manage articles</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
@@ -24,7 +24,7 @@
 	<script type="text/javascript">
 	(function($) {
 		$(document).ready(function() {
-			$('#description').wysiwyg();
+			$('#body').wysiwyg();
 		});
 	})(jQuery);
 	</script>
@@ -40,43 +40,41 @@
   [#include "/tiles/admin_top_menu.ftl"]
   <div id="mastcontent" class="twocols">
 	<div class="left sidebar">
-		[#include "/tiles/admin_division_menu.ftl"]
+	      <div class="secmenu">
+				[#if articleList??]
+					<ul id="prod_nav">
+				      	<li class="first-of-type"><span>Articles</span></li>
+						[#list articleList as article]
+							<li class="top">
+								<a href=" [@spring.url '/admin/article/${article.id}'/] ">
+									${article.title}
+								</a>
+							</li>
+						[/#list]
+					</ul>
+				[/#if]      
+	      </div>
 	</div>
     <div class="right content">
       <div class="twocols">
-          <h3>Create New Division</h3>
+          <h3>Create New Article</h3>
 	          <div class="products">
 	              <div class="right">
 	                <h4>General information</h4>
-						<form method="POST" action="[@spring.url '/admin/division/store' /]">
-                			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
+						<form method="POST" action="[@spring.url '/admin/article/store' /]">
+                			<div style="display:none;">[@spring.formInput "article.id"/]</div>						
 							<table>
 								<tr>
-									<td class="first"><span class="bold">Name:</span></td>
-									<td>[@spring.formInput "division.title", "style='width:500px'"/]</td>
+									<td class="first"><span class="bold">Title:</span></td>
+									<td>[@spring.formInput "article.title", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Full name:</span></td>
-									<td>[@spring.formInput "division.fullTitle", "style='width:500px'"/]</td>
-								</tr>
-								<tr>
-									<td class="first"><span class="bold">Address:</span></td>
-									<td>[@spring.formInput "division.address", "style='width:500px'"/]</td>
-								</tr>
-								<tr>
-									<td class="first"><span class="bold">Contacts:</span></td>
-									<td>[@spring.formInput "division.contacts", "style='width:500px'"/]</td>
-								</tr>					
-								<tr>
-									<td class="first"><span class="bold">Description:</span></td>
+									<td class="first"><span class="bold">Text:</span></td>
 									<td>
-										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
+										[@spring.formTextarea "article.body", 'rows="5" cols="60"'/]
 									</td>
 								</tr>	
-								<tr>
-									<td class="first"><span class="bold">Manager email:</span></td>
-									<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]</td>
-								</tr>															
+															
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
 								</tr>
@@ -84,7 +82,6 @@
 						</form>	              
 	              </div> <!-- right -->
 	          </div> <!-- products -->
-
       </div>
     </div>
   </div>
