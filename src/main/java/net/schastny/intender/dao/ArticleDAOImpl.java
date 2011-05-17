@@ -20,7 +20,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	@Override
-	public void deleteArticle(Integer id) {
+	public void deleteArticle(String id) {
 		Article article = getArticle(id);
 		if (null != article) {
 			sessionFactory.getCurrentSession().delete(article);
@@ -34,7 +34,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	@Override
-	public Article getArticle(Integer id) {
+	public Article getArticle(String id) {
 		return (Article) sessionFactory.getCurrentSession().get(Article.class, id);
 	}
 

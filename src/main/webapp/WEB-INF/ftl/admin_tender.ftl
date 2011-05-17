@@ -117,25 +117,9 @@
       </div>
     </div>
   </div>
-  <div id="mastfooter">
-    <div class="inner">
-      <div class="content">
-        <h1 class="left"><a href="[@spring.url '/index'/]"><span>InTender Logo</span></a></h1>
-        <div class="right">
-          <ul class="main">
-            <li><a href="#">Home</a></li>
-            <li>-<a href="#">About InTender</a></li>
-            <li>-<a href="#">Contacts</a></li>
-          </ul>
-          <ul class="secondary">
-            <li><a href="#">Privacy</a></li>
-            <li>-<a href="#">Terms and Conditions</a></li>
-            <li>&copy;2011 InTender</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div id="mastfooter">
+		[#include "/tiles/footer.ftl"]
+	</div>
 </div>
 </body>
 

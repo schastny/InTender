@@ -7,7 +7,7 @@ import net.schastny.intender.domain.Article;
 public interface ArticleDAO {
 	
 	public void storeArticle(Article article);
-	public void deleteArticle(Integer id);
+	public void deleteArticle(String id);
 	public List<Article> getAll();
-	public Article getArticle(Integer id);
+	public Article getArticle(String id);
 }

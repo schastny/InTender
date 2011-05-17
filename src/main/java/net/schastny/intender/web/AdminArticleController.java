@@ -22,9 +22,9 @@ public class AdminArticleController {
 	@Autowired
 	private ArticleService articleService;
 	
-	// Просмотр всех категорий
+	// Просмотр всех статей/создать новую
 	@RequestMapping
-	public String listDivisionsAll(Map<String, Object> map) {
+	public String listAll(Map<String, Object> map) {
 		List<Article> articles = articleService.getAll();
 
 		map.put("article", new Article());
@@ -32,15 +32,24 @@ public class AdminArticleController {
 		
 		return "admin_article";
 	}
-
+	
+	// Просмотр/редактирование статьи
+	@RequestMapping("/{artId}")
+	public String listArticle(Map<String, Object> map, @PathVariable("artId") String artId) {
+		Article article = articleService.getArticle(artId);
+		List<Article> articles = articleService.getAll();
+		
+		map.put("article", article);
+		map.put("articleList", articles);
+		
+		return "admin_article";
+	}
+	
 	// Сохранить/обновить статью
 	@RequestMapping(value = "/store", method = RequestMethod.POST)
 	public String storeArticle(@Valid Article article, BindingResult result) {
 		
 		String viewResult = "redirect:/admin/article";
-		if (article.getId() != 0){
-			viewResult += "/"+article.getId();
-		}
 		
 		if (!result.hasErrors()) {
 			articleService.storeArticle(article);
@@ -53,7 +62,7 @@ public class AdminArticleController {
 
 	// Удалить статью
 	@RequestMapping("/delete/{artId}")
-	public String deleteArticle(@PathVariable("artId") Integer artId) {
+	public String deleteArticle(@PathVariable("artId") String artId) {
 		articleService.deleteArticle(artId);
 		return "redirect:/admin/article";
 	}

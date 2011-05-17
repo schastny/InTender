@@ -60,10 +60,12 @@
           <h3>Create New Article</h3>
 	          <div class="products">
 	              <div class="right">
-	                <h4>General information</h4>
 						<form method="POST" action="[@spring.url '/admin/article/store' /]">
-                			<div style="display:none;">[@spring.formInput "article.id"/]</div>						
 							<table>
+								<tr>
+									<td class="first"><span class="bold">Url:</span></td>
+									<td>[@spring.formInput "article.id", "style='width:500px'"/]</td>
+								</tr>
 								<tr>
 									<td class="first"><span class="bold">Title:</span></td>
 									<td>[@spring.formInput "article.title", "style='width:500px'"/]</td>
@@ -74,10 +76,16 @@
 										[@spring.formTextarea "article.body", 'rows="5" cols="60"'/]
 									</td>
 								</tr>	
-															
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
 								</tr>
+								[#if article.id??]
+								<tr><td/>
+									<td><a class="button" href="[@spring.url '/admin/article/delete/${article.id}' /]" onclick="return confirm('Are you sure you want to delete this article?')">
+										[@spring.message "label.delete"/]</a>
+									</td>
+								</tr>
+								[/#if]
 							</table>
 						</form>	              
 	              </div> <!-- right -->
@@ -85,25 +93,10 @@
       </div>
     </div>
   </div>
-  <div id="mastfooter">
-    <div class="inner">
-      <div class="content">
-        <h1 class="left"><a href="[@spring.url '/index'/]"><span>InTender Logo</span></a></h1>
-        <div class="right">
-          <ul class="main">
-            <li><a href="#">Home</a></li>
-            <li>-<a href="#">About InTender</a></li>
-            <li>-<a href="#">Contacts</a></li>
-          </ul>
-          <ul class="secondary">
-            <li><a href="#">Privacy</a></li>
-            <li>-<a href="#">Terms and Conditions</a></li>
-            <li>&copy;2011 InTender</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+
+	<div id="mastfooter">
+		[#include "/tiles/footer.ftl"]
+	</div>  
 </div>
 </body>
 

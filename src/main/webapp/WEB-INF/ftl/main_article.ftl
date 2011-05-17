@@ -21,42 +21,22 @@
   [#include "/tiles/main_top_menu.ftl"]
   <div id="mastcontent" class="twocols">
     <div class="left sidebar">
-		[#include "/tiles/main_division_menu.ftl"]	
+		[#include "/tiles/main_division_menu.ftl"]
     </div>
     <div class="right content">
       <div class="twocols">
-      [#if tender??]
-          <h3>${tender.division.title}</h3>
+          <h3>[#if article??]${article.title}[/#if]</h3>
           <div class="products">
               <div class="right">
-                <h4>${tender.title}</h4>
-                <table>
-					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
-						<td>${tender.id}</td>
-					</tr>
-					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
-						<td>${tender.publishDate?string("dd.MM.yyyy")}</td>
-					</tr>
-					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
-						<td>
-		                  	<a href="/uploads/${tender.attachedDocName}.doc"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
-		                  	<a href="/uploads/${tender.attachedDocName}.pdf"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
-						</td>
-					</tr>
-				</table>
+				${article.body}
               </div>
           </div>
-      [/#if]
       </div>
     </div>
   </div>
-  
 	<div id="mastfooter">
 		[#include "/tiles/footer.ftl"]
-	</div> 
+	</div>  
 </div>
 </body>
 

@@ -4,8 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import net.schastny.intender.domain.Article;
 import net.schastny.intender.domain.Division;
 import net.schastny.intender.domain.Tender;
+import net.schastny.intender.service.ArticleService;
 import net.schastny.intender.service.DivisionService;
 import net.schastny.intender.service.TenderService;
 import net.schastny.intender.web.utils.TendersByDivisionHolder;
@@ -24,6 +26,9 @@ public class MainController {
 
 	@Autowired
 	private DivisionService divisionService;
+	
+	@Autowired
+	private ArticleService articleService;
 
 	// Просмотр всех тендеров
 	@RequestMapping(value = { "/", "/index", "/tenders" })
@@ -62,6 +67,20 @@ public class MainController {
 		String resultView = "main_tender";
 		if (tender != null && tender.getDivision().getId() == divId){
 			map.put("tender", tender);
+			map.put("divisionList", divisionService.showAll());
+		}else{
+			resultView = "redirect:/index";
+		}
+		return resultView;
+	}
+	
+	// Просмотр тендеров в категории
+	@RequestMapping(value = "/article/{artId}", method = RequestMethod.GET)
+	public String showArticle(Map<String, Object> map, @PathVariable("artId") String artId) {
+		Article article = articleService.getArticle(artId);
+		String resultView = "main_article";
+		if (article != null){
+			map.put("article", article);
 			map.put("divisionList", divisionService.showAll());
 		}else{
 			resultView = "redirect:/index";

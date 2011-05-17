@@ -26,8 +26,8 @@
         </div>        
   	</form>
   	<p>
-      	<a href="#">Forgot your password?</a> 
-      	<a href="#">I don't have an account</a>      	
+      	<a href="[@spring.url '/article/account'/]">Forgot your password?</a> 
+      	<a href="[@spring.url '/article/account'/]">I don't have an account</a>      	
   	</p>
 	[/@security.authorize]
 	[@security.authorize ifNotGranted="ROLE_ANONYMOUS"]

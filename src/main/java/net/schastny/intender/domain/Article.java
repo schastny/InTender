@@ -2,7 +2,6 @@ package net.schastny.intender.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -14,8 +13,7 @@ public class Article {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue
-	private int id;
+	private String id;
 	
 	@NotNull
 	@Size(min = 2, max = 40)
@@ -25,11 +23,11 @@ public class Article {
 	@Column(name = "body", columnDefinition="TEXT")
 	private String body;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
