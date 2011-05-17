@@ -28,6 +28,7 @@
           <h3>[#if article??]${article.title}[/#if]</h3>
           <div class="products">
               <div class="right">
+				<br/>
 				${article.body}
               </div>
           </div>

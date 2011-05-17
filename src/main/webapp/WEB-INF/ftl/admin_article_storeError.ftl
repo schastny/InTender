@@ -44,7 +44,6 @@
 		<div class="products">
 			<div class="right">
 				<form method="POST" action="[@spring.url '/admin/article/store' /]">
-        			<div style="display:none;">[@spring.formInput "article.id"/]</div>						
 					<table>
 						<tr>
 							<td class="first"><span class="bold">Url:</span></td>

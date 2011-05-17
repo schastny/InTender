@@ -68,6 +68,7 @@
 											<a class="button" href="[@spring.url '/admin/article/delete/${article.id}' /]" onclick="return confirm('Are you sure you want to delete this article?')">
 												[@spring.message "label.delete"/]
 											</a>
+											<div style="display:none;">[@spring.formInput "article.id"/]</div>
 										</td>
 									</tr>
 								[#else]
