@@ -11,6 +11,7 @@ import java.util.Map;
 //import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
+import net.schastny.intender.doc2pdf.PdfMaker;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.TenderService;
 
@@ -83,16 +84,23 @@ public class AdminTenderController {
 					File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");
 					uploadDir.mkdir();
 					// Delete old file
-					File oldFile = new File(uploadDir, tender.getAttachedDocName()+".doc");
+					File oldFile = new File(uploadDir, tender.getAttachedDocName()+".docx");
 					oldFile.delete();
 					// Write newly uploaded file
-					File destinationFile = new File(uploadDir, fileName+".doc");
+					File destinationFile = new File(uploadDir, fileName+".docx");
 					attachedDoc.transferTo(destinationFile);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				// !store the bytes somewhere
-				
+				// Make pdf
+				PdfMaker maker = new PdfMaker(System.getProperty("catalina.base")+"/uploads/");
+				try {
+					maker.make(fileName);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				// !Make pdf
 				// Update attachedDocName field
 				tender.setAttachedDocName(fileName);
 			}
@@ -117,8 +125,10 @@ public class AdminTenderController {
 		Tender tender = tenderService.showTender(tenderId);
 		File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");
 		uploadDir.mkdir();
-		File destinationFile = new File(uploadDir, tender.getAttachedDocName()+".doc");
-		destinationFile.delete();
+		File destinationFileDOCX = new File(uploadDir, tender.getAttachedDocName()+".docx");
+		destinationFileDOCX.delete();
+		File destinationFilePDF = new File(uploadDir, tender.getAttachedDocName()+".pdf");
+		destinationFilePDF.delete();
 		// Delete an uploaded file
 		
 		tenderService.deleteTender(tenderId);

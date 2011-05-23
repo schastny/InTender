@@ -126,13 +126,36 @@
 			<version>2.0.1</version>
 		</dependency>
 
-		<!-- Jackson JSON Mapper -->
+		<!-- Doc 2 Pdf package -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.6.4</version>
+		    <groupId>org.apache.xmlgraphics</groupId>
+		    <artifactId>fop</artifactId>
+		    <version>1.0</version>
 		</dependency>
-
+		<dependency>
+		    <groupId>commons-vfs</groupId>
+		    <artifactId>commons-vfs</artifactId>
+		    <version>20050307052300</version>
+		</dependency>   
+			    
+	  	<!-- iText For org.docx4j.convert.out.pdf.viaHTML.Conversion( -->
+	  	<dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext</artifactId>
+		    <version>2.0.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.xhtmlrenderer</groupId>
+		    <artifactId>core-renderer</artifactId>
+		    <version>R8pre2</version>
+		</dependency>
+	    <dependency>
+	      <groupId>org.docx4j</groupId>
+	      <artifactId>docx4j</artifactId>
+	      <version>2.6.0</version>
+	    </dependency>		
+		<!-- !Doc 2 Pdf package -->
+		
 		<!-- Roo dependencies -->
 		<dependency>
 			<groupId>org.springframework.roo</groupId>
@@ -169,7 +192,7 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
+			<version>1.2.16</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.mail</groupId>
@@ -239,6 +262,7 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		
 		<!-- For developing against latest Spring milestones -->
 		<repository>
 			<id>org.springframework.maven.milestone</id>
@@ -248,7 +272,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		
+		<!-- Docx4j -->
+		<repository>
+		        <id>docx4j</id>
+		        <name>docx4j Maven 2 repository</name>
+		        <url>http://dev.plutext.org/svn/docx4j/trunk/docx4j/m2</url>
+		</repository>	    	
 	</repositories>
+	
 	<description>Online trade tool.</description>
 	<url>https://github.com/schastny/InTender</url>
 	<organization>
