@@ -5,7 +5,7 @@
 	      <div class="secmenu">
 				[#if divisionList??]
 					<ul id="prod_nav">
-				      	<li class="first-of-type"><span>Divisions</span></li>
+				      	<li class="first-of-type"><span>[@spring.message "menu.divisions"/]</span></li>
 						[#list divisionList as division]
 							<li class="top">
 								<a [#if division.id == id]class="selected"[/#if] 

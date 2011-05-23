@@ -26,16 +26,16 @@
         </div>        
   	</form>
   	<p>
-      	<a href="[@spring.url '/article/account'/]">Forgot your password?</a> 
-      	<a href="[@spring.url '/article/account'/]">I don't have an account</a>      	
+      	<a href="[@spring.url '/article/account'/]">[@spring.message "label.forgotPassword" /]</a> 
+      	<a href="[@spring.url '/article/account'/]">[@spring.message "label.dontHaveAccount" /]</a>      	
   	</p>
 	[/@security.authorize]
 	[@security.authorize ifNotGranted="ROLE_ANONYMOUS"]
   	<p>
-		<span>Logged in as: <strong>[@security.authentication property="principal.username" /]</strong></span>
+		<span>[@spring.message "label.loggedAs"/] <strong>[@security.authentication property="principal.username" /]</strong></span>
   	</p>
   	<p>
-      	<a href="[@spring.url '/admin'/]">Admin section</a>
+      	<a href="[@spring.url '/admin'/]">[@spring.message "menu.admin"/]</a>
       	<a href="[@spring.url '/logout'/]">[@spring.message "label.logout"/]</a>
   	</p>
 	[/@security.authorize]

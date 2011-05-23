@@ -2,8 +2,8 @@
   <div id="mastmenu">
     <div class="inner">
       <ul>
-        <li><a href="[@spring.url '/admin/division'/]">Create new Division</a></li>
-        <li><a href="[@spring.url '/admin/article'/]">Manage Articles</a></li>
+        <li><a href="[@spring.url '/admin/division'/]">[@spring.message "menu.admin.newDivision"/]</a></li>
+        <li><a href="[@spring.url '/admin/article'/]">[@spring.message "menu.admin.articles"/]</a></li>
       </ul>
     </div>
   </div>

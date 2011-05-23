@@ -25,7 +25,7 @@
 	</div>
     <div class="right content">
       <div class="twocols">
-          <h3>Recent Tenders</h3>
+          <h3>[@spring.message "label.recentTenders"/]</h3>
           <ul class="products">
           [#if tendersByDivision??]
 			[#list tendersByDivision as aDivision]

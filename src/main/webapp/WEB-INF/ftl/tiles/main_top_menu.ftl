@@ -2,9 +2,9 @@
   <div id="mastmenu">
     <div class="inner">
       <ul>
-        <li><a href="[@spring.url '/'/]">Home</a></li>
-        <li><a href="[@spring.url '/article/about'/]">About InTender</a></li>
-        <li><a href="[@spring.url '/article/contacts'/]">Contacts</a></li>
+        <li><a href="[@spring.url '/'/]">[@spring.message "menu.home"/]</a></li>
+        <li><a href="[@spring.url '/article/about'/]">[@spring.message "menu.about"/]</a></li>
+        <li><a href="[@spring.url '/article/contacts'/]">[@spring.message "menu.contacts"/]</a></li>        
       </ul>
     </div>
   </div>
