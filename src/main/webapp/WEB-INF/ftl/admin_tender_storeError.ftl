@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] -  Save error</title>
+<title>[@spring.message "label.title"/] -  [@spring.message "label.tender.storeError"/]</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
@@ -34,7 +34,7 @@
 	</div>
 	
 	<div id="error">
-		<h3>Ошибка сохранения тендера</h3>
+		<h3>[@spring.message "label.tender.storeError"/]</h3>
 		<div class="products">
 			<div class="right">
 						<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
