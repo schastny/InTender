@@ -48,19 +48,19 @@
                 <h4>[@spring.message "label.generalInformation"/]</h4>
 				<table>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.fullName"/]:</span></td>
 						<td>${division.fullTitle}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.address"/]:</span></td>
 						<td>${division.address}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.contacts"/]:</span></td>
 						<td>${division.contacts}</td>
 					</tr>					
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.description"/]:</span></td>
 						<td>${division.description}</td>
 					</tr>
 				</table> 

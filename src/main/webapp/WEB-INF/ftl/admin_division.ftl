@@ -85,27 +85,27 @@
 				</h4>
 				<table>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionName"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.name"/]:</span></td>
 						<td>${division.title}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.fullName"/]:</span></td>
 						<td>${division.fullTitle}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.address"/]:</span></td>
 						<td>${division.address}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.contacts"/]:</span></td>
 						<td>${division.contacts}</td>
 					</tr>					
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.description"/]:</span></td>
 						<td>${division.description}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.divisionManagerEmail"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.division.managerEmail"/]:</span></td>
 						<td>${division.managerEmail}</td>
 					</tr>
 					[@security.authorize ifAnyGranted="ROLE_ADMIN"]
@@ -127,29 +127,29 @@
                 			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
 							<table>
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.divisionName"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.division.name"/]:</span></td>
 									<td>[@spring.formInput "division.title", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.division.fullName"/]:</span></td>
 									<td>[@spring.formInput "division.fullTitle", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.division.address"/]:</span></td>
 									<td>[@spring.formInput "division.address", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.division.contacts"/]:</span></td>
 									<td>[@spring.formInput "division.contacts", "style='width:500px'"/]</td>
 								</tr>					
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.division.description"/]:</span></td>
 									<td>
 										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
 									</td>
 								</tr>								
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.divisionManagerEmail"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.division.managerEmail"/]:</span></td>
 									<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]</td>
 								</tr>									
 								<tr><td/>
