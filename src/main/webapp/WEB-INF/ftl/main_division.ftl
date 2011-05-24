@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - tenders for products and services for the business</title>
+<title>[@spring.message "label.title"/] - [#if division??]${division.title}[/#if]</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
@@ -29,7 +29,7 @@
           <div class="products">
               <div class="right">
               	[#if tenderList?size > 0]
-              	<h4>Tenders</h4>
+              	<h4>[@spring.message "label.allTenders"/]</h4>
 	              	<ul>
 	                	[#list tenderList as tender]
 							<li>
@@ -45,22 +45,22 @@
                 [/#if]
               </div>
               <div class="right">
-                <h4>General information</h4>
+                <h4>[@spring.message "label.generalInformation"/]</h4>
 				<table>
 					<tr>
-						<td class="first"><span class="bold">Full name:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
 						<td>${division.fullTitle}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">Address:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
 						<td>${division.address}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">Contacts:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
 						<td>${division.contacts}</td>
 					</tr>					
 					<tr>
-						<td class="first"><span class="bold">Description:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
 						<td>${division.description}</td>
 					</tr>
 				</table> 
