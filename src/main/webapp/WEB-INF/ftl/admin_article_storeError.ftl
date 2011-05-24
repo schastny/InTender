@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - Save Error</title>
+<title>[@spring.message "label.title"/] - [@spring.message "label.article.storeError"/]</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
@@ -40,25 +40,33 @@
 	</div>
 	
 	<div id="error">
-		<h3>Ошибка сохранения статьи</h3>
+		<h3>[@spring.message "label.article.storeError"/]</h3>
 		<div class="products">
 			<div class="right">
 				<form method="POST" action="[@spring.url '/admin/article/store' /]">
 					<table>
+						[#if article.id != ""]
+							<tr><td class="first"><span class="bold">[@spring.message "label.article.url"/]:</span></td>
+								<td>${article.id}
+									<div style="display:none;">[@spring.formInput "article.id"/]</div>
+								</td>
+							</tr>
+						[#else]
+							<tr>
+								<td class="first"><span class="bold">[@spring.message "label.article.url"/]:</span></td>
+								<td>[@spring.formInput "article.id", "style='width:500px'"/]
+								    [@spring.showErrors "<br/>"/]
+								</td>
+							</tr>
+						[/#if]					
 						<tr>
-							<td class="first"><span class="bold">Url:</span></td>
-							<td>[@spring.formInput "article.id", "style='width:500px'"/]
-								[@spring.showErrors "<br/>"/]
-							</td>
-						</tr>
-						<tr>
-							<td class="first"><span class="bold">Title:</span></td>
+							<td class="first"><span class="bold">[@spring.message "label.article.title"/]:</span></td>
 							<td>[@spring.formInput "article.title", "style='width:500px'"/]
 								[@spring.showErrors "<br/>"/]
 							</td>
 						</tr>
 						<tr>
-							<td class="first"><span class="bold">Text:</span></td>
+							<td class="first"><span class="bold">[@spring.message "label.article.text"/]:</span></td>
 							<td>
 								[@spring.formTextarea "article.body", 'rows="5" cols="60"'/]
 							</td>

@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - Manage articles</title>
+<title>[@spring.message "label.title"/] - [@spring.message "menu.admin.articles"/]</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
@@ -43,7 +43,7 @@
 	      <div class="secmenu">
 				[#if articleList??]
 					<ul id="prod_nav">
-				      	<li class="first-of-type"><span>Articles</span></li>
+				      	<li class="first-of-type"><span>[@spring.message "menu.admin.articles"/]</span></li>
 						[#list articleList as article]
 							<li class="top">
 								<a href=" [@spring.url '/admin/article/${article.id}'/] ">
@@ -57,15 +57,15 @@
 	</div>
     <div class="right content">
       <div class="twocols">
-          <h3>Create New Article</h3>
+          <h3>[@spring.message "label.article.createNew"/]</h3>
 	          <div class="products">
 	              <div class="right">
 						<form method="POST" action="[@spring.url '/admin/article/store' /]">
 							<table>
 								[#if article.id??]
-									<tr><td class="first"><span class="bold">Url:</span></td>
+									<tr><td class="first"><span class="bold">[@spring.message "label.article.url"/]:</span></td>
 										<td>${article.id}
-											<a class="button" href="[@spring.url '/admin/article/delete/${article.id}' /]" onclick="return confirm('Are you sure you want to delete this article?')">
+											<a class="button" href="[@spring.url '/admin/article/delete/${article.id}' /]" onclick="return confirm('[@spring.message "label.article.confirmDelete"/]')">
 												[@spring.message "label.delete"/]
 											</a>
 											<div style="display:none;">[@spring.formInput "article.id"/]</div>
@@ -73,16 +73,16 @@
 									</tr>
 								[#else]
 									<tr>
-										<td class="first"><span class="bold">Url:</span></td>
+										<td class="first"><span class="bold">[@spring.message "label.article.url"/]:</span></td>
 										<td>[@spring.formInput "article.id", "style='width:500px'"/]</td>
 									</tr>
 								[/#if]							
 								<tr>
-									<td class="first"><span class="bold">Title:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.article.title"/]:</span></td>
 									<td>[@spring.formInput "article.title", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Text:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.article.text"/]:</span></td>
 									<td>
 										[@spring.formTextarea "article.body", 'rows="5" cols="60"'/]
 									</td>
