@@ -21,6 +21,13 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+
+	<!-- Resolving User Locales by a Session Attribute -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ru" />
+	</bean>
+	<!-- Externalizing Locale-Sensitive Text Messages -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
