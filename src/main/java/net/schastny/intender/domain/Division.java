@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -40,10 +41,14 @@ public class Division {
 	@Column(name = "description", columnDefinition="TEXT")
 	private String description;
 	
-	//TODO Хочу сделать это поле Required, но @NotNull не помогает.
-	@NotNull
+	//TODO Сделать проверку адреса на валидность
+	@Size(min = 5, max = 100)
 	@Column(name = "managerEmail")
 	private String managerEmail;
+	
+	@Size(min = 6, max = 20)
+	@Transient
+	private String managerPassword;
 	
 	@OneToMany(cascade=REMOVE, mappedBy="division")
 	private Collection<Tender> tenders;
@@ -102,6 +107,14 @@ public class Division {
 
 	public void setManagerEmail(String managerEmail) {
 		this.managerEmail = managerEmail;
+	}
+	
+	public String getManagerPassword() {
+		return managerPassword;
+	}
+
+	public void setManagerPassword(String managerPassword) {
+		this.managerPassword = managerPassword;
 	}
 
 	public Collection<Tender> getTenders() {

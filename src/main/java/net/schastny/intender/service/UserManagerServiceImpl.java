@@ -1,5 +1,7 @@
 package net.schastny.intender.service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -50,10 +52,29 @@ public class UserManagerServiceImpl implements UserManagerService {
 	@Transactional
 	public void createUserForDivision(Division division){
 		TenderUser user = new TenderUser();
-		// TODO Придумать, как назначать пароли (Например, Trnasient field password)
 		user.setUsername(division.getManagerEmail());
-		user.setPassword("b59c67bf196a4758191e42f76670ceba"); // md5 hash for 1111
 		user.addRole("ROLE_USER");
+		try {
+			user.setPassword(hash(division.getManagerPassword()));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} 
 		userDao.storeUser(user);
+	}
+	
+	private String hash(String password) throws NoSuchAlgorithmException {
+		byte[] passwordBytes = password.getBytes();
+		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		md5.reset();
+		md5.update(passwordBytes);
+		byte hash[] = md5.digest();
+
+		StringBuffer hexString = new StringBuffer();
+		for (byte aByte:hash) {
+			String byteString = Integer.toHexString(0xFF & aByte);
+			String result = (byteString.length()<2)?"0"+byteString:byteString;
+			hexString.append(result);
+		}		
+		return hexString.toString();
 	}
 }

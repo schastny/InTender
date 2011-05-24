@@ -7,7 +7,9 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
 	<http 	access-denied-page="/error403.ftl" 
 			access-decision-manager-ref="accessDecisionManager">
+		<intercept-url pattern="/admin/tender/delete/*" 	access="ROLE_ADMIN" />
 		<intercept-url pattern="/admin/tender/delete/**" 	access="ROLE_ADMIN" />
+		<intercept-url pattern="/admin/division/delete/*" 	access="ROLE_ADMIN" />
 		<intercept-url pattern="/admin/division/delete/**" 	access="ROLE_ADMIN" />
 		
 		<intercept-url pattern="/admin/tender/store" 		access="ROLE_ADMIN, ROLE_MANAGER" />

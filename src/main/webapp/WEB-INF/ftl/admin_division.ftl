@@ -151,7 +151,11 @@
 								<tr>
 									<td class="first"><span class="bold">[@spring.message "label.division.managerEmail"/]:</span></td>
 									<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]</td>
-								</tr>									
+								</tr>
+								<tr>
+									<td class="first"><span class="bold">[@spring.message "label.division.managerPassword"/]:</span></td>
+									<td>[@spring.formInput "division.managerPassword", "style='width:500px'"/]</td>
+								</tr>																	
 								<tr><td/>
 									<td><input type="submit" value="[@spring.message "label.store"/]" /></td>
 								</tr>
