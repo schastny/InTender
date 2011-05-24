@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - tenders for products and services for the business</title>
+<title>[@spring.message "label.title"/] -  ${tender.division.title} - ${tender.title}</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
