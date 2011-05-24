@@ -49,8 +49,9 @@ public class UserManagerServiceImpl implements UserManagerService {
 		return springSecurityUser;
 	}
 	
+	// TODO Сделать так, чтобы при изменении логина старый пользователь удалялся
 	@Transactional
-	public void createUserForDivision(Division division){
+	public void createOrUpdateUserForDivision(Division division){
 		TenderUser user = new TenderUser();
 		user.setUsername(division.getManagerEmail());
 		user.addRole("ROLE_USER");
@@ -62,6 +63,11 @@ public class UserManagerServiceImpl implements UserManagerService {
 		userDao.storeUser(user);
 	}
 	
+	@Transactional
+	public void deleteUser(String username){
+		userDao.deleteUser(username);
+	}
+
 	private String hash(String password) throws NoSuchAlgorithmException {
 		byte[] passwordBytes = password.getBytes();
 		MessageDigest md5 = MessageDigest.getInstance("MD5");

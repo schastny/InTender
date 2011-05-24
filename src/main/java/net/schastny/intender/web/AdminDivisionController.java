@@ -47,7 +47,7 @@ public class AdminDivisionController {
 		}
 		
 		if (!result.hasErrors()) {
-			userService.createUserForDivision(division);
+			userService.createOrUpdateUserForDivision(division);
 			divisionService.storeDivision(division);
 		} else {
 			viewResult = "admin_division_storeError";
@@ -55,9 +55,12 @@ public class AdminDivisionController {
 		return viewResult;
 	}
 
+	// TODO Ограничить доступ к удалению категорий и тендеров, редактированию статей (Это можно делать только админу)
 	// Удалить категорию
 	@RequestMapping("/delete/{divId}")
 	public String deleteDivision(@PathVariable("divId") Integer divId) {
+		Division division = divisionService.showDivision(divId);
+		userService.deleteUser(division.getManagerEmail());
 		divisionService.deleteDivision(divId);
 		return "redirect:/admin";
 	}
