@@ -32,15 +32,15 @@
                 <h4>${tender.title}</h4>
                 <table>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tender.id"/]:</span></td>
 						<td>${tender.id}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tender.date"/]:</span></td>
 						<td>${tender.publishDate?string("dd.MM.yyyy")}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tender.docs"/]:</span></td>
 						<td>
 		                  	<a href="/uploads/${tender.attachedDocName}.docx"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
 		                  	<a href="/uploads/${tender.attachedDocName}.pdf"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						

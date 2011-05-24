@@ -54,15 +54,15 @@
                 </h4>
                 <table>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tender.id"/]:</span></td>
 						<td>${tender.id}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tender.date"/]:</span></td>
 						<td>${tender.publishDate?string("dd.MM.yyyy")}</td>
 					</tr>
 					<tr height="60px">
-						<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.tender.docs"/]:</span></td>
 						<td>
 		                  	<a href="/uploads/${tender.attachedDocName}.docx"><img src="[@spring.url '/resources/img/save_doc.gif'/]"></a>
 		                  	<a href="/uploads/${tender.attachedDocName}.pdf"><img src="[@spring.url '/resources/img/save_pdf.gif'/]"></a>						
@@ -87,11 +87,11 @@
                 			<div style="display:none;">[@spring.formInput "tender.attachedDocName"/]</div>						
 							<table>
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.tenderId"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.tender.id"/]:</span></td>
 									<td>${tender.id}</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.tender.date"/]:</span></td>
 									<td>
 										<input 
 											value="${tender.publishDate?string("dd.MM.yyyy")}" 
@@ -100,7 +100,7 @@
 									</td>
 								</tr>
 								<tr height="80px">
-									<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.tender.docs"/]:</span></td>
 									<td>[@spring.formInput "tender.attachedDoc", "", "file"/]</td>
 								</tr>
 								<tr><td/>

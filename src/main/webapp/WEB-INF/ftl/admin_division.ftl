@@ -167,11 +167,11 @@
 					<div style="display:none;">[@spring.formInput "tender.attachedDocName"/]</div>						
 						<table class="form">
 							<tr>
-								<td class="first"><span class="bold">[@spring.message "label.tenderTitle"/]:</span></td>
+								<td class="first"><span class="bold">[@spring.message "label.tender.title"/]:</span></td>
 								<td>[@spring.formInput "tender.title"/]</td>
 							</tr>
 							<tr>
-								<td class="first"><span class="bold">[@spring.message "label.tenderDate"/]:</span></td>
+								<td class="first"><span class="bold">[@spring.message "label.tender.date"/]:</span></td>
 								<td>
 									<input 
 										value="${tender.publishDate?string("dd.MM.yyyy")}" 
@@ -180,7 +180,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="first"><span class="bold">[@spring.message "label.tenderDocs"/]:</span></td>
+								<td class="first"><span class="bold">[@spring.message "label.tender.docs"/]:</span></td>
 								<td>[@spring.formInput "tender.attachedDoc", "", "file"/]</td>
 							</tr>
 							<tr>
