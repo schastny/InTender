@@ -61,7 +61,7 @@
           <div class="products">
               <div class="right">
               	[#if tenderList?size > 0]
-              	<h4>Tenders</h4>
+              	<h4>[@spring.message "label.allTenders"/]</h4>
 	              	<ul>
 	                	[#list tenderList as tender]
 							<li>
@@ -78,39 +78,39 @@
               </div>
               <div class="right">
               	<div class="tender-edit-table"> <!-- edit-division-table -->
-                <h4>General information
+                <h4>[@spring.message "label.generalInformation"/]
 				<a class="tender-edit-1" href="#" title="Edit division">
 					<img src="[@spring.url '/resources/img/btn-edit.png'/]" alt="Edit division">
 				</a> 
 				</h4>
 				<table>
 					<tr>
-						<td class="first"><span class="bold">Name:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionName"/]:</span></td>
 						<td>${division.title}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">Full name:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
 						<td>${division.fullTitle}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">Address:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
 						<td>${division.address}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">Contacts:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
 						<td>${division.contacts}</td>
 					</tr>					
 					<tr>
-						<td class="first"><span class="bold">Description:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
 						<td>${division.description}</td>
 					</tr>
 					<tr>
-						<td class="first"><span class="bold">Manager email:</span></td>
+						<td class="first"><span class="bold">[@spring.message "label.divisionManagerEmail"/]:</span></td>
 						<td>${division.managerEmail}</td>
 					</tr>
 					[@security.authorize ifAnyGranted="ROLE_ADMIN"]
 					<tr><td/>
-						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]" onclick="return confirm('Are you sure you want to delete this Division (and all its Tenders)?')">
+						<td><a class="button" href="[@spring.url '/admin/division/delete/${division.id}' /]" onclick="return confirm('[@spring.message "label.division.confirmDelete"/]')">
 							[@spring.message "label.delete"/]</a>
 						</td>
 					</tr>
@@ -118,7 +118,7 @@
 				</table> 
 				</div> <!-- edit-division-table -->
 				<div class="tender-edit-form"> <!-- edit-division-form -->
-	                <h4>General information
+	                <h4>[@spring.message "label.generalInformation"/]
 					<a class="tender-edit-2" href="#" title="Cancel editing">
 						<img src="[@spring.url '/resources/img/btn-edit-cancel.png'/]" alt="Cancel editing">
 					</a> 
@@ -127,29 +127,29 @@
                 			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
 							<table>
 								<tr>
-									<td class="first"><span class="bold">Name:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionName"/]:</span></td>
 									<td>[@spring.formInput "division.title", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Full name:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
 									<td>[@spring.formInput "division.fullTitle", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Address:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
 									<td>[@spring.formInput "division.address", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Contacts:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
 									<td>[@spring.formInput "division.contacts", "style='width:500px'"/]</td>
 								</tr>					
 								<tr>
-									<td class="first"><span class="bold">Description:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
 									<td>
 										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
 									</td>
 								</tr>								
 								<tr>
-									<td class="first"><span class="bold">Manager email:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionManagerEmail"/]:</span></td>
 									<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]</td>
 								</tr>									
 								<tr><td/>
@@ -160,7 +160,7 @@
 				</div> <!-- edit-division-form -->
               </div> <!-- right -->
               <div class="right">
-                <h4><a href="#" class="tender-new">New tender for this Division</a></h4>
+                <h4><a href="#" class="tender-new">[@spring.message "label.tender.createNew"/]</a></h4>
 				<div class="tender-new-form">
 					<form method="POST" action="[@spring.url '/admin/tender/store' /]" enctype="multipart/form-data">
 					<div style="display:none;">[@spring.formInput "tender.division.id"/]</div>

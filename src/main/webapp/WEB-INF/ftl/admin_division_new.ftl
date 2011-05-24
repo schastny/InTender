@@ -5,7 +5,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>[@spring.message "label.title"/] - Create New Division</title>
+<title>[@spring.message "label.title"/] - [@spring.message "label.createNewDivision"/]</title>
 <link rel="shortcut icon" href="[@spring.url '/resources/img/favicon.ico'/]" type="image/x-icon" /> 
 
 <link rel="stylesheet" href="[@spring.url '/resources/css/main.css'/]" type="text/css" media="all" />
@@ -44,37 +44,37 @@
 	</div>
     <div class="right content">
       <div class="twocols">
-          <h3>Create New Division</h3>
+          <h3>[@spring.message "label.createNewDivision"/]</h3>
 	          <div class="products">
 	              <div class="right">
-	                <h4>General information</h4>
+	                <h4>[@spring.message "label.generalInformation"/]</h4>
 						<form method="POST" action="[@spring.url '/admin/division/store' /]">
                 			<div style="display:none;">[@spring.formInput "division.id"/]</div>						
 							<table>
 								<tr>
-									<td class="first"><span class="bold">Name:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionName"/]:</span></td>
 									<td>[@spring.formInput "division.title", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Full name:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionFullName"/]:</span></td>
 									<td>[@spring.formInput "division.fullTitle", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Address:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionAddress"/]:</span></td>
 									<td>[@spring.formInput "division.address", "style='width:500px'"/]</td>
 								</tr>
 								<tr>
-									<td class="first"><span class="bold">Contacts:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionContacts"/]:</span></td>
 									<td>[@spring.formInput "division.contacts", "style='width:500px'"/]</td>
 								</tr>					
 								<tr>
-									<td class="first"><span class="bold">Description:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionDescription"/]:</span></td>
 									<td>
 										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
 									</td>
 								</tr>	
 								<tr>
-									<td class="first"><span class="bold">Manager email:</span></td>
+									<td class="first"><span class="bold">[@spring.message "label.divisionManagerEmail"/]:</span></td>
 									<td>[@spring.formInput "division.managerEmail", "style='width:500px'"/]</td>
 								</tr>															
 								<tr><td/>

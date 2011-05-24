@@ -42,7 +42,7 @@
       <div class="twocols">
 
       [#if tender??]
-          <h3>Editing Tenders in ${tender.division.title}</h3>
+          <h3>${tender.division.title} - ${tender.title}</h3>
           <div class="products">
               <div class="right">
                 <div class="tender-edit-table">
@@ -70,7 +70,7 @@
 					</tr>
 					[@security.authorize ifAnyGranted="ROLE_ADMIN"]
 					<tr><td/>
-						<td><a class="button" href="[@spring.url '/admin/tender/delete/${tender.id}' /]" onclick="return confirm('Are you sure you want to delete this Tender?')">[@spring.message "label.delete"/]</a></td>
+						<td><a class="button" href="[@spring.url '/admin/tender/delete/${tender.id}' /]" onclick="return confirm('[@spring.message "label.tender.confirmDelete"/]')">[@spring.message "label.delete"/]</a></td>
 					</tr>
 					[/@security.authorize]					
 				</table>
