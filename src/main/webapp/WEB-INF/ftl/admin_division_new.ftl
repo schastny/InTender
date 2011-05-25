@@ -70,7 +70,7 @@
 								<tr>
 									<td class="first"><span class="bold">[@spring.message "label.division.description"/]:</span></td>
 									<td>
-										[@spring.formTextarea "division.description", 'rows="5" cols="60"'/]
+										[@spring.formTextarea "division.description", 'rows="25" cols="60"'/]
 									</td>
 								</tr>	
 								<tr>

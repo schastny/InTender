@@ -30,7 +30,7 @@
 	<!-- Resolving User Locales by a Session Attribute -->
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="ru" />
+		<property name="defaultLocale" value="en" />
 	</bean>
 	<!-- Externalizing Locale-Sensitive Text Messages -->
 	<bean id="messageSource"
@@ -68,7 +68,7 @@
 				    create: 		creates the schema, destroying previous data.
 				    create-drop: 	drop the schema at the end of the session.
 				 -->
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
