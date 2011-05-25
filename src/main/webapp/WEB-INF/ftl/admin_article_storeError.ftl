@@ -68,7 +68,7 @@
 						<tr>
 							<td class="first"><span class="bold">[@spring.message "label.article.text"/]:</span></td>
 							<td>
-								[@spring.formTextarea "article.body", 'rows="5" cols="60"'/]
+								[@spring.formTextarea "article.body", 'rows="25" cols="60"'/]
 							</td>
 						</tr>								
 						<tr><td/>
