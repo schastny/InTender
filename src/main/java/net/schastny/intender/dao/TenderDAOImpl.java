@@ -36,7 +36,7 @@ public class TenderDAOImpl implements TenderDAO {
 		Criteria criteria = sessionFactory.getCurrentSession()
 			.createCriteria(Tender.class)
 			.add(Restrictions.like("division.id", divId) )
-			.addOrder(Order.desc("id"));
+			.addOrder(Order.desc("publishDate"));
 		criteria.setMaxResults(numTenders);
 		return criteria.list();
 	}
@@ -44,7 +44,7 @@ public class TenderDAOImpl implements TenderDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tender> selectAllInDivision(Integer divId) {
-		return sessionFactory.getCurrentSession().createQuery("from Tender where division="+divId+" order by id desc").list();
+		return sessionFactory.getCurrentSession().createQuery("from Tender where division="+divId+" order by publishDate desc").list();
 	}
 	
 	@Override
