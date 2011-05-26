@@ -42,7 +42,7 @@
       <div class="twocols">
 
       [#if tender??]
-          <h3>${tender.division.title} - ${tender.title}</h3>
+          <h3>${tender.division.title}</h3>
           <div class="products">
               <div class="right">
                 <div class="tender-edit-table">

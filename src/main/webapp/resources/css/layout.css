@@ -168,10 +168,9 @@ h4{
 	}
 #mastcontent{}
 	#mastcontent .content{
-		
+
 	}
 	#mastcontent .sidebar{
-		
 		width:300px;
 	}
 .secmenu{
@@ -398,6 +397,17 @@ div.products{
 .right{
 	float:right;
 }
+
+.products a{
+	text-decoration: underline;
+}
+.products p{
+	padding-bottom: 10px;
+}
+.products ul{
+	list-style-type: circle;
+}
+
 
 .twocols {
 	display: inline-block;

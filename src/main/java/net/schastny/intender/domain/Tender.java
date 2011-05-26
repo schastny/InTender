@@ -25,7 +25,7 @@ public class Tender {
 	private int id;
 
 	@NotNull
-	@Size(min = 2, max = 40)
+	@Size(min = 2, max = 50)
 	@Column(name = "title")
 	private String title;
 
