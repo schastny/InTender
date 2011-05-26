@@ -39,7 +39,7 @@
 		              		</h4>
 		              	</div>
 			            [#if aDivision.tenders??]
-				            <ul>
+				            <ul class="tendersBrief">
 							  [#list aDivision.tenders as tender]
 				                  <li>							
 						            <a href=" [@spring.url '/tenders/${tender.division.id}/${tender.id}'/] ">

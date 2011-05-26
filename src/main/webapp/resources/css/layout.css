@@ -288,6 +288,9 @@ div.products{
 		.special-offers li a:hover{
 			color:#000;
 		}
+.tendersBrief{
+	height:90px;	
+}		
 
 #mastfooter{
 	margin-top:21px;
