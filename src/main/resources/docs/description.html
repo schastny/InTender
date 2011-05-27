@@ -64,6 +64,14 @@ System will automatically convert attached document to pdf format, thus for ever
 <ol>
 	<li>To run InTender application you will need a JVM installed on your machine, a servlet container running (with the configured /uploads path), a configured mysql database server. </li>
 	<li>Please specify jdbc settings in the WEB-INF/jdbc.properties file.</li>
+	<li>Create MySQL user:
+		<pre>
+CREATE USER intender IDENTIFIED BY '1234';
+GRANT USAGE ON *.* TO intender IDENTIFIED BY '1234';
+CREATE DATABASE IF NOT EXISTS intender ;
+GRANT ALL PRIVILEGES ON intender.* TO intender;
+		</pre>
+	</li>
 	<li>Schema file and sample data file for database are located in the WEB-INF/classes/sql/ folder. </li>
 	<li>WARNING: Don’t forget do disable &lt;jdbc:initialize-database&gt; tag in production! (WEB-INF\spring\data.xml)</li>
 	<li>WARNING: Don’t forget to change hibernate.hbm2ddl.auto property in the data.xml.</li>
