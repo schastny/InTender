@@ -11,6 +11,8 @@ import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 
 public class PdfMaker {
 	
+	private static final  org.apache.log4j.Logger log =  org.apache.log4j.Logger.getLogger(PdfMaker.class);
+	
 	private String convertDirPath;
 	
 	public PdfMaker(String convertDirPath){
@@ -39,7 +41,7 @@ public class PdfMaker {
 		OutputStream os = new java.io.FileOutputStream(outputFilePath);
 		c.output(os);
 		
-		System.out.println("Saved " + outputFilePath);
+		log.debug("Saved " + outputFilePath);
 	}
 
 	public static void main(String[] args) {
@@ -47,7 +49,7 @@ public class PdfMaker {
 		try {
 			maker.make("test2");
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 }
