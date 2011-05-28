@@ -26,32 +26,32 @@
 
 <div>There are three categories of users in the system:</div>
 <ul>
-	<li>System Administrator;</li>
-	<li>Company Manager;</li>
+	<li>System Administrator</li>
+	<li>Company Manager</li>
 	<li>Site User (Anonymous User).</li>
 </ul>
 
 <h3>System administrator</h3>
 <div>System administrator has full access to the portal functionality. </div>
-<div>For every company he creates a company profile, which will provide information on tenders for this organization. 
-Administrator also creates a manager profile in the system for every company. </div>
+<div>For every company he creates a company profile, which provides information on tenders for this organization. 
+Administrator also creates a manager profile for every company. </div>
 <img src="img/04.png">
 <div>There is also an option to create static pages available on the site with url like: yoursite.com/articles/&lt;pageurl&gt;.</div>
 <img src="img/05.png">
 <img src="img/07.png">
 
 <h3>Company manager</h3>
-<div>Company manager is able to insert/update publications in his company’s section and to modify his company’s profile.</div>
-<div>To add new tender entry manager have to log in the system and specify name of the tender, start date of the tender and attached document in MS Word 2007 format. 
-System will automatically convert attached document to pdf format, thus for every tender system will display details as follows:</div>
+<div>Company manager is able to insert/update publications and to modify his company’s profile.</div>
+<div>To add a new tender entry manager have to log into the system and specify the name, start date and to attache a document in MS Word 2007 format. 
+System will automatically convert attached file to pdf format, therefore for every tender system will display details as follows:</div>
 <ul>
-	<li>Name of the Tender,</li>
-	<li>Tender Unique Id,</li>
-	<li>Start Date,</li>
+	<li>Name of the Tender</li>
+	<li>Tender Unique Id</li>
+	<li>Start Date</li>
 	<li>Attached Docs (both in docx and pdf formats).</li>
 </ul>
 <img src="img/06.png">
-<div>Company manager have no access to any information of the other companies in the manager panel. </div>
+<div>Company manager does not have access to any information of other companies in the manager panel. </div>
 
 <h3>Site User</h3>
 <div>Site User is able to look through the tender information throughout the site with the web browser.</div>
@@ -60,27 +60,26 @@ System will automatically convert attached document to pdf format, thus for ever
 <h3>Technologies:</h3>
 
 <ul>
-	<li>Java 6,</li>
-	<li>Spring Framework (MVC, Spring Security),</li>
-	<li>Localization with Spring framevork,</li>
-	<li>Hibernate ORM Framework with MySQL database,</li>
-	<li>FreeMarker templating engine,</li>
-	<li>jQueryUI library (Datepicker, WYSIWYG-editor),</li>
-	<li>JUnit 4,</li>
-	<li>DocxToPdf Converter (based on <a href="http://dev.plutext.org/trac/docx4j">docx4j</a> library),</li>
+	<li>Java 6</li>
+	<li>Spring Framework (MVC, Spring Security)</li>
+	<li>Localization with Spring framevork</li>
+	<li>Hibernate ORM Framework with MySQL database</li>
+	<li>FreeMarker templating engine</li>
+	<li>jQueryUI library (Datepicker, WYSIWYG-editor)</li>
+	<li>JUnit 4</li>
+	<li>DocxToPdf Converter (based on <a href="http://dev.plutext.org/trac/docx4j">docx4j</a> library)</li>
 	<li>JSR-303 validation.</li>
 </ul>
 
 <h3>Infrastructure tools:</h3>
 <ul>
-	<li>Maven;</li>
-	<li>git versioning system (with the project storage at Github).</li>
+	<li>Maven</li>
+	<li>Git versioning system (with the project storage at Github).</li>
 </ul>
 
 <h2>III. Installing InTender</h2>
 <ol>
-	<li>To run InTender application you will need a JVM installed on your machine, a servlet container running (with the configured /uploads path), a configured mysql database server. </li>
-	<li>Please specify jdbc settings in the WEB-INF/jdbc.properties file.</li>
+	<li>To run InTender application you will need a JVM installed on your machine, a running servlet container (with the configured /uploads path), a configured mysql database server. </li>
 	<li>Create MySQL user:
 		<pre>
 CREATE USER intender IDENTIFIED BY '1234';
@@ -89,11 +88,12 @@ CREATE DATABASE IF NOT EXISTS intender ;
 GRANT ALL PRIVILEGES ON intender.* TO intender;
 		</pre>
 	</li>
-	<li>Schema file and sample data file for database are located in the WEB-INF/classes/sql/ folder. </li>
-	<li>WARNING: Don’t forget do disable &lt;jdbc:initialize-database&gt; tag in production! (WEB-INF\spring\data.xml)</li>
-	<li>WARNING: Don’t forget to change hibernate.hbm2ddl.auto property in the data.xml.</li>
-	<li>Copy InTender.war file in the webapps folder and start Tomcat.</li>
+	<li>Please specify jdbc settings in the WEB-INF/jdbc.properties file.</li>
+	<li>Copy InTender.war file in the webapps folder and start web server.</li>
 	<li>To access site admin panel by defaut please use: admin/pass credentials.</li>
+	<li>WARNING: Do not forget to disable &lt;jdbc:initialize-database&gt; tag in production! (WEB-INF\spring\data.xml)</li>
+	<li>WARNING: Do not forget to change hibernate.hbm2ddl.auto property in the data.xml.</li>
+	<li>INORMATION: Schema and sample data files for database are located in the WEB-INF/classes/sql/ folder. </li>
 </ol>
 
 <h2>IV. Other Documentation</h2>
