@@ -1,34 +1,68 @@
-Сервис по размещению тендеров
+InTender is a web based tool for tenders publishing.
 
-Опубликование в вебе тендерной документации для структурных подразделений (филиалов) компании.
+I. Functionality
+The system publishes tender documents for the chosen field of business (for instance, medical industry), categorized by company.
+There are three categories of users in the system:
 
-I. Функционал
-Система отображает тендерную документацию для компании, имеющей в своём составе филиалы. Информация разбита по филиалам.
+* System Administrator
+* Company Manager
+* Site User (Anonymous User).
 
-В системе есть категории пользователей:
-* администратор системы;
-* редактор раздела;
-* пользователь (анонимный пользователь).
+System administrator
+System administrator has full access to the portal functionality.
+For every company he creates a company profile, which provides information on tenders for this organization. Administrator also creates a manager profile for every company.
+There is also an option to create static pages available on the site with url like: yoursite.com/articles/<pageurl>.
 
-1. Администратор имеет полный доступ к функционалу системы. Для каждого филиала администратор создаёт раздел, в котором будет размещаться информация по тендерам. На каждый раздел заводится редактор раздела.
-2. Редактор раздела может добавлять/изменять записи по тендерам.
-3. Пользователь может просматривать информацию по филиалам с помощью браузера.
+Company manager
+Company manager is able to insert/update publications and to modify his company’s profile.
+To add a new tender entry manager have to log into the system and specify the name, start date and to attache a document in MS Word 2007 format. System will automatically convert attached file to pdf format, therefore for every tender system will display details as follows:
 
-Для добавления новой записи редактор авторизируется в системе, вводит название тендера и прикрепляет файл в формате .doc
+* Name of the Tender
+* Tender Unique Id
+* Start Date
+* Attached Docs (both in docx and pdf formats).
 
-На сайте для каждой записи будет отображаться:
-1.	Дата
-2.	Название тендера
-3.	Прикреплённая документация в формате doc и pdf.
+Company manager does not have access to any information of other companies in the manager panel.
 
-II. Используемые технологии и инструменты 
-* Spring Framework (MVC, Spring Security),
-* Hibernate ORM Framework с СУБД MySQL,
-* шаблонизатор FreeMarker,
-* библиотека jQuery,
-* JUnit.
+Site User
+Site User is able to look through the tender information throughout the site with the web browser.
 
-Инструменты:
-* редактор Eclipse;
-* сборщик проектов Maven;
-* система контроля версий git с размещением проекта на github.com.
+II. Technologies and Tools used
+Technologies:
+
+* Java 6
+* Spring Framework (MVC, Spring Security)
+* Localization with Spring framevork
+* Hibernate ORM Framework with MySQL database
+* FreeMarker templating engine
+* jQueryUI library (Datepicker, WYSIWYG-editor)
+* JUnit 4
+* DocxToPdf Converter (based on docx4j library)
+* JSR-303 validation.
+
+Infrastructure tools:
+
+* Maven
+* Git versioning system (with the project storage at Github).
+
+III. Installing InTender
+
+1   To run InTender application you will need a JVM installed on your machine, a running servlet container (with the configured /uploads path), a configured mysql database server.
+2   Create MySQL user:
+
+    CREATE USER intender IDENTIFIED BY '1234';
+    GRANT USAGE ON *.* TO intender IDENTIFIED BY '1234';
+    CREATE DATABASE IF NOT EXISTS intender ;
+    GRANT ALL PRIVILEGES ON intender.* TO intender;
+    		
+
+3   Please specify jdbc settings in the WEB-INF/jdbc.properties file.
+4   Copy InTender.war file in the webapps folder and start web server.
+5   To access site admin panel by defaut please use: admin/pass credentials.
+6   WARNING: Do not forget to disable <jdbc:initialize-database> tag in production! (WEB-INF\spring\data.xml)
+7   WARNING: Do not forget to change hibernate.hbm2ddl.auto property in the data.xml.
+8   INORMATION: Schema and sample data files for database are located in the WEB-INF/classes/sql/ folder.
+
+IV. Other Documentation
+You are welcome to report any bugs and issues at https://github.com/schastny/InTender.
+InTender wiki is available at https://github.com/schastny/InTender/wiki.
