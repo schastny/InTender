@@ -10,6 +10,15 @@
 		</layout>
 	</appender>
 	
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="output.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd/MM/yy hh:mm:ss:sss z}] %5p %c{2}: %m%n" />
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="net.schastny.intender">
 		<level value="info" />
@@ -31,11 +40,15 @@
 	<logger name="org.springframework.web">
 		<level value="warn" />
 	</logger>
+	
+	<logger name="org.hibernate">
+		<level value="error" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
-		<appender-ref ref="console" />
+		<priority value="debug" />
+		<appender-ref ref="file" />
 	</root>
 	
 </log4j:configuration>
