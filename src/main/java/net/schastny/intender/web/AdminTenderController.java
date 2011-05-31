@@ -11,7 +11,6 @@ import java.util.Map;
 //import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
-import net.schastny.intender.doc2pdf.PdfMaker;
 import net.schastny.intender.domain.Tender;
 import net.schastny.intender.service.TenderService;
 
@@ -30,7 +29,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 @Controller
 @RequestMapping("/admin/tender*")
 public class AdminTenderController {
-
+	
 	@Autowired
 	private TenderService tenderService;
 	
@@ -73,36 +72,6 @@ public class AdminTenderController {
 		}
 
 		if (!result.hasErrors()) {
-			if (!attachedDoc.isEmpty()){
-				// store the bytes somewhere
-				String fileName = Long.toString(System.nanoTime());
-				try {
-					// To store docs in <web-app-home>/uploads
-					// File uploadDir = new File(servletContext.getRealPath("/")+"/uploads/");
-					// To store outside <web-app-home>
-					File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");
-					uploadDir.mkdir();
-					// Delete old file
-					File oldFile = new File(uploadDir, tender.getAttachedDocName()+".docx");
-					oldFile.delete();
-					// Write newly uploaded file
-					File destinationFile = new File(uploadDir, fileName+".docx");
-					attachedDoc.transferTo(destinationFile);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				// !store the bytes somewhere
-				// Make pdf
-				PdfMaker maker = new PdfMaker(System.getProperty("catalina.base")+"/uploads/");
-				try {
-					maker.make(fileName);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				// !Make pdf
-				// Update attachedDocName field
-				tender.setAttachedDocName(fileName);
-			}
 			tenderService.storeTender(tender);
 		} else {
 			viewResult = "admin_tender_storeError";
