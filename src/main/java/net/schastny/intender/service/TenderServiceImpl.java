@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import net.schastny.intender.dao.TenderDAO;
@@ -22,15 +23,20 @@ public class TenderServiceImpl implements TenderService {
     @Autowired
     private TenderDAO tenderDAO;
     
-	@Autowired
-	private ServletContext servletContext;
-	
-	// To store docs in <web-app-home>/resources/docs/
-	private final String DOCS_PATH = servletContext.getRealPath("/")+"/resources/docs/";
-	// To store outside <web-app-home>
-//	private final String DOCS_PATH = System.getProperty("catalina.base")+"/uploads/";
-	
-	
+    @Autowired ServletContext servletContext;
+    
+    private File uploadDir = null;
+    private void checkUploadDir(){
+    	if (uploadDir == null){
+			ServletContext sc = ContextLoader.getCurrentWebApplicationContext().getServletContext();
+			String DOCS_PATH = sc.getRealPath("/resources")+"/docs";
+			uploadDir = new File(DOCS_PATH);
+			if (!uploadDir.exists()){
+				uploadDir.mkdir();
+			}
+		}
+    }	
+
     @Transactional
     public void storeTender(Tender tender) {
     	this.storeFileSystem(tender);
@@ -64,11 +70,13 @@ public class TenderServiceImpl implements TenderService {
 			// store the bytes somewhere
 			String fileName = Long.toString(System.nanoTime());
 			try {
-				File uploadDir = new File(DOCS_PATH);
-				uploadDir.mkdir();
+				this.checkUploadDir();
+			
+				// TODO Добавить удаление pdf
 				// Delete old file
 				File oldFile = new File(uploadDir, tender.getAttachedDocName()+".docx");
 				oldFile.delete();
+		
 				// Write newly uploaded file
 				File destinationFile = new File(uploadDir, fileName+".docx");
 				attachedDoc.transferTo(destinationFile);
@@ -78,7 +86,7 @@ public class TenderServiceImpl implements TenderService {
 			// !store the bytes somewhere
 			
 			// Make pdf
-//			makePdf(fileName);
+			this.makePdf(fileName);
 			
 			// Update attachedDocName field
 			tender.setAttachedDocName(fileName);
@@ -87,8 +95,7 @@ public class TenderServiceImpl implements TenderService {
     
     private void deleteFileSystem(Integer id){
 		Tender tender = this.showTender(id);
-		File uploadDir = new File(DOCS_PATH);
-		uploadDir.mkdir();
+		this.checkUploadDir();
 		File destinationFileDOCX = new File(uploadDir, tender.getAttachedDocName()+".docx");
 		destinationFileDOCX.delete();
 		File destinationFilePDF = new File(uploadDir, tender.getAttachedDocName()+".pdf");
@@ -96,7 +103,7 @@ public class TenderServiceImpl implements TenderService {
     }
     
     private void makePdf(String fileName){
-		PdfMaker maker = new PdfMaker(servletContext.getRealPath("/")+"/resources/docs/");
+		PdfMaker maker = new PdfMaker(uploadDir.getAbsolutePath()+"/");
 		try {
 			maker.make(fileName);
 		} catch (Exception e) {

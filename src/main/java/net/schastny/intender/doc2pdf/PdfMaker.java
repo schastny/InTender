@@ -23,7 +23,7 @@ public class PdfMaker {
 	public void make(String inputFile) throws Exception{
 		String inputFilePath = convertDirPath + inputFile + ".docx";
 		String outputFilePath = convertDirPath + inputFile + ".pdf";
-		
+
 		WordprocessingMLPackage wordMLPackage;
 		wordMLPackage = WordprocessingMLPackage.load(new File(inputFilePath));
 		
