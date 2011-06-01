@@ -47,7 +47,7 @@ Infrastructure tools:
 
 III. Installing InTender
 
-1   To run InTender application you will need a JVM installed on your machine, a running servlet container (with the configured /uploads path), a configured mysql database server.
+1   To run InTender application you will need a JVM installed on your machine, a running servlet container, a configured mysql database server.
 2   Create MySQL user:
 
     CREATE USER intender IDENTIFIED BY '1234';

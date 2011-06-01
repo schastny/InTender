@@ -1,6 +1,5 @@
 package net.schastny.intender.web;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -32,9 +31,6 @@ public class AdminTenderController {
 	
 	@Autowired
 	private TenderService tenderService;
-	
-//	@Autowired
-//	private ServletContext servletContext;
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -89,16 +85,7 @@ public class AdminTenderController {
 	@RequestMapping("/delete/{tenderId}")
 	public String deleteTender(@PathVariable("tenderId") Integer tenderId) {
 		// TODO При удалении всей категории тендеры удаляются, а про файлы я забыл (они не удаляются)
-		// Delete an uploaded file
 		Tender tender = tenderService.showTender(tenderId);
-		File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");
-		uploadDir.mkdir();
-		File destinationFileDOCX = new File(uploadDir, tender.getAttachedDocName()+".docx");
-		destinationFileDOCX.delete();
-		File destinationFilePDF = new File(uploadDir, tender.getAttachedDocName()+".pdf");
-		destinationFilePDF.delete();
-		// Delete an uploaded file
-		
 		tenderService.deleteTender(tenderId);
 		return "redirect:/admin/"+tender.getDivision().getId();
 	}

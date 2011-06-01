@@ -3,6 +3,8 @@ package net.schastny.intender.service;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,15 @@ public class TenderServiceImpl implements TenderService {
 	
     @Autowired
     private TenderDAO tenderDAO;
+    
+	@Autowired
+	private ServletContext servletContext;
+	
+	// To store docs in <web-app-home>/resources/docs/
+	private final String DOCS_PATH = servletContext.getRealPath("/")+"/resources/docs/";
+	// To store outside <web-app-home>
+//	private final String DOCS_PATH = System.getProperty("catalina.base")+"/uploads/";
+	
 	
     @Transactional
     public void storeTender(Tender tender) {
@@ -28,6 +39,7 @@ public class TenderServiceImpl implements TenderService {
 
     @Transactional
 	public void deleteTender(Integer id) {
+    	this.deleteFileSystem(id);
 		tenderDAO.deleteTender(id);
 	}
     
@@ -52,10 +64,7 @@ public class TenderServiceImpl implements TenderService {
 			// store the bytes somewhere
 			String fileName = Long.toString(System.nanoTime());
 			try {
-				// To store docs in <web-app-home>/uploads
-				// File uploadDir = new File(servletContext.getRealPath("/")+"/uploads/");
-				// To store outside <web-app-home>
-				File uploadDir = new File(System.getProperty("catalina.base")+"/uploads/");
+				File uploadDir = new File(DOCS_PATH);
 				uploadDir.mkdir();
 				// Delete old file
 				File oldFile = new File(uploadDir, tender.getAttachedDocName()+".docx");
@@ -76,8 +85,18 @@ public class TenderServiceImpl implements TenderService {
 		}
     }
     
+    private void deleteFileSystem(Integer id){
+		Tender tender = this.showTender(id);
+		File uploadDir = new File(DOCS_PATH);
+		uploadDir.mkdir();
+		File destinationFileDOCX = new File(uploadDir, tender.getAttachedDocName()+".docx");
+		destinationFileDOCX.delete();
+		File destinationFilePDF = new File(uploadDir, tender.getAttachedDocName()+".pdf");
+		destinationFilePDF.delete();
+    }
+    
     private void makePdf(String fileName){
-		PdfMaker maker = new PdfMaker(System.getProperty("catalina.base")+"/uploads/");
+		PdfMaker maker = new PdfMaker(servletContext.getRealPath("/")+"/resources/docs/");
 		try {
 			maker.make(fileName);
 		} catch (Exception e) {
