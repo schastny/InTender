@@ -72,10 +72,11 @@ public class TenderServiceImpl implements TenderService {
 			try {
 				this.checkUploadDir();
 			
-				// TODO Добавить удаление pdf
 				// Delete old file
-				File oldFile = new File(uploadDir, tender.getAttachedDocName()+".docx");
-				oldFile.delete();
+				File oldFileDocx = new File(uploadDir, tender.getAttachedDocName()+".docx");
+				oldFileDocx.delete();
+				File oldFilePdf  = new File(uploadDir, tender.getAttachedDocName()+".pdf");
+				oldFilePdf.delete();
 		
 				// Write newly uploaded file
 				File destinationFile = new File(uploadDir, fileName+".docx");
