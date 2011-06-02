@@ -24,6 +24,9 @@ public class UserManagerServiceImpl implements UserManagerService {
 	
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private DivisionService divisionService;
 
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String login)
@@ -49,18 +52,29 @@ public class UserManagerServiceImpl implements UserManagerService {
 		return springSecurityUser;
 	}
 	
-	// TODO Сделать так, чтобы при изменении логина старый пользователь удалялся
+	// TODO Запретить использовать для разных категорий одного пользователя
 	@Transactional
 	public void createOrUpdateUserForDivision(Division division){
-		TenderUser user = new TenderUser();
-		user.setUsername(division.getManagerEmail());
-		user.addRole("ROLE_USER");
+		TenderUser newUser = new TenderUser();
+		newUser.setUsername(division.getManagerEmail());
+		newUser.addRole("ROLE_USER");
 		try {
-			user.setPassword(hash(division.getManagerPassword()));
+			newUser.setPassword(hash(division.getManagerPassword()));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} 
-		userDao.storeUser(user);
+		int divId = division.getId();
+		if (divId != 0){
+			// We are about to update existing division
+			String oldUserName = divisionService.showDivision(divId).getManagerEmail();
+			String newUserName = division.getManagerEmail();
+			
+			// Check if the user will be the same or not
+			if (!newUserName.equals(oldUserName)){
+				userDao.deleteUser(oldUserName);
+			}
+		}
+		userDao.storeUser(newUser);
 	}
 	
 	@Transactional
